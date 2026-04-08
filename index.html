@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Derechos de los Adolescentes</title>
+<title>Juventud y Realidad</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -12,15 +12,7 @@
 body{
     margin:0;
     font-family:'Segoe UI',sans-serif;
-    background:#ecf0f1;
-}
-
-/* FONDO */
-#particles{
-    position:fixed;
-    width:100%;
-    height:100%;
-    z-index:-1;
+    background:linear-gradient(135deg,#ecf0f1,#fff);
 }
 
 /* NAV */
@@ -31,15 +23,14 @@ nav{
     padding:15px;
     color:white;
     text-align:center;
-    z-index:1000;
 }
 
 /* HERO */
 .hero{
     margin-top:70px;
-    padding:100px 20px;
+    padding:100px;
     text-align:center;
-    background:linear-gradient(135deg,#0f4c75,#1b6ca8);
+    background:#1b6ca8;
     color:white;
 }
 
@@ -52,51 +43,24 @@ nav{
 }
 
 /* AVATAR */
-.card-box{
-    text-align:center;
-    position:relative;
-    cursor:pointer;
-}
-
 .avatar{
-    width:120px;
-    height:120px;
+    width:130px;
+    height:130px;
     border-radius:50%;
     margin:auto;
     margin-bottom:-50px;
-    background-size:cover;
-    background-position:center;
+    object-fit:cover;
     border:4px solid #3498db;
-    animation:blink 4s infinite;
+    transition:.3s;
 }
 
-/* PARPADEO */
-@keyframes blink{
-    0%,95%,100%{transform:scaleY(1);}
-    97%{transform:scaleY(0.1);}
+.card-box{
+    text-align:center;
+    cursor:pointer;
 }
 
 .card-box:hover .avatar{
     transform:scale(1.1);
-    box-shadow:0 0 30px rgba(52,152,219,.7);
-}
-
-/* BURBUJA */
-.bubble{
-    position:absolute;
-    top:-60px;
-    left:50%;
-    transform:translateX(-50%);
-    background:#0f4c75;
-    color:white;
-    padding:10px;
-    border-radius:10px;
-    opacity:0;
-    transition:.3s;
-}
-
-.card-box:hover .bubble{
-    opacity:1;
 }
 
 /* CARD */
@@ -114,76 +78,50 @@ nav{
     border-radius:10px;
 }
 
-.card h3{
-    color:#0f4c75;
-}
-
-/* BOTÓN */
-.btn{
-    display:inline-block;
-    margin-top:10px;
-    padding:10px 20px;
-    background:#3498db;
-    color:white;
-    border-radius:20px;
-    text-decoration:none;
-}
-
 </style>
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
-
-<nav>Derechos de los Adolescentes ✊</nav>
+<nav>Juventud y Realidad 🎤</nav>
 
 <section class="hero">
-    <h1>Conoce tus derechos</h1>
+    <h1>Juventud y Realidad</h1>
     <p>Haz clic en los personajes 👇</p>
 </section>
 
 <section class="cards">
 
 <!-- CHAN -->
-<div class="card-box" onclick="hablar('negativo')">
+<div class="card-box" onclick="hablar('chan')">
 
-    <div class="bubble">"Esto está mal..."</div>
-
-    <div class="avatar" style="background-image:url('https://i.postimg.cc/3x3QzSGq/wolf.png')"></div>
+    <img id="chan" class="avatar" src="https://media.tenor.com/2roX3uxz_68AAAAC/cat-talking.gif">
 
     <div class="card">
         <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
-        <h3>Violación de Derechos</h3>
-        <a href="negativo.html" class="btn">Entrar</a>
+        <h3>Aspectos Negativos</h3>
     </div>
 </div>
 
 <!-- CHANGBIN -->
-<div class="card-box" onclick="hablar('info')">
+<div class="card-box" onclick="hablar('bin')">
 
-    <div class="bubble">"Estos son tus derechos 📚"</div>
-
-    <div class="avatar" style="background-image:url('https://i.postimg.cc/W3h7Yh1k/dwaekki.png')"></div>
+    <img id="bin" class="avatar" src="https://media.tenor.com/4AiXzf8z6F0AAAAC/talking-animal.gif">
 
     <div class="card">
         <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216">
-        <h3>Derechos Fundamentales</h3>
-        <a href="informacion.html" class="btn">Entrar</a>
+        <h3>Información</h3>
     </div>
 </div>
 
 <!-- HYUNJIN -->
-<div class="card-box" onclick="hablar('vida')">
+<div class="card-box" onclick="hablar('jin')">
 
-    <div class="bubble">"Tú puedes mejorar ✨"</div>
-
-    <div class="avatar" style="background-image:url('https://i.postimg.cc/6pH6sP3F/jiniret.png')"></div>
+    <img id="jin" class="avatar" src="https://media.tenor.com/8cPj9W7K3wQAAAAC/anime-talking.gif">
 
     <div class="card">
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
-        <h3>Bienestar y Desarrollo</h3>
-        <a href="vida-ideal.html" class="btn">Entrar</a>
+        <h3>Vida Ideal</h3>
     </div>
 </div>
 
@@ -191,75 +129,28 @@ nav{
 
 <script>
 
-/* VOCES */
-function hablar(tipo){
+function hablar(personaje){
 
     let texto="";
-    let vozIndex=0;
 
-    if(tipo==="negativo"){
-        texto="Muchos adolescentes sufren violencia y falta de derechos";
-        vozIndex=0;
+    if(personaje==="chan"){
+        texto="Muchos jóvenes enfrentan problemas como violencia y falta de apoyo";
     }
 
-    if(tipo==="info"){
-        texto="Tienes derecho a educación, salud y protección";
-        vozIndex=1;
+    if(personaje==="bin"){
+        texto="Existen datos importantes sobre educación y derechos";
     }
 
-    if(tipo==="vida"){
-        texto="Tienes derecho a una vida digna y oportunidades";
-        vozIndex=2;
+    if(personaje==="jin"){
+        texto="Puedes lograr una vida mejor con bienestar emocional";
     }
 
-    const voces=speechSynthesis.getVoices();
     const mensaje=new SpeechSynthesisUtterance(texto);
-
     mensaje.lang="es-MX";
-    mensaje.voice=voces[vozIndex] || voces[0];
 
     speechSynthesis.cancel();
     speechSynthesis.speak(mensaje);
 }
-
-/* PARTÍCULAS */
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-
-for(let i=0;i<80;i++){
-    particles.push({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        size:Math.random()*3,
-        speed:Math.random()*1
-    });
-}
-
-function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-        ctx.fillStyle="rgba(52,152,219,0.5)";
-        ctx.fill();
-
-        p.y+=p.speed;
-
-        if(p.y>canvas.height){
-            p.y=0;
-        }
-    });
-
-    requestAnimationFrame(draw);
-}
-
-draw();
 
 </script>
 
