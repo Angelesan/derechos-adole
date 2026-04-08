@@ -10,9 +10,17 @@
 <style>
 
 body{
-    font-family:'Segoe UI',sans-serif;
     margin:0;
-    background:linear-gradient(135deg,#ecf0f1,#fff);
+    font-family:'Segoe UI',sans-serif;
+    background:#ecf0f1;
+}
+
+/* FONDO */
+#particles{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:-1;
 }
 
 /* NAV */
@@ -23,7 +31,6 @@ nav{
     padding:15px;
     color:white;
     text-align:center;
-    font-size:20px;
     z-index:1000;
 }
 
@@ -36,24 +43,6 @@ nav{
     color:white;
 }
 
-.hero h1{
-    font-size:50px;
-}
-
-.hero p{
-    font-size:20px;
-}
-
-/* SECCIÓN INFO */
-.info{
-    padding:60px;
-    text-align:center;
-}
-
-.info h2{
-    color:#0f4c75;
-}
-
 /* CARDS */
 .cards{
     display:grid;
@@ -64,8 +53,9 @@ nav{
 
 /* AVATAR */
 .card-box{
-    position:relative;
     text-align:center;
+    position:relative;
+    cursor:pointer;
 }
 
 .avatar{
@@ -77,6 +67,12 @@ nav{
     background-size:cover;
     border:4px solid #3498db;
     transition:.3s;
+    animation:blink 4s infinite;
+}
+
+@keyframes blink{
+    0%,95%,100%{transform:scaleY(1);}
+    97%{transform:scaleY(0.1);}
 }
 
 .card-box:hover .avatar{
@@ -121,19 +117,15 @@ nav{
     color:#0f4c75;
 }
 
-.card a{
-    text-decoration:none;
-    color:inherit;
-}
-
 /* BOTÓN */
 .btn{
     display:inline-block;
-    margin-top:15px;
+    margin-top:10px;
     padding:10px 20px;
     background:#3498db;
     color:white;
     border-radius:20px;
+    text-decoration:none;
 }
 
 </style>
@@ -141,25 +133,19 @@ nav{
 
 <body>
 
+<canvas id="particles"></canvas>
+
 <nav>Derechos de los Adolescentes ✊</nav>
 
 <section class="hero">
     <h1>Conoce tus derechos</h1>
-    <p>Infórmate, protégete y mejora tu futuro</p>
-</section>
-
-<section class="info">
-    <h2>¿Por qué es importante?</h2>
-    <p>
-    Los adolescentes tienen derechos fundamentales como educación, salud,
-    protección y libertad. Conocerlos permite defenderlos.
-    </p>
+    <p>Haz clic en los personajes 👇</p>
 </section>
 
 <section class="cards">
 
-<!-- NEGATIVO -->
-<div class="card-box" onmouseenter="hablar('Muchos adolescentes sufren violencia y falta de derechos')">
+<!-- CHAN -->
+<div class="card-box" onclick="hablar('negativo')">
 
     <div class="bubble">"Esto está mal..."</div>
 
@@ -172,8 +158,8 @@ nav{
     </div>
 </div>
 
-<!-- INFO -->
-<div class="card-box" onmouseenter="hablar('Todos los adolescentes tienen derechos que deben respetarse')">
+<!-- CHANGBIN -->
+<div class="card-box" onclick="hablar('info')">
 
     <div class="bubble">"Estos son tus derechos 📚"</div>
 
@@ -186,8 +172,8 @@ nav{
     </div>
 </div>
 
-<!-- VIDA -->
-<div class="card-box" onmouseenter="hablar('Tienes derecho a una vida digna y oportunidades')">
+<!-- HYUNJIN -->
+<div class="card-box" onclick="hablar('vida')">
 
     <div class="bubble">"Tú puedes mejorar ✨"</div>
 
@@ -203,12 +189,77 @@ nav{
 </section>
 
 <script>
-function hablar(texto){
-    const voz = new SpeechSynthesisUtterance(texto);
-    voz.lang="es-MX";
+
+/* VOCES */
+function hablar(tipo){
+
+    let texto="";
+    let vozIndex=0;
+
+    if(tipo==="negativo"){
+        texto="Muchos adolescentes sufren violencia y falta de derechos";
+        vozIndex=0;
+    }
+
+    if(tipo==="info"){
+        texto="Tienes derecho a educación, salud y protección";
+        vozIndex=1;
+    }
+
+    if(tipo==="vida"){
+        texto="Tienes derecho a una vida digna y oportunidades";
+        vozIndex=2;
+    }
+
+    const voces=speechSynthesis.getVoices();
+    const mensaje=new SpeechSynthesisUtterance(texto);
+
+    mensaje.lang="es-MX";
+    mensaje.voice=voces[vozIndex] || voces[0];
+
     speechSynthesis.cancel();
-    speechSynthesis.speak(voz);
+    speechSynthesis.speak(mensaje);
 }
+
+/* PARTÍCULAS */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<80;i++){
+    particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        size:Math.random()*3,
+        speed:Math.random()*1
+    });
+}
+
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fillStyle="rgba(52,152,219,0.5)";
+        ctx.fill();
+
+        p.y+=p.speed;
+
+        if(p.y>canvas.height){
+            p.y=0;
+        }
+    });
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+
 </script>
 
 </body>
