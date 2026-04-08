@@ -1,158 +1,245 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juventud y Realidad</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juventud y Realidad - Información y Apoyo para Adolescentes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ecf0f1 0%, #fff 100%);
+            color: #2c3e50;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
 
-body{
-    margin:0;
-    font-family:'Segoe UI',sans-serif;
-    background:linear-gradient(135deg,#ecf0f1,#fff);
-}
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 100%);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 25px rgba(15, 76, 117, 0.3);
+            z-index: 1000;
+        }
 
-/* NAV */
-nav{
-    position:fixed;
-    width:100%;
-    background:#0f4c75;
-    padding:15px;
-    color:white;
-    text-align:center;
-}
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-/* HERO */
-.hero{
-    margin-top:70px;
-    padding:100px;
-    text-align:center;
-    background:#1b6ca8;
-    color:white;
-}
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
 
-/* CARDS */
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:60px;
-    padding:60px;
-}
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-/* AVATAR */
-.avatar{
-    width:130px;
-    height:130px;
-    border-radius:50%;
-    margin:auto;
-    margin-bottom:-50px;
-    object-fit:cover;
-    border:4px solid #3498db;
-    transition:.3s;
-}
+        /* HERO SECTION */
+        .hero {
+            margin-top: 70px;
+            padding: 120px 40px;
+            background: linear-gradient(135deg, rgba(15, 76, 117, 0.8) 0%, rgba(27, 108, 168, 0.8) 100%),
+                        url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
 
-.card-box{
-    text-align:center;
-    cursor:pointer;
-}
+        .hero h1 { font-size: 60px; margin-bottom: 20px; }
 
-.card-box:hover .avatar{
-    transform:scale(1.1);
-}
+        .btn {
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-/* CARD */
-.card{
-    background:white;
-    padding:60px 20px 20px;
-    border-radius:20px;
-    box-shadow:0 10px 40px rgba(0,0,0,.1);
-}
+        .btn-primary { background: #3498db; color: white; }
 
-.card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-    border-radius:10px;
-}
+        /* SECCIONES */
+        .seccion { padding: 80px 40px; }
 
-</style>
+        .cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 15px; }
+
+        /* =========================================
+           ASISTENTE VIRTUAL (EL PERRITO SUELTO)
+           ========================================= */
+        .virtual-assistant-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dog-illustration {
+            width: 160px; /* Tamaño del asistente */
+            height: auto;
+            /* El perrito flota libremente sin fondo ni círculos */
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); 
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        /* Burbuja de texto tipo asistente */
+        .assistant-bubble {
+            background: white;
+            color: #5d7d9a; /* Tu color azul suave */
+            padding: 12px 20px;
+            border-radius: 20px 20px 0 20px; /* Estilo chat */
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 1px solid #f0f0f0;
+            position: relative;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Flechita de la burbuja */
+        .assistant-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 15px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
+        }
+
+        /* Animación de flotar */
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Animación de entrada de la burbuja */
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .dog-illustration { width: 120px; }
+        }
+    </style>
 </head>
 
 <body>
 
-<nav>Juventud y Realidad 🎤</nav>
+    <nav>
+        <div class="logo"><i class="fas fa-heart"></i> Juventud y Realidad</div>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#secciones">Secciones</a></li>
+        </ul>
+    </nav>
 
-<section class="hero">
-    <h1>Juventud y Realidad</h1>
-    <p>Haz clic en los personajes 👇</p>
-</section>
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Juventud y Realidad</h1>
+            <p>Información, apoyo y orientación para adolescentes</p>
+        </div>
+    </section>
 
-<section class="cards">
+    <section class="seccion" id="secciones">
+        <div class="cards-wrapper">
+            <a href="negativo.html" style="text-decoration: none;">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2" alt="Negativo">
+                    <h3 style="margin-top:15px; color:#0f4c75;">Aspectos Negativos</h3>
+                    <p style="color:#666;">Explora los desafíos reales: violencia y falta de educación.</p>
+                </div>
+            </a>
+            <a href="informacion.html" style="text-decoration: none;">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" alt="Información">
+                    <h3 style="margin-top:15px; color:#0f4c75;">Información</h3>
+                    <p style="color:#666;">Datos científicos y estadísticas globales actualizadas.</p>
+                </div>
+            </a>
+            <a href="vida-ideal.html" style="text-decoration: none;">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Vida Ideal">
+                    <h3 style="margin-top:15px; color:#0f4c75;">Vida Ideal</h3>
+                    <p style="color:#666;">Estrategias para lograr un equilibrio emocional saludable.</p>
+                </div>
+            </a>
+        </div>
+    </section>
 
-<!-- CHAN -->
-<div class="card-box" onclick="hablar('chan')">
-
-    <img id="chan" class="avatar" src="https://media.tenor.com/2roX3uxz_68AAAAC/cat-talking.gif">
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
-        <h3>Aspectos Negativos</h3>
+    <div class="virtual-assistant-container">
+        <div class="assistant-bubble" id="bubble">¡HOLA!</div>
+        
+        <img src="puppy.png" alt="Asistente Virtual" class="dog-illustration">
     </div>
-</div>
 
-<!-- CHANGBIN -->
-<div class="card-box" onclick="hablar('bin')">
+    <script>
+        const bubble = document.getElementById('bubble');
+        const mensajes = [
+            "¡HOLA!", 
+            "¡Tú puedes!", 
+            "¡Sonríe hoy!", 
+            "¿Cómo vas?", 
+            "¡Aquí estoy!"
+        ];
+        
+        let index = 0;
 
-    <img id="bin" class="avatar" src="https://media.tenor.com/4AiXzf8z6F0AAAAC/talking-animal.gif">
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216">
-        <h3>Información</h3>
-    </div>
-</div>
-
-<!-- HYUNJIN -->
-<div class="card-box" onclick="hablar('jin')">
-
-    <img id="jin" class="avatar" src="https://media.tenor.com/8cPj9W7K3wQAAAAC/anime-talking.gif">
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
-        <h3>Vida Ideal</h3>
-    </div>
-</div>
-
-</section>
-
-<script>
-
-function hablar(personaje){
-
-    let texto="";
-
-    if(personaje==="chan"){
-        texto="Muchos jóvenes enfrentan problemas como violencia y falta de apoyo";
-    }
-
-    if(personaje==="bin"){
-        texto="Existen datos importantes sobre educación y derechos";
-    }
-
-    if(personaje==="jin"){
-        texto="Puedes lograr una vida mejor con bienestar emocional";
-    }
-
-    const mensaje=new SpeechSynthesisUtterance(texto);
-    mensaje.lang="es-MX";
-
-    speechSynthesis.cancel();
-    speechSynthesis.speak(mensaje);
-}
-
-</script>
+        // El asistente cambia de mensaje automáticamente cada 4 segundos
+        setInterval(() => {
+            index = (index + 1) % mensajes.length;
+            bubble.textContent = mensajes[index];
+        }, 4000);
+    </script>
 
 </body>
 </html>
