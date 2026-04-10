@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,182 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juventud y Realidad - Información y Apoyo para Adolescentes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#ecf0f1 0%,#fff 100%);color:#2c3e50;line-height:1.8;overflow-x:hidden}
+        nav{position:fixed;top:0;left:0;right:0;background:linear-gradient(135deg,#0f4c75 0%,#1b6ca8 100%);padding:15px 40px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 25px rgba(15,76,117,.3);z-index:1000}
+        nav .logo{color:#fff;font-size:24px;font-weight:700;display:flex;align-items:center;gap:10px}
+        nav ul{list-style:none;display:flex;gap:40px}
+        nav a{color:#ecf0f1;text-decoration:none;font-weight:500}
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #ecf0f1 0%, #fff 100%);
-            color: #2c3e50;
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
+        .hero{margin-top:70px;padding:120px 40px;background:linear-gradient(135deg,rgba(15,76,117,.8) 0%,rgba(27,108,168,.8) 100%),url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b');background-size:cover;background-position:center;color:#fff;text-align:center}
+        .hero h1{font-size:3rem;margin-bottom:10px}
+        .hero p{font-size:1.2rem;opacity:.95}
 
-        /* NAVBAR */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 100%);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 8px 25px rgba(15, 76, 117, 0.3);
-            z-index: 1000;
-        }
+        .seccion{padding:80px 40px}
+        .cards-wrapper{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:0 auto}
+        .card{background:#fff;border-radius:20px;padding:25px;box-shadow:0 10px 30px rgba(0,0,0,.05);text-align:center;transition:.3s}
+        .card:hover{transform:translateY(-8px);box-shadow:0 18px 35px rgba(0,0,0,.12)}
+        .card img{width:100%;height:180px;object-fit:cover;border-radius:15px;margin-bottom:15px}
+        .card h3{color:#0f4c75;font-size:1.3rem}
 
-        nav .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .media-controls{position:fixed;bottom:20px;left:20px;z-index:9999;background:rgba(255,255,255,.95);padding:14px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.15);display:flex;flex-direction:column;gap:10px;animation:fadeInUp .8s ease-out}
+        .media-controls button{border:none;padding:10px 14px;border-radius:10px;background:#0f4c75;color:#fff;cursor:pointer;font-weight:600;transition:.2s}
+        .media-controls button:hover{background:#1b6ca8}
+        .media-controls input{width:180px}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 40px;
-        }
+        .virtual-assistant-container{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;align-items:center;animation:fadeInAvatar .8s ease-out}
+        .assistant-bubble{background:#fff;color:#5d7d9a;padding:10px 18px;border-radius:20px 20px 0 20px;font-size:14px;font-weight:700;margin-bottom:10px;box-shadow:0 8px 20px rgba(0,0,0,.12);animation:bubblePulse 4s infinite}
+        .dog-illustration{width:140px;border-radius:18px;display:block;filter:drop-shadow(0 10px 15px rgba(0,0,0,.18));animation:floating 3.5s ease-in-out infinite}
+        .dog-speaking{animation:talkingBounce .35s infinite alternate!important}
 
-        nav a {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-weight: 500;
-        }
+        @keyframes floating{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+        @keyframes talkingBounce{from{transform:translateY(0) scale(1)}to{transform:translateY(-6px) scale(1.03)}}
+        @keyframes fadeInAvatar{from{opacity:0;transform:translateY(30px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes bubblePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
 
-        /* HERO SECTION */
-        .hero {
-            margin-top: 70px;
-            padding: 120px 40px;
-            background: linear-gradient(135deg, rgba(15, 76, 117, 0.8) 0%, rgba(27, 108, 168, 0.8) 100%),
-                        url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            text-align: center;
-        }
-
-        .hero h1 { font-size: 60px; margin-bottom: 20px; }
-
-        .btn {
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary { background: #3498db; color: white; }
-
-        /* SECCIONES */
-        .seccion { padding: 80px 40px; }
-
-        .cards-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: 0.3s;
-        }
-        .card:hover { transform: translateY(-5px); }
-        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 15px; }
-
-        /* =========================================
-           ASISTENTE VIRTUAL (EL PERRITO SUELTO)
-           ========================================= */
-        .virtual-assistant-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .dog-illustration {
-            width: 160px; /* Tamaño del asistente */
-            height: auto;
-            /* El perrito flota libremente sin fondo ni círculos */
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); 
-            animation: floating 4s ease-in-out infinite;
-        }
-
-        /* Burbuja de texto tipo asistente */
-        .assistant-bubble {
-            background: white;
-            color: #5d7d9a; /* Tu color azul suave */
-            padding: 12px 20px;
-            border-radius: 20px 20px 0 20px; /* Estilo chat */
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            border: 1px solid #f0f0f0;
-            position: relative;
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* Flechita de la burbuja */
-        .assistant-bubble::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: 15px;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid white;
-        }
-
-        /* Animación de flotar */
-        @keyframes floating {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* Animación de entrada de la burbuja */
-        @keyframes popIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @media (max-width: 768px) {
-            .dog-illustration { width: 120px; }
+        @media(max-width:768px){
+            nav{padding:15px 20px;flex-direction:column;gap:10px}
+            nav ul{gap:20px}
+            .hero h1{font-size:2.2rem}
+            .dog-illustration{width:110px}
+            .assistant-bubble{font-size:12px}
         }
     </style>
 </head>
-
 <body>
+    <audio id="bgMusic" loop>
+        <source src="Menuprivado.mp3" type="audio/mpeg">
+    </audio>
 
     <nav>
         <div class="logo"><i class="fas fa-heart"></i> Juventud y Realidad</div>
-        <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#secciones">Secciones</a></li>
-        </ul>
+        <ul><li><a href="#inicio">Inicio</a></li><li><a href="#secciones">Secciones</a></li></ul>
     </nav>
 
     <section class="hero" id="inicio">
@@ -192,54 +69,66 @@
 
     <section class="seccion" id="secciones">
         <div class="cards-wrapper">
-            <a href="negativo.html" style="text-decoration: none;">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2" alt="Negativo">
-                    <h3 style="margin-top:15px; color:#0f4c75;">Aspectos Negativos</h3>
-                    <p style="color:#666;">Explora los desafíos reales: violencia y falta de educación.</p>
-                </div>
-            </a>
-            <a href="informacion.html" style="text-decoration: none;">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" alt="Información">
-                    <h3 style="margin-top:15px; color:#0f4c75;">Información</h3>
-                    <p style="color:#666;">Datos científicos y estadísticas globales actualizadas.</p>
-                </div>
-            </a>
-            <a href="vida-ideal.html" style="text-decoration: none;">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Vida Ideal">
-                    <h3 style="margin-top:15px; color:#0f4c75;">Vida Ideal</h3>
-                    <p style="color:#666;">Estrategias para lograr un equilibrio emocional saludable.</p>
-                </div>
-            </a>
+            <a href="negativo.html" style="text-decoration:none;"><div class="card"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"><h3>Aspectos Negativos</h3></div></a>
+            <a href="informacion.html" style="text-decoration:none;"><div class="card"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216"><h3>Información</h3></div></a>
+            <a href="vida-ideal.html" style="text-decoration:none;"><div class="card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"><h3>Vida Ideal</h3></div></a>
         </div>
     </section>
 
+    <div class="media-controls">
+        <button onclick="toggleMusic()">🎵 Play / Pausa Música</button>
+        <input type="range" min="0" max="1" step="0.01" value="0.5" onchange="bgMusic.volume=this.value">
+        <button onclick="toggleSpeech()">🗣️ Narrar</button>
+        <button onclick="pauseSpeech()">⏸️ Pausar Voz</button>
+    </div>
+
     <div class="virtual-assistant-container">
         <div class="assistant-bubble" id="bubble">¡HOLA!</div>
-        
-        <img src="puppy.png" alt="Asistente Virtual" class="dog-illustration">
+        <video id="assistantVideo" class="dog-illustration" muted loop playsinline>
+            <source src="avatar.mp4" type="video/mp4">
+        </video>
     </div>
 
     <script>
-        const bubble = document.getElementById('bubble');
-        const mensajes = [
-            "¡HOLA!", 
-            "¡Tú puedes!", 
-            "¡Sonríe hoy!", 
-            "¿Cómo vas?", 
-            "¡Aquí estoy!"
-        ];
-        
-        let index = 0;
+        const bubble=document.getElementById('bubble');
+        const mensajes=['¡HOLA!','¡Tú puedes!','¡Sonríe hoy!','¿Cómo vas?','¡Aquí estoy!'];
+        let index=0;
+        setInterval(()=>{index=(index+1)%mensajes.length;bubble.textContent=mensajes[index]},4000);
 
-        // El asistente cambia de mensaje automáticamente cada 4 segundos
-        setInterval(() => {
-            index = (index + 1) % mensajes.length;
-            bubble.textContent = mensajes[index];
-        }, 4000);
+        const bgMusic=document.getElementById('bgMusic');
+        const dog=document.getElementById('assistantVideo');
+        bgMusic.volume=.5;
+
+        function toggleMusic(){bgMusic.paused?bgMusic.play():bgMusic.pause()}
+
+        function pauseSpeech(){
+            speechSynthesis.cancel();
+            dog.pause();
+            dog.currentTime=0;
+            dog.classList.remove('dog-speaking');
+        }
+
+        function toggleSpeech(){
+            if(speechSynthesis.speaking){pauseSpeech();return;}
+
+            const text='Juventud y Realidad. Información, apoyo y orientación para adolescentes. Explora las secciones de Aspectos Negativos, Información y Vida Ideal.';
+            const utter=new SpeechSynthesisUtterance(text);
+            utter.lang='es-MX';
+            utter.pitch=.95;
+            utter.rate=.97;
+
+            utter.onstart=()=>{
+                dog.classList.add('dog-speaking');
+                dog.play();
+            };
+            utter.onend=()=>{
+                dog.classList.remove('dog-speaking');
+                dog.pause();
+                dog.currentTime=0;
+            };
+
+            speechSynthesis.speak(utter);
+        }
     </script>
-
 </body>
 </html>
