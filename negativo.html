@@ -18,7 +18,6 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        
         body { background: var(--bg); color: #2c3e50; line-height: 1.8; }
 
         header {
@@ -62,7 +61,6 @@
             text-transform: uppercase;
         }
 
-        /* --- NUEVAS GRÁFICAS CIRCULARES --- */
         .stats-visual-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -108,7 +106,6 @@
 
         .stat-label { font-weight: 700; color: #555; font-size: 0.9rem; text-transform: uppercase; }
 
-        /* --- CASOS --- */
         .img-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -136,6 +133,90 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        .media-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+            background: rgba(255,255,255,.95);
+            padding: 14px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.15);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .section-speak-btn {
+            margin-left: 10px;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: var(--accent);
+            color: white;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .media-controls button {
+            border: none;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: #0f4c75;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .media-controls input { width: 180px; }
+
+        .virtual-assistant-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 24px 24px 0 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+        .dog-illustration {
+    width: 140px;
+    display: block;
+    border-radius: 18px;
+    animation: avatarFloat 3s ease-in-out infinite;
+}
+
+@keyframes avatarFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.virtual-assistant-container {
+    animation: avatarEntrance 0.8s ease-out;
+}
+
+@keyframes avatarEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+        .dog-speaking {
+            filter: brightness(1.05);
+        }
+        @keyframes talkingBounce {
+            from { transform: translateY(0) scale(1); }
+            to { transform: translateY(-6px) scale(1.03); }
+        }
+
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
             .stats-visual-grid { grid-template-columns: 1fr; }
@@ -143,6 +224,10 @@
     </style>
 </head>
 <body>
+
+<audio id="bgMusic" loop>
+    <source src="Menuprivado.mp3" type="audio/mpeg">
+</audio>
 
 <header>
     <div class="reveal active">
@@ -152,7 +237,6 @@
 </header>
 
 <div class="container">
-    
     <div class="glass-panel reveal active">
         <div class="main-title">¡¡¡ LA ADOLESCENCIA ES LA ÚLTIMA ETAPA DE LA INFANCIA Y EL COMIENZO DE LA AVENTURA DE SER UNO MISMO!!!</div>
         <p>Lamentablemente existen muchos adolescentes que no pueden expresar felizmente esta frase significativa. Tanto en un contexto mundial como nacional, los derechos humanos de los adolescentes son un tema importante y delicado. A continuación, se mencionan algunos de los derechos que no se han respetado y estadísticas relevantes:</p>
@@ -167,93 +251,168 @@
     </div>
 
     <h2 class="seccion-titulo reveal"><i class="fas fa-chart-pie"></i> Estadísticas UNESCO - UNICEF</h2>
-    
     <div class="stats-visual-grid reveal">
-        <div class="stat-circle-box">
-            <div class="circle-graph" style="--p: 33.3%;">
-                <span>1 de 3</span>
-            </div>
-            <div class="stat-label">Sufre Violencia Física, Psicológica o Sexual</div>
-        </div>
-
-        <div class="stat-circle-box">
-            <div class="circle-graph" style="--p: 20%;">
-                <span>1 de 5</span>
-            </div>
-            <div class="stat-label">No asiste a la escuela</div>
-        </div>
-
-        <div class="stat-circle-box">
-            <div class="circle-graph" style="--p: 45%; background: conic-gradient(var(--danger) 45%, #eee 0);">
-                <span style="color: var(--danger);">3M+</span>
-            </div>
-            <div class="stat-label">Adolescentes en Trabajo Peligroso</div>
-        </div>
-
-        <div class="stat-circle-box">
-            <div class="circle-graph" style="--p: 75%; background: conic-gradient(var(--accent) 75%, #eee 0);">
-                <span>Máx</span>
-            </div>
-            <div class="stat-label">Tasa de Embarazo en México (Líder en AL)</div>
-        </div>
+        <div class="stat-circle-box"><div class="circle-graph" style="--p: 33.3%;"><span>1 de 3</span></div><div class="stat-label">Sufre Violencia Física, Psicológica o Sexual</div></div>
+        <div class="stat-circle-box"><div class="circle-graph" style="--p: 20%;"><span>1 de 5</span></div><div class="stat-label">No asiste a la escuela</div></div>
+        <div class="stat-circle-box"><div class="circle-graph" style="--p: 45%; background: conic-gradient(var(--danger) 45%, #eee 0);"><span style="color: var(--danger);">3M+</span></div><div class="stat-label">Adolescentes en Trabajo Peligroso</div></div>
+        <div class="stat-circle-box"><div class="circle-graph" style="--p: 75%; background: conic-gradient(var(--accent) 75%, #eee 0);"><span>Máx</span></div><div class="stat-label">Tasa de Embarazo en México (Líder en AL)</div></div>
     </div>
 
     <h2 class="seccion-titulo reveal"><i class="fas fa-globe"></i> Caso a nivel mundial: JEFFREY EPSTEIN</h2>
     <div class="glass-panel reveal">
-        <p><strong>¿Quién era Jeffrey Epstein?</strong> Era un financiero estadounidense que acumuló una enorme riqueza; era conocido por su estilo de vida extravagante y por estar rodeado de personas con mucho poder e influencia en la política, ciencia y espectáculo; estos fueron expresidentes, miembros de la realeza, empresarios de élite, entre otros.</p>
-        
+        <p><strong>¿Quién era Jeffrey Epstein?</strong> Era un financiero estadounidense que acumuló una enorme riqueza; era conocido por su estilo de vida extravagante y por estar rodeado de personas con mucho poder e influencia en la política, ciencia y espectáculo.</p>
         <div class="img-grid">
             <img src="e1.jpeg" alt="Epstein">
             <img src="e2.jpeg" alt="Epstein">
             <img src="e3.jpeg" alt="Epstein">
             <img src="e4.jpeg" alt="Epstein">
         </div>
-
-        <p>Los conflictos legales de Epstein comenzaron en 2005 en Palm Beach, Florida, tras denuncias de que les pagaba a menores de edad por "masajes" que se volvían abusos sexuales. En 2008 Epstein logró un "acuerdo de procesamiento" con la Fiscalía Federal encabezado en ese entonces por Alexander Acosta; Epstein se declaró culpable de cargos estatales menores de prostitución, cumpliendo solo 13 meses en una cárcel local con permiso para salir a trabajar diariamente y fue registrado como delincuente sexual.</p>
-
-        <p style="margin-top:15px;">En julio de 2019 Epstein fue arrestado nuevamente en Nueva York por cargos federales de tráfico sexual de menores cometido entre 2002 y 2005 en sus mansiones en Manhattan y Florida. El 10 de agosto de 2019 mientras se esperaba el juicio en el Centro Correccional Metropolitano de Nueva York, Epstein fue encontrado sin vida en su celda. La autopsia determinó que se trató de un suicidio por ahorcamiento aunque las irregularidades en la prisión como cámaras sin funcionamiento o guardias dormidos alimentaron sospechas y teorías de conspiración.</p>
-
-        <div class="highlight-box">
-            <strong>Sistema de reclutamiento:</strong> Se determinó que usaba un sistema piramidal donde presionaba a las víctimas para buscar a más jóvenes a cambio de dinero, lo cual permitía que la red creciera mucho más.
-        </div>
-
-        <p>Respecto a la pareja de Jeffrey Epstein, Ghislaine Maxwell, ella no solo era su pareja afectiva sino también la principal operadora. En 2021 fue condenada a 20 años de prisión por ayudar a Epstein a capturar y preparar a las menores. Cabe mencionar que figuras públicas como el príncipe Andrés de Inglaterra perdieron sus títulos militares y roles públicos debido a la relación que tenían con Epstein.</p>
+        <p>Los conflictos legales de Epstein comenzaron en 2005 en Palm Beach, Florida, tras denuncias de que les pagaba a menores de edad por "masajes" que se volvían abusos sexuales.</p>
+        <p>En julio de 2019 Epstein fue arrestado nuevamente en Nueva York por cargos federales de tráfico sexual de menores.</p>
+        <div class="highlight-box"><strong>Sistema de reclutamiento:</strong> Se determinó que usaba un sistema piramidal donde presionaba a las víctimas para buscar a más jóvenes a cambio de dinero.</div>
+        <p>Ghislaine Maxwell fue condenada a 20 años de prisión por ayudar a Epstein a capturar y preparar a las menores.</p>
     </div>
 
     <h2 class="seccion-titulo reveal"><i class="fas fa-flag"></i> Caso a nivel nacional: ACAPULCO KIDS</h2>
     <div class="glass-panel reveal">
         <h3 style="color: var(--secondary); margin-bottom: 10px;">¿QUÉ HAY DETRÁS DEL BELLO ACAPULCO?</h3>
-        <p>Este caso empieza cuando se denunció la existencia de un "ejército" de aproximadamente 2 mil niños, niñas y adolescentes en situación de calle, siendo que desde los cinco años eran explotados sexualmente en zonas como el Zócalo, la playa Caleta y el Malecón.</p>
-        
+        <p>Este caso empieza cuando se denunció la existencia de un "ejército" de aproximadamente 2 mil niños, niñas y adolescentes en situación de calle.</p>
         <div class="img-grid" style="grid-template-columns: 1fr 1fr;">
             <img src="a1.jpeg" alt="Acapulco">
             <img src="a2.jpeg" alt="Acapulco">
         </div>
-
-        <p>Después surge una investigación en la cual se señaló que turistas y locales frecuentaban la zona buscando sexo pagado con menores, a menudo vinculando el consumo de drogas con la explotación. Los menores eran enganchados o entregados debido a la pobreza extrema, buscando dinero para sobrevivir o para comprar drogas. A estas personas se le conoce como padrotes y madrotas que operaban con impunidad y explotaban a las personas que eran utilizadas como prostitución.</p>
-
-        <div class="highlight-box">
-            Este caso reportó la complicidad de taxistas, hoteleros y autoridades locales que facilitaban el acceso a cuartos y protegían el negocio. El caso impactó mucho que expuso una realidad oculta ("El lado B" de Acapulco), donde la marginación y la violencia convirtieron a los niños en mercancía: un tema que, de acuerdo con las crónicas, persiste de diversas formas en la zona.
-        </div>
-
+        <p>Después surge una investigación en la cual se señaló que turistas y locales frecuentaban la zona buscando sexo pagado con menores.</p>
+        <div class="highlight-box">Este caso reportó la complicidad de taxistas, hoteleros y autoridades locales que facilitaban el acceso a cuartos y protegían el negocio.</div>
         <p>Este caso se sitúa en el contexto más amplio de la explotación infantil turística en México.</p>
     </div>
 </div>
 
+<div class="media-controls">
+    <button onclick="toggleMusic()">🎵 Play / Pausa Música</button>
+    <input type="range" min="0" max="1" step="0.01" value="0.5" onchange="bgMusic.volume=this.value">
+    <button onclick="toggleSpeech()">🗣️ Narrar Todo</button>
+    <button onclick="pauseSpeech()">⏸️ Pausar Voz</button>
+</div>
+
+<div class="virtual-assistant-container">
+    <video class="dog-illustration" id="assistantVideo" muted loop playsinline>
+        <source src="avatar.mp4" type="video/mp4">
+    </video>
+</div>
+
 <script>
     function reveal() {
-        var reveals = document.querySelectorAll(".reveal");
+        var reveals = document.querySelectorAll('.reveal');
         for (var i = 0; i < reveals.length; i++) {
             var windowHeight = window.innerHeight;
             var elementTop = reveals[i].getBoundingClientRect().top;
             var elementVisible = 100;
             if (elementTop < windowHeight - elementVisible) {
-                reveals[i].classList.add("active");
+                reveals[i].classList.add('active');
             }
         }
     }
-    window.addEventListener("scroll", reveal);
-    reveal(); // Para mostrar el inicio
+    window.addEventListener('scroll', reveal);
+    reveal();
+
+    const bgMusic = document.getElementById('bgMusic');
+    bgMusic.volume = 0.5;
+    function toggleMusic() {
+        bgMusic.paused ? bgMusic.play() : bgMusic.pause();
+    }
+
+    document.querySelectorAll('h2.seccion-titulo').forEach(title => {
+        const btn = document.createElement('button');
+        btn.className = 'section-speak-btn';
+        btn.textContent = 'Leer sección';
+        btn.onclick = () => readSection(title);
+        title.appendChild(btn);
+    });
+
+    function readSection(titleElement) {
+        const dog = document.getElementById('assistantVideo');
+        if (speechSynthesis.speaking) speechSynthesis.cancel();
+
+        const cleanTitle = titleElement.cloneNode(true);
+        const btnInside = cleanTitle.querySelector('button');
+        if (btnInside) btnInside.remove();
+        let text = cleanTitle.innerText + '. ';
+        let next = titleElement.nextElementSibling;
+        while (next && !next.matches('h2.seccion-titulo')) {
+            text += next.innerText + '. ';
+            next = next.nextElementSibling;
+        }
+
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'es-MX';
+        utter.pitch = 0.95;
+        utter.rate = 0.97;
+
+        const voices = speechSynthesis.getVoices();
+        const preferredVoice = voices.find(v =>
+            v.lang.startsWith('es') &&
+            /jorge|hector|diego|microsoft sabina|raul/i.test(v.name)
+        ) || voices.find(v => v.lang.startsWith('es'));
+
+        if (preferredVoice) utter.voice = preferredVoice;
+        utter.onstart = () => {
+            dog.classList.add('dog-speaking');
+            dog.play();
+        };
+        utter.onend = () => {
+            dog.classList.remove('dog-speaking');
+            dog.pause();
+            dog.currentTime = 0;
+        };
+        speechSynthesis.speak(utter);
+    }
+
+    function pauseSpeech() {
+        speechSynthesis.cancel();
+        const dog = document.getElementById('assistantVideo');
+        dog.pause();
+        dog.currentTime = 0;
+        dog.classList.remove('dog-speaking');
+    }
+
+    function toggleSpeech() {
+        const dog = document.getElementById('assistantVideo');
+        if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+            dog.classList.remove('dog-speaking');
+            dog.pause();
+            dog.currentTime = 0;
+            return;
+        }
+
+        let text = '';
+        document.querySelectorAll('.main-title, .glass-panel p, h2.seccion-titulo, .highlight-box').forEach(el => {
+            text += el.innerText + '. ';
+        });
+
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'es-MX';
+        utter.pitch = 0.95;
+        utter.rate = 0.97;
+
+        const voices = speechSynthesis.getVoices();
+        const preferredVoice = voices.find(v =>
+            v.lang.startsWith('es') &&
+            /jorge|hector|diego|microsoft sabina|raul/i.test(v.name)
+        ) || voices.find(v => v.lang.startsWith('es'));
+
+        if (preferredVoice) utter.voice = preferredVoice;
+        utter.onstart = () => {
+            dog.classList.add('dog-speaking');
+            dog.play();
+        };
+        utter.onend = () => {
+            dog.classList.remove('dog-speaking');
+            dog.pause();
+            dog.currentTime = 0;
+        };
+        speechSynthesis.speak(utter);
+    }
 </script>
 
 </body>
