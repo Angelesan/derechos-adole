@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derechos y Testimonios</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Segoe UI', sans-serif;
+background:#f4f6f9;
+color:#2c3e50;
+}
+
+/* NAV */
+nav{
+background:#0f4c75;
+color:white;
+padding:15px 30px;
+font-size:20px;
+font-weight:600;
+letter-spacing:0.5px;
+}
+
+/* CONTENEDOR */
+.contenedor{
+max-width:1100px;
+margin:auto;
+padding:50px 20px;
+}
+
+/* TITULOS */
+h2{
+margin-top:60px;
+font-size:26px;
+border-bottom:2px solid #3498db;
+padding-bottom:10px;
+font-weight:600;
+}
+
+/* DERECHOS */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+margin-top:30px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+transition:0.3s;
+opacity:0;
+transform:translateY(30px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 12px 25px rgba(0,0,0,0.12);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card-content{
+padding:18px;
+}
+
+.card-content h3{
+color:#0f4c75;
+margin-bottom:8px;
+font-size:18px;
+}
+
+.card-content p{
+font-size:14px;
+}
+
+/* VIDEO SECCIÓN */
+.video-wrapper{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:40px;
+align-items:start;
+margin-top:40px;
+}
+
+.video-box{
+opacity:0;
+transform:translateY(30px);
+transition:0.6s;
+}
+
+.video-box.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.video-box video{
+width:100%;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* TRANSCRIPCIÓN */
+.transcripcion{
+font-size:15px;
+line-height:1.9;
+}
+
+.bloque{
+margin-bottom:22px;
+padding-left:12px;
+border-left:3px solid #3498db;
+opacity:0;
+transform:translateY(20px);
+transition:0.6s;
+}
+
+.bloque.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* LEYES */
+.leyes{
+margin-top:10px;
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+}
+
+.leyes span{
+background:#3498db;
+color:white;
+padding:6px 12px;
+border-radius:15px;
+font-size:12px;
+}
+
+/* CIERRE */
+.cierre{
+margin-top:25px;
+font-weight:600;
+color:#0f4c75;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.video-wrapper{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<nav>Juventud</nav>
+
+<div class="contenedor">
+
+<h2>Derechos Fundamentales</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744">
+<div class="card-content">
+<h3>Derecho a la Identidad</h3>
+<p>Tener un nombre, nacionalidad y pertenencia a una sociedad.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1529390079861-591de354faf5">
+<div class="card-content">
+<h3>Derecho a la Educación</h3>
+<p>Acceso a oportunidades de aprendizaje y desarrollo personal.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c">
+<div class="card-content">
+<h3>Derecho a la Protección</h3>
+<p>Seguridad contra violencia, abuso y explotación.</p>
+</div>
+</div>
+
+</div>
+
+<h2>Testimonio en Video</h2>
+
+<div class="video-wrapper">
+
+<!-- VIDEO -->
+<div class="video-box">
+<video controls>
+<source src="v1.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- TRANSCRIPCIÓN -->
+<div class="transcripcion">
+
+<div class="bloque">
+Las infancias y adolescencias de México y del mundo están transitando una de sus mejores etapas a pesar de que, como sociedad lamentablemente estemos yendo hacia atrás.
+</div>
+
+<div class="bloque">
+La violencia, las armas, los delitos sexuales, los comportamientos que lesionan a otras personas están a la orden del día.
+</div>
+
+<div class="bloque">
+Sin embargo, hoy en día, las personas estamos protegidas, amparadas, gozamos de un espectro jurídico que nos reviste de verdadero poder;
+</div>
+
+<div class="bloque">
+con Leyes como:
+<div class="leyes">
+<span>Ley Valeria</span>
+<span>Ley Olimpia</span>
+<span>Vida libre de violencia</span>
+</div>
+</div>
+
+<div class="bloque">
+...realmente estamos viviendo una de unas mejores etapas.
+</div>
+
+<div class="bloque">
+Te invito a leer, a documentarte, a ir a conocer esas legislaciones; vivimos en la era de la digitalización, pero eso también nos responsabiliza a tomar mejores decisiones, a cuidarnos más porque tenemos enemigos hasta en Roblox, Minecraft y Fortinite.
+</div>
+
+<div class="bloque cierre">
+Prepárate, no muchas veces en la vida se tiene tantas oportunidades como en la adolescencia o en la juventud. Porque los jóvenes son el futuro inmediato y ese futuro inmediato es el presente.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+// ANIMACIÓN AL HACER SCROLL
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+document.querySelectorAll(".card, .bloque, .video-box").forEach(el=>{
+observer.observe(el);
+});
+</script>
+
+</body>
+</html>
