@@ -295,58 +295,135 @@
 </div>
 
 <script>
-    const bgMusic = document.getElementById('bgMusic');
-    const playBtn = document.getElementById('playBtn');
-    const wave = document.getElementById('wave');
-    const progressBar = document.getElementById('progressBar');
-    const dog = document.getElementById('assistantVideo');
+const bgMusic = document.getElementById('bgMusic');
+const playBtn = document.getElementById('playBtn');
+const wave = document.getElementById('wave');
+const progressBar = document.getElementById('progressBar');
+const dog = document.getElementById('assistantVideo');
 
-    function reveal() {
-        document.querySelectorAll('.reveal').forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
-        });
-    }
-    window.addEventListener('scroll', reveal);
-    reveal();
+bgMusic.volume = 0.5;
 
-    function toggleMusic() {
-        if (bgMusic.paused) { bgMusic.play(); playBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar'; wave.style.opacity = 1; } 
-        else { bgMusic.pause(); playBtn.innerHTML = '<i class="fas fa-play"></i> Reproducir'; wave.style.opacity = .3; }
-    }
-
-    bgMusic.ontimeupdate = () => { if (bgMusic.duration) progressBar.value = (bgMusic.currentTime / bgMusic.duration) * 100; };
-    progressBar.oninput = () => { bgMusic.currentTime = (progressBar.value / 100) * bgMusic.duration; };
-
-    function readText(text) {
-        speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = 'es-MX';
-        utter.onstart = () => { dog.classList.add('dog-speaking'); dog.play(); };
-        utter.onend = () => { dog.classList.remove('dog-speaking'); dog.pause(); };
-        speechSynthesis.speak(utter);
-    }
-
-    function toggleSpeech() {
-        let content = "";
-        document.querySelectorAll('.main-title, .glass-panel p, h2.seccion-titulo, .highlight-box').forEach(el => { content += el.innerText + ". "; });
-        readText(content);
-    }
-
-    function pauseSpeech() { speechSynthesis.cancel(); dog.classList.remove('dog-speaking'); dog.pause(); }
-
-    document.querySelectorAll('h2.seccion-titulo').forEach(title => {
-        const btn = document.createElement('button');
-        btn.className = 'section-speak-btn';
-        btn.textContent = 'Leer';
-        btn.onclick = (e) => {
-            e.stopPropagation();
-            let sectionText = title.innerText + ". ";
-            let next = title.nextElementSibling;
-            while (next && !next.matches('h2')) { sectionText += next.innerText + ". "; next = next.nextElementSibling; }
-            readText(sectionText);
-        };
-        title.appendChild(btn);
+/* ================= REVEAL ================= */
+function reveal() {
+    document.querySelectorAll('.reveal').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add('active');
+        }
     });
+}
+window.addEventListener('scroll', reveal);
+reveal();
+
+/* ================= MÚSICA (ARREGLADA) ================= */
+function toggleMusic() {
+    if (bgMusic.paused) {
+        bgMusic.play().catch(e => console.log("Error al reproducir"));
+        playBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar';
+        wave.style.opacity = 1;
+    } else {
+        bgMusic.pause();
+        playBtn.innerHTML = '<i class="fas fa-play"></i> Reproducir';
+        wave.style.opacity = 0.3;
+    }
+}
+
+/* barra progreso */
+bgMusic.ontimeupdate = () => {
+    if (bgMusic.duration) {
+        progressBar.value = (bgMusic.currentTime / bgMusic.duration) * 100;
+    }
+};
+
+progressBar.oninput = () => {
+    if (bgMusic.duration) {
+        bgMusic.currentTime = (progressBar.value / 100) * bgMusic.duration;
+    }
+};
+
+/* ================= VOZ ================= */
+function readText(text) {
+    speechSynthesis.cancel();
+
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'es-MX';
+    utter.pitch = 0.95;
+    utter.rate = 0.97;
+
+    utter.onstart = () => {
+        dog.classList.add('dog-speaking');
+        dog.play();
+    };
+
+    utter.onend = () => {
+        dog.classList.remove('dog-speaking');
+        dog.pause();
+        dog.currentTime = 0;
+    };
+
+    speechSynthesis.speak(utter);
+}
+
+/* ================= LEER TODO (SIN BOTONES) ================= */
+function toggleSpeech() {
+    if (speechSynthesis.speaking) {
+        pauseSpeech();
+        return;
+    }
+
+    let content = "";
+
+    document.querySelectorAll('.main-title, .glass-panel p, h2.seccion-titulo, .highlight-box')
+    .forEach(el => {
+
+        const clone = el.cloneNode(true);
+        const btnInside = clone.querySelector('button');
+        if (btnInside) btnInside.remove();
+
+        content += clone.innerText + ". ";
+    });
+
+    readText(content);
+}
+
+/* ================= PAUSAR ================= */
+function pauseSpeech() {
+    speechSynthesis.cancel();
+    dog.classList.remove('dog-speaking');
+    dog.pause();
+    dog.currentTime = 0;
+}
+
+/* ================= BOTÓN POR SECCIÓN (ARREGLADO) ================= */
+document.querySelectorAll('h2.seccion-titulo').forEach(title => {
+
+    const btn = document.createElement('button');
+    btn.className = 'section-speak-btn';
+    btn.textContent = 'Leer';
+
+    btn.onclick = (e) => {
+        e.stopPropagation();
+
+        const cleanTitle = title.cloneNode(true);
+        const btnInside = cleanTitle.querySelector('button');
+        if (btnInside) btnInside.remove();
+
+        let sectionText = cleanTitle.innerText + ". ";
+
+        let next = title.nextElementSibling;
+
+        while (next && !next.matches('h2.seccion-titulo')) {
+            sectionText += next.innerText + ". ";
+            next = next.nextElementSibling;
+        }
+
+        readText(sectionText);
+    };
+
+    title.appendChild(btn);
+});
+
+/* ================= FIX VOCES ================= */
+speechSynthesis.onvoiceschanged = () => {};
 </script>
 
 </body>
