@@ -102,15 +102,66 @@
         video { width: 100%; display: block; }
         .video-label { background: white; padding: 15px; text-align: center; font-weight: 800; color: var(--primary); }
 
-        /* REPRODUCTOR (Izquierda) */
-        .music-panel { position: fixed; bottom: 20px; left: 0; transform: translateX(-78%); transition: .4s; z-index: 9999; }
+        /* ================= ESTILOS PREMIUM INTEGRADOS ================= */
+
+        /* REPRODUCTOR */
+        .music-panel {
+            position: fixed; bottom: 20px; left: 0;
+            transform: translateX(-75%); transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 9999;
+        }
         .music-panel:hover { transform: translateX(0); }
-        .music-box { width: 280px; padding: 20px; border-radius: 0 20px 20px 0; background: var(--white); backdrop-filter: blur(12px); box-shadow: 10px 0 30px rgba(0,0,0,.15); }
-        .music-btn { width: 100%; padding: 12px; border: none; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; cursor: pointer; }
-        
-        /* ASISTENTE (Derecha) */
-        .virtual-assistant-container { position: fixed; bottom: 20px; right: 20px; z-index: 10000; background: #fff; padding: 10px; border-radius: 25px 25px 0 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-        .dog-illustration { width: 100px; border-radius: 18px; display: block; }
+
+        .music-box {
+            width: 280px; padding: 20px; border-radius: 0 20px 20px 0;
+            background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(240,244,248,.9));
+            backdrop-filter: blur(12px); box-shadow: 10px 0 30px rgba(0,0,0,.15);
+            border: 1px solid rgba(255,255,255,.4);
+        }
+
+        .music-header { display: flex; align-items: center; gap: 10px; color: var(--primary); font-weight: 700; margin-bottom: 15px; }
+        .music-header i { color: var(--gold); }
+
+        .music-btn {
+            width: 100%; padding: 12px; border: none; border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff; cursor: pointer; font-weight: 600; transition: .3s; margin-bottom: 10px;
+        }
+
+        .wave { display: flex; gap: 4px; justify-content: center; margin: 15px 0; opacity: .3; height: 20px; align-items: center; }
+        .wave span { width: 4px; height: 10px; background: var(--gold); animation: wave 1s infinite ease-in-out; }
+        .wave span:nth-child(2) { animation-delay: .2s; }
+        .wave span:nth-child(3) { animation-delay: .4s; }
+        @keyframes wave { 0%,100% { height: 8px; } 50% { height: 20px; } }
+
+        .volume-box { display: flex; gap: 10px; align-items: center; margin: 10px 0; }
+        .volume-box input { flex: 1; accent-color: var(--secondary); cursor: pointer; }
+
+        .voice-controls { display: flex; gap: 8px; margin-top: 15px; }
+        .voice-btn { flex: 1; padding: 10px; border: none; border-radius: 10px; cursor: pointer; background: rgba(15,76,117,.1); transition: .3s; font-size: 1.1rem;}
+        .voice-btn:hover { background: rgba(15,76,117,.2); }
+        .voice-btn.stop { color: var(--danger); }
+
+        /* ASISTENTE */
+        .virtual-assistant-container {
+            position: fixed; bottom: 20px; right: 20px; z-index: 10000;
+            background: #ffffff; padding: 12px; border-radius: 24px 24px 0 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); animation: avatarEntrance 0.8s ease-out;
+        }
+        .dog-illustration { width: 140px; display: block; border-radius: 18px; animation: avatarFloat 3s ease-in-out infinite; }
+        .dog-speaking { outline: 4px solid var(--accent); filter: brightness(1.05); }
+
+        @keyframes avatarFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+        @keyframes avatarEntrance { from { opacity: 0; transform: translateY(30px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+        .section-speak-btn {
+            margin-left: auto; border: none; padding: 6px 12px;
+            border-radius: 20px; background: var(--accent);
+            color: white; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 900px) {
             .img-grid { grid-template-columns: 1fr 1fr; }
@@ -121,17 +172,23 @@
 </head>
 <body>
 
+<audio id="bgMusic" loop>
+    <source src="Menuprivado.mp3" type="audio/mpeg">
+</audio>
+
 <header>
-    <h1>Desarrollo del Adolescente</h1>
-    <p>Un análisis integral de sus entornos vitales</p>
+    <div class="reveal active">
+        <h1>Desarrollo del Adolescente</h1>
+        <p>Un análisis integral de sus entornos vitales</p>
+    </div>
 </header>
 
 <div class="container">
-    <div class="glass-panel">
+    <div class="glass-panel reveal active">
         
-        <h2 class="seccion-titulo">I. El Contexto Familiar</h2>
+        <h2 class="seccion-titulo reveal"><i class="fas fa-home"></i> I. El Contexto Familiar</h2>
         
-        <div class="img-grid">
+        <div class="img-grid reveal">
             <img src="cf.jpg" alt="F1">
             <img src="cf2.jpg" alt="F2">
             <img src="cf3.jpg" alt="F3">
@@ -155,9 +212,9 @@
         <p><strong>• El Consenso de Consecuencias:</strong> No es solo imponer, sino dialogar sobre las reglas de la casa (horarios de llegada, uso de tecnología). En la familia extensa, es crucial que todos los adultos respeten estos límites para no confundir al joven. Un límite claro es un acto de amor, no de control.</p>
         <p><strong>• El Respeto a la Privacidad y la Responsabilidad:</strong> Un espacio de límite importante es su habitación y su tiempo personal. Los padres deben poner límites sobre el cumplimiento de sus deberes (estudios, limpieza), pero a cambio, el adolescente gana el derecho a su espacio privado.</p>
 
-        <h2 class="seccion-titulo">II. El Contexto Social</h2>
+        <h2 class="seccion-titulo reveal"><i class="fas fa-users"></i> II. El Contexto Social</h2>
 
-        <div class="img-grid">
+        <div class="img-grid reveal">
             <img src="cs1.jpg" alt="S1">
             <img src="cs2.jpg" alt="S2">
             <img src="cs3.jpg" alt="S3">
@@ -178,9 +235,9 @@
         
         <p class="highlight-box">En conclusión, la vida de los jóvenes en el contexto social debe desarrollarse en un ambiente que promueva el autoconocimiento, la responsabilidad, los valores, las relaciones sanas y el uso adecuado de la tecnología.</p>
 
-        <h2 class="seccion-titulo">III. El Contexto Escolar</h2>
+        <h2 class="seccion-titulo reveal"><i class="fas fa-school"></i> III. El Contexto Escolar</h2>
 
-        <div class="img-grid">
+        <div class="img-grid reveal">
             <img src="ce1.jpg" alt="E1">
             <img src="ce2.jpg" alt="E2">
             <img src="ce3.jpg" alt="E3">
@@ -202,8 +259,8 @@
 
         <p class="highlight-box">Conclusión: Transformar la vida de los adolescentes requiere un compromiso firme con la creación de entornos donde la seguridad no sea un privilegio, sino una norma.</p>
 
-        <h2 class="seccion-titulo">Recursos Multimedia</h2>
-        <div class="video-container">
+        <h2 class="seccion-titulo reveal"><i class="fas fa-film"></i> Recursos Multimedia</h2>
+        <div class="video-container reveal">
             <div class="video-box">
                 <video controls><source src="c1.mp4" type="video/mp4"></video>
                 <div class="video-label">ANÁLISIS DE CONTEXTOS PARTE 1</div>
@@ -218,31 +275,159 @@
 
 <div class="music-panel">
     <div class="music-box">
-        <div class="music-header"><i class="fas fa-compact-disc"></i> AUDIO GUÍA</div>
-        <div class="wave"><span></span><span></span><span></span><span></span></div>
-        <button class="music-btn" onclick="togglePlay()">REPRODUCIR AMBIENTE</button>
-        <audio id="bgMusic" loop>
-            <source src="Menuprivado.mp3" type="audio/mpeg">
-        </audio>
+        <div class="music-header"><i class="fas fa-compact-disc"></i> <span>AUDIO GUÍA</span></div>
+        
+        <button onclick="toggleMusic()" class="music-btn" id="playBtn">
+            <i class="fas fa-play"></i> Reproducir Ambiente
+        </button>
+
+        <div class="wave" id="wave">
+            <span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="volume-box">
+            <i class="fas fa-volume-down"></i>
+            <input type="range" min="0" max="1" step="0.01" value="0.5" oninput="bgMusic.volume=this.value">
+            <i class="fas fa-volume-up"></i>
+        </div>
+
+        <div class="voice-controls">
+            <button onclick="toggleSpeech()" class="voice-btn" title="Narrar todo">
+                <i class="fas fa-comment"></i>
+            </button>
+            <button onclick="pauseSpeech()" class="voice-btn stop" title="Detener voz">
+                <i class="fas fa-stop"></i>
+            </button>
+        </div>
     </div>
 </div>
 
 <div class="virtual-assistant-container">
-    <img src="avatar.mp4" alt="Asistente" class="dog-illustration">
-    <p style="font-size: 0.7rem; text-align: center; margin-top: 5px; font-weight: bold;">ASISTENTE VIRTUAL</p>
+    <video id="assistantVideo" class="dog-illustration" muted loop playsinline>
+        <source src="avatar.mp4" type="video/mp4">
+    </video>
+    <p style="font-size: 0.7rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);">ASISTENTE VIRTUAL</p>
 </div>
 
 <script>
-    const music = document.getElementById('bgMusic');
-    function togglePlay() {
-        if (music.paused) {
-            music.play();
-            document.querySelector('.music-btn').innerText = "PAUSAR AMBIENTE";
-        } else {
-            music.pause();
-            document.querySelector('.music-btn').innerText = "REPRODUCIR AMBIENTE";
+    const bgMusic = document.getElementById('bgMusic');
+    const playBtn = document.getElementById('playBtn');
+    const wave = document.getElementById('wave');
+    const dog = document.getElementById('assistantVideo');
+
+    // Inicializar volumen
+    bgMusic.volume = 0.5;
+
+    // Efecto Reveal al hacer scroll (Añadido a subtítulos e imágenes también)
+    function reveal() {
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+        });
+    }
+    window.addEventListener('scroll', reveal);
+    reveal();
+
+    // Lógica de Música
+    function toggleMusic() {
+        if (bgMusic.paused) { 
+            bgMusic.play().catch(e => console.log("Interacción requerida primero")); 
+            playBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar Ambiente'; 
+            wave.style.opacity = 1; 
+        } else { 
+            bgMusic.pause(); 
+            playBtn.innerHTML = '<i class="fas fa-play"></i> Reproducir Ambiente'; 
+            wave.style.opacity = 0.3; 
         }
     }
+
+    // Función principal de lectura
+    function readText(text) {
+        speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'es-MX';
+        utter.pitch = 0.95;
+        utter.rate = 0.97;
+
+        const voices = speechSynthesis.getVoices();
+        const preferredVoice = voices.find(v =>
+            v.lang.startsWith('es') &&
+            /jorge|hector|diego|microsoft sabina|raul/i.test(v.name)
+        ) || voices.find(v => v.lang.startsWith('es'));
+
+        if (preferredVoice) utter.voice = preferredVoice;
+
+        utter.onstart = () => { 
+            dog.classList.add('dog-speaking'); 
+            dog.play(); 
+        };
+        utter.onend = () => { 
+            dog.classList.remove('dog-speaking'); 
+            dog.pause(); 
+            dog.currentTime = 0; 
+        };
+        
+        speechSynthesis.speak(utter);
+    }
+
+    // Narrar todo el documento leyendo los textos adecuados
+    function toggleSpeech() {
+        if (speechSynthesis.speaking) {
+            pauseSpeech();
+            return;
+        }
+
+        let content = "";
+        document.querySelectorAll('header h1, header p, h2.seccion-titulo, .main-title, p').forEach(el => { 
+            if(el.classList.contains('seccion-titulo')) {
+                const cleanTitle = el.cloneNode(true);
+                const btnInside = cleanTitle.querySelector('button');
+                if (btnInside) btnInside.remove();
+                content += cleanTitle.innerText + ". ";
+            } else {
+                content += el.innerText + ". "; 
+            }
+        });
+        readText(content);
+    }
+
+    function pauseSpeech() { 
+        speechSynthesis.cancel(); 
+        dog.classList.remove('dog-speaking'); 
+        dog.pause(); 
+        dog.currentTime = 0; 
+    }
+
+    // Inserción dinámica de botones "Leer" en cada sección
+    document.querySelectorAll('h2.seccion-titulo').forEach(title => {
+        const btn = document.createElement('button');
+        btn.className = 'section-speak-btn';
+        btn.textContent = 'Leer';
+        
+        btn.onclick = (e) => {
+            e.stopPropagation();
+            
+            // Clonar el título y quitarle el botón para que no lo narre
+            const cleanTitle = title.cloneNode(true);
+            const btnInside = cleanTitle.querySelector('button');
+            if (btnInside) btnInside.remove();
+
+            let sectionText = cleanTitle.innerText + ". ";
+            let next = title.nextElementSibling;
+            
+            // Recolectar todo el texto de los divs/párrafos siguientes hasta el próximo H2
+            while (next && !next.matches('h2.seccion-titulo')) { 
+                // Solo leemos el texto si es un párrafo (para no leer basura de las imágenes)
+                if(next.tagName.toLowerCase() === 'p' || next.classList.contains('main-title')) {
+                    sectionText += next.innerText + ". "; 
+                }
+                next = next.nextElementSibling; 
+            }
+            
+            readText(sectionText);
+        };
+        
+        title.appendChild(btn);
+    });
 </script>
 
 </body>
