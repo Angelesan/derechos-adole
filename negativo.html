@@ -12,25 +12,25 @@
     --primary: #0f4c75;
     --secondary: #1b6ca8;
     --accent: #3282b8;
+    --light: #bbe1fa;
     --bg: #f0f4f8;
     --white: rgba(255, 255, 255, 0.95);
     --danger: #e74c3c;
     --gold: #c9a96e;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-body{background:var(--bg);color:#2c3e50;line-height:1.8;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif;}
+body{background:var(--bg);color:#2c3e50;line-height:1.8;overflow-x:hidden;}
 
-/* ===== HEADER ===== */
 header{
     background:linear-gradient(135deg,var(--primary),var(--secondary));
-    color:#fff;
+    color:white;
     padding:80px 20px;
     text-align:center;
 }
 
-/* ===== CONTENIDO ===== */
 .container{max-width:1100px;margin:-50px auto 60px;padding:0 20px;}
+
 .glass-panel{
     background:var(--white);
     border-radius:25px;
@@ -40,10 +40,11 @@ header{
 
 h2.seccion-titulo{
     color:var(--primary);
+    font-size:1.8rem;
     margin:40px 0 25px;
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:15px;
 }
 
 /* ===== MUSIC PANEL ===== */
@@ -52,7 +53,7 @@ h2.seccion-titulo{
     bottom:20px;
     left:0;
     transform:translateX(-78%);
-    transition:.4s;
+    transition:.4s cubic-bezier(0.175,0.885,0.32,1.275);
     z-index:9999;
 }
 .music-panel:hover{transform:translateX(0);}
@@ -62,10 +63,13 @@ h2.seccion-titulo{
     padding:20px;
     border-radius:0 20px 20px 0;
     background:var(--white);
+    backdrop-filter:blur(12px);
     box-shadow:10px 0 30px rgba(0,0,0,.15);
 }
 
-.music-header{display:flex;gap:10px;font-weight:700;color:var(--primary);}
+.music-header{display:flex;gap:10px;color:var(--primary);font-weight:700;}
+.music-header i{color:var(--gold);}
+
 .music-btn{
     width:100%;
     padding:12px;
@@ -83,16 +87,19 @@ h2.seccion-titulo{
     gap:4px;
     justify-content:center;
     margin:15px 0;
+    height:20px;
+    align-items:center;
     opacity:.3;
 }
 .wave span{
     width:4px;
     height:10px;
     background:var(--gold);
-    animation:wave 1s infinite;
+    animation:wave 1s infinite ease-in-out;
 }
 .wave span:nth-child(2){animation-delay:.2s;}
 .wave span:nth-child(3){animation-delay:.4s;}
+.wave span:nth-child(4){animation-delay:.6s;}
 
 @keyframes wave{
 0%,100%{height:8px;}
@@ -102,17 +109,19 @@ h2.seccion-titulo{
 /* VOLUMEN */
 .volume-box{
     display:flex;
-    align-items:center;
     gap:10px;
+    align-items:center;
+    margin:10px 0;
 }
 .volume-box input{
     flex:1;
     accent-color:var(--secondary);
+    cursor:pointer;
 }
 
 /* VOZ */
-.voice-controls{display:flex;gap:8px;margin-top:10px;}
-.voice-btn{flex:1;padding:10px;border:none;border-radius:10px;cursor:pointer;}
+.voice-controls{display:flex;gap:8px;margin-top:15px;}
+.voice-btn{flex:1;padding:10px;border:none;border-radius:10px;background:#eee;cursor:pointer;}
 .voice-btn.stop{color:var(--danger);}
 
 /* AVATAR */
@@ -120,29 +129,33 @@ h2.seccion-titulo{
     position:fixed;
     bottom:20px;
     right:20px;
+    z-index:10000;
+    background:#fff;
+    padding:10px;
+    border-radius:25px 25px 0 25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
-.dog-illustration{
-    width:130px;
-    border-radius:15px;
-}
+.dog-illustration{width:130px;border-radius:18px;}
 .dog-speaking{
     outline:4px solid var(--accent);
-    animation:float 2s infinite;
+    animation:avatarFloat 2s infinite;
 }
-@keyframes float{
+@keyframes avatarFloat{
 0%,100%{transform:translateY(0);}
 50%{transform:translateY(-8px);}
 }
 
 /* BOTÓN SECCIÓN */
 .section-speak-btn{
-    margin-left:10px;
+    margin-left:15px;
     border:none;
-    padding:5px 10px;
-    border-radius:10px;
+    padding:6px 12px;
+    border-radius:20px;
     background:var(--accent);
-    color:#fff;
+    color:white;
     cursor:pointer;
+    font-size:0.8rem;
+    font-weight:600;
 }
 </style>
 </head>
@@ -155,27 +168,31 @@ h2.seccion-titulo{
 
 <header>
     <h1>Aspectos Negativos</h1>
+    <p>Realidad y Derechos en la Adolescencia</p>
 </header>
 
 <div class="container">
+
     <div class="glass-panel">
-        <p>Contenido de ejemplo...</p>
+        <p>Contenido inicial...</p>
     </div>
 
-    <h2 class="seccion-titulo">Sección 1</h2>
+    <h2 class="seccion-titulo">Derechos no respetados</h2>
     <div class="glass-panel">
-        <p>Texto de sección...</p>
+        <p>Texto de ejemplo...</p>
     </div>
+
 </div>
 
-<!-- PANEL MÚSICA -->
+<!-- ===== PANEL MÚSICA ===== -->
 <div class="music-panel">
     <div class="music-box">
         <div class="music-header">
-            <i class="fas fa-music"></i> Reproductor
+            <i class="fas fa-music"></i>
+            <span>Reproductor Premium</span>
         </div>
 
-        <button onclick="toggleMusic()" id="playBtn" class="music-btn">
+        <button onclick="toggleMusic()" class="music-btn" id="playBtn">
             <i class="fas fa-play"></i> Reproducir
         </button>
 
@@ -201,7 +218,7 @@ h2.seccion-titulo{
     </div>
 </div>
 
-<!-- AVATAR -->
+<!-- ===== AVATAR ===== -->
 <div class="virtual-assistant-container">
     <video id="assistantVideo" class="dog-illustration" muted loop playsinline>
         <source src="avatar.mp4" type="video/mp4">
@@ -251,10 +268,19 @@ function speak(text){
 }
 
 function toggleSpeech(){
+    if(speechSynthesis.speaking){
+        speechSynthesis.cancel();
+        dog.classList.remove('dog-speaking');
+        dog.pause();
+        dog.currentTime=0;
+        return;
+    }
+
     let text='';
     document.querySelectorAll('.glass-panel, h2').forEach(el=>{
         text+=el.innerText+'. ';
     });
+
     speak(text);
 }
 
@@ -269,16 +295,22 @@ function pauseSpeech(){
 document.querySelectorAll('h2.seccion-titulo').forEach(title=>{
     const b=document.createElement('button');
     b.className='section-speak-btn';
-    b.textContent='Leer';
-    b.onclick=()=>{
+    b.textContent='Leer sección';
+
+    b.onclick=(e)=>{
+        e.stopPropagation();
+
         let text=title.innerText+'. ';
         let next=title.nextElementSibling;
-        while(next && !next.matches('h2')){
+
+        while(next && !next.matches('h2.seccion-titulo')){
             text+=next.innerText+'. ';
             next=next.nextElementSibling;
         }
+
         speak(text);
     };
+
     title.appendChild(b);
 });
 </script>
