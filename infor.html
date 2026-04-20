@@ -1,278 +1,244 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Derechos y Testimonios</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derechos y Testimonios: Juventud</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f4c75;
+            --secondary: #1b6ca8;
+            --accent: #3282b8;
+            --light: #bbe1fa;
+            --bg: #f0f4f8;
+            --white: rgba(255, 255, 255, 0.95);
+            --danger: #e74c3c;
+            --gold: #c9a96e;
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background: var(--bg); color: #2c3e50; line-height: 1.8; overflow-x: hidden; }
 
-body{
-font-family:'Segoe UI', sans-serif;
-background:#f4f6f9;
-color:#2c3e50;
-}
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
 
-/* NAV */
-nav{
-background:#0f4c75;
-color:white;
-padding:15px 30px;
-font-size:20px;
-font-weight:600;
-letter-spacing:0.5px;
-}
+        .container { width: 95%; max-width: 1100px; margin: -50px auto 60px; padding: 0 20px; }
 
-/* CONTENEDOR */
-.contenedor{
-max-width:1100px;
-margin:auto;
-padding:50px 20px;
-}
+        .glass-panel {
+            background: var(--white);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
 
-/* TITULOS */
-h2{
-margin-top:60px;
-font-size:26px;
-border-bottom:2px solid #3498db;
-padding-bottom:10px;
-font-weight:600;
-}
+        h2.seccion-titulo { 
+            color: var(--primary); 
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+        }
 
-/* DERECHOS */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-margin-top:30px;
-}
+        /* GRID DE DERECHOS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
 
-.card{
-background:white;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-transition:0.3s;
-opacity:0;
-transform:translateY(30px);
-}
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s ease;
+            border: 1px solid #eee;
+        }
 
-.card.show{
-opacity:1;
-transform:translateY(0);
-}
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(15, 76, 117, 0.15); }
 
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 12px 25px rgba(0,0,0,0.12);
-}
+        .card img { width: 100%; height: 180px; object-fit: cover; }
 
-.card img{
-width:100%;
-height:200px;
-object-fit:cover;
-}
+        .card-content { padding: 20px; }
 
-.card-content{
-padding:18px;
-}
+        .card-content h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; }
 
-.card-content h3{
-color:#0f4c75;
-margin-bottom:8px;
-font-size:18px;
-}
+        /* VIDEO Y TRANSCRIPCIÓN */
+        .video-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
 
-.card-content p{
-font-size:14px;
-}
+        .video-box video {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            background: #000;
+        }
 
-/* VIDEO SECCIÓN */
-.video-wrapper{
-display:grid;
-grid-template-columns:1.2fr 1fr;
-gap:40px;
-align-items:start;
-margin-top:40px;
-}
+        .transcripcion { font-size: 15px; line-height: 1.8; color: #444; }
 
-.video-box{
-opacity:0;
-transform:translateY(30px);
-transition:0.6s;
-}
+        .bloque {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(15, 76, 117, 0.03);
+            border-left: 5px solid var(--accent);
+            border-radius: 0 10px 10px 0;
+            transition: 0.5s;
+        }
 
-.video-box.show{
-opacity:1;
-transform:translateY(0);
-}
+        .bloque.cierre { background: var(--primary); color: white; border-left-color: var(--gold); }
 
-.video-box video{
-width:100%;
-border-radius:12px;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
+        .leyes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 
-/* TRANSCRIPCIÓN */
-.transcripcion{
-font-size:15px;
-line-height:1.9;
-}
+        .leyes span {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
 
-.bloque{
-margin-bottom:22px;
-padding-left:12px;
-border-left:3px solid #3498db;
-opacity:0;
-transform:translateY(20px);
-transition:0.6s;
-}
+        /* REPRODUCTOR */
+        .music-panel { position: fixed; bottom: 20px; left: 0; transform: translateX(-78%); transition: .4s; z-index: 9999; }
+        .music-panel:hover { transform: translateX(0); }
+        .music-box { width: 280px; padding: 20px; border-radius: 0 20px 20px 0; background: var(--white); backdrop-filter: blur(12px); box-shadow: 10px 0 30px rgba(0,0,0,.15); }
+        .music-btn { width: 100%; padding: 12px; border: none; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; cursor: pointer; font-weight: 600; }
 
-.bloque.show{
-opacity:1;
-transform:translateY(0);
-}
+        /* ASISTENTE */
+        .virtual-assistant-container { position: fixed; bottom: 20px; right: 20px; z-index: 10000; background: #fff; padding: 10px; border-radius: 25px 25px 0 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .dog-illustration { width: 100px; border-radius: 18px; display: block; }
 
-/* LEYES */
-.leyes{
-margin-top:10px;
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-}
-
-.leyes span{
-background:#3498db;
-color:white;
-padding:6px 12px;
-border-radius:15px;
-font-size:12px;
-}
-
-/* CIERRE */
-.cierre{
-margin-top:25px;
-font-weight:600;
-color:#0f4c75;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-.video-wrapper{
-grid-template-columns:1fr;
-}
-}
-</style>
+        @media (max-width: 768px) { .video-wrapper { grid-template-columns: 1fr; } }
+    </style>
 </head>
 
 <body>
 
-<nav>Juventud</nav>
+<header>
+    <h1>Protección Jurídica y Social</h1>
+    <p>Garantías para una juventud segura y empoderada</p>
+</header>
 
-<div class="contenedor">
+<div class="container">
+    
+    <div class="glass-panel">
+        <h2 class="seccion-titulo"><i class="fas fa-balance-scale"></i> Derechos Fundamentales</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744">
+                <div class="card-content">
+                    <h3>Derecho a la Identidad</h3>
+                    <p>Contar con un nombre, nacionalidad y el sentido de pertenencia a una sociedad organizada.</p>
+                </div>
+            </div>
 
-<h2>Derechos Fundamentales</h2>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5">
+                <div class="card-content">
+                    <h3>Derecho a la Educación</h3>
+                    <p>Acceso universal a oportunidades de aprendizaje y herramientas de desarrollo personal.</p>
+                </div>
+            </div>
 
-<div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c">
+                <div class="card-content">
+                    <h3>Derecho a la Protección</h3>
+                    <p>Vivir en un entorno libre de violencia, abuso y cualquier forma de explotación.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744">
-<div class="card-content">
-<h3>Derecho a la Identidad</h3>
-<p>Tener un nombre, nacionalidad y pertenencia a una sociedad.</p>
-</div>
-</div>
+    <div class="glass-panel">
+        <h2 class="seccion-titulo"><i class="fas fa-video"></i> Testimonio y Legislación</h2>
+        
+        <div class="video-wrapper">
+            <div class="video-box">
+                <video controls>
+                    <source src="v1.mp4" type="video/mp4">
+                </video>
+            </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1529390079861-591de354faf5">
-<div class="card-content">
-<h3>Derecho a la Educación</h3>
-<p>Acceso a oportunidades de aprendizaje y desarrollo personal.</p>
-</div>
-</div>
+            <div class="transcripcion">
+                <div class="bloque">
+                    Las infancias y adolescencias de México y del mundo están transitando una de sus mejores etapas a pesar de que, como sociedad, lamentablemente estemos yendo hacia atrás.
+                </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c">
-<div class="card-content">
-<h3>Derecho a la Protección</h3>
-<p>Seguridad contra violencia, abuso y explotación.</p>
-</div>
-</div>
+                <div class="bloque">
+                    La violencia, las armas, los delitos sexuales y los comportamientos que lesionan a otros están a la orden del día.
+                </div>
 
-</div>
+                <div class="bloque">
+                    Sin embargo, hoy gozamos de un espectro jurídico que nos reviste de verdadero poder; con leyes fundamentales:
+                    <div class="leyes">
+                        <span>Ley Valeria</span>
+                        <span>Ley Olimpia</span>
+                        <span>Vida libre de violencia</span>
+                    </div>
+                </div>
 
-<h2>Testimonio en Video</h2>
+                <div class="bloque">
+                    Te invito a documentarte. Vivimos en la era digital, pero eso nos responsabiliza a cuidarnos más, porque tenemos riesgos incluso en plataformas como Roblox, Minecraft y Fortnite.
+                </div>
 
-<div class="video-wrapper">
-
-<!-- VIDEO -->
-<div class="video-box">
-<video controls>
-<source src="v1.mp4" type="video/mp4">
-</video>
-</div>
-
-<!-- TRANSCRIPCIÓN -->
-<div class="transcripcion">
-
-<div class="bloque">
-Las infancias y adolescencias de México y del mundo están transitando una de sus mejores etapas a pesar de que, como sociedad lamentablemente estemos yendo hacia atrás.
-</div>
-
-<div class="bloque">
-La violencia, las armas, los delitos sexuales, los comportamientos que lesionan a otras personas están a la orden del día.
-</div>
-
-<div class="bloque">
-Sin embargo, hoy en día, las personas estamos protegidas, amparadas, gozamos de un espectro jurídico que nos reviste de verdadero poder;
-</div>
-
-<div class="bloque">
-con Leyes como:
-<div class="leyes">
-<span>Ley Valeria</span>
-<span>Ley Olimpia</span>
-<span>Vida libre de violencia</span>
-</div>
-</div>
-
-<div class="bloque">
-...realmente estamos viviendo una de unas mejores etapas.
-</div>
-
-<div class="bloque">
-Te invito a leer, a documentarte, a ir a conocer esas legislaciones; vivimos en la era de la digitalización, pero eso también nos responsabiliza a tomar mejores decisiones, a cuidarnos más porque tenemos enemigos hasta en Roblox, Minecraft y Fortinite.
-</div>
-
-<div class="bloque cierre">
-Prepárate, no muchas veces en la vida se tiene tantas oportunidades como en la adolescencia o en la juventud. Porque los jóvenes son el futuro inmediato y ese futuro inmediato es el presente.
-</div>
+                <div class="bloque cierre">
+                    <strong>Prepárate:</strong> No muchas veces se tienen tantas oportunidades como en la juventud. Los jóvenes son el futuro inmediato y ese futuro es hoy.
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
+<div class="music-panel">
+    <div class="music-box">
+        <div class="music-header" style="color: var(--primary); font-weight: 700; margin-bottom: 10px;">
+            <i class="fas fa-headphones"></i> MÚSICA AMBIENTE
+        </div>
+        <button class="music-btn" onclick="togglePlay()">INICIAR AUDIO</button>
+        <audio id="bgMusic" loop>
+            <source src="musica.mp3" type="audio/mpeg">
+        </audio>
+    </div>
 </div>
 
+<div class="virtual-assistant-container">
+    <img src="perrito.jpg" alt="Asistente" class="dog-illustration">
+    <p style="font-size: 0.7rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);">GUÍA JURÍDICA</p>
 </div>
 
 <script>
-// ANIMACIÓN AL HACER SCROLL
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-});
-});
-
-document.querySelectorAll(".card, .bloque, .video-box").forEach(el=>{
-observer.observe(el);
-});
+    const music = document.getElementById('bgMusic');
+    function togglePlay() {
+        if (music.paused) {
+            music.play();
+            document.querySelector('.music-btn').innerText = "PAUSAR AUDIO";
+        } else {
+            music.pause();
+            document.querySelector('.music-btn').innerText = "INICIAR AUDIO";
+        }
+    }
 </script>
 
 </body>
