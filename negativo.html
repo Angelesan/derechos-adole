@@ -1,3 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspectos Negativos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f4c75;
+            --secondary: #1b6ca8;
+            --accent: #3282b8;
+            --light: #bbe1fa;
+            --bg: #f0f4f8;
+            --white: rgba(255, 255, 255, 0.95);
+            --danger: #e74c3c;
+            --gold: #c9a96e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background: var(--bg); color: #2c3e50; line-height: 1.8; overflow-x: hidden; }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .container { max-width: 1100px; margin: -50px auto 60px; padding: 0 20px; }
+
+        .glass-panel {
+            background: var(--white);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .main-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 15px;
+        }
+
+        h2.seccion-titulo { 
+            color: var(--primary); 
+            font-size: 1.8rem;
+            margin: 40px 0 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+        }
+
+        /* GRÁFICAS DE CÍRCULO */
+        .stats-visual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .stat-circle-box {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .circle-graph {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: conic-gradient(var(--secondary) var(--p), #eee 0);
+        }
+
+        .circle-graph::before {
+            content: ""; position: absolute;
+            width: 100px; height: 100px;
+            background: white; border-radius: 50%;
+        }
+
+        .circle-graph span { position: relative; font-size: 1.5rem; font-weight: 900; color: var(--primary); }
+        .stat-label { font-weight: 700; color: #555; font-size: 0.9rem; text-transform: uppercase; }
+
+        .img-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .img-grid img {
+            width: 100%; height: 220px;
+            object-fit: cover; border-radius: 15px;
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .highlight-box {
+            background: rgba(15, 76, 117, 0.05);
+            border-left: 6px solid var(--primary);
+            padding: 25px;
+            border-radius: 0 15px 15px 0;
+            margin: 25px 0;
+        }
+
+        /* REPRODUCTOR PREMIUM (Izquierda) */
+        .music-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            transform: translateX(-78%);
+            transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 9999;
+        }
+        .music-panel:hover { transform: translateX(0); }
+
+        .music-box {
+            width: 280px;
+            padding: 20px;
+            border-radius: 0 20px 20px 0;
+            background: var(--white);
+            backdrop-filter: blur(12px);
+            box-shadow: 10px 0 30px rgba(0,0,0,.15);
+            border: 1px solid rgba(255,255,255,.4);
+        }
+
+        .music-header { display: flex; gap: 10px; color: var(--primary); font-weight: 700; margin-bottom: 10px; }
+        .music-header i { color: var(--gold); }
+
+        .music-btn {
+            width: 100%; padding: 12px;
+            border: none; border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff; cursor: pointer; font-weight: 600;
+        }
+
+        .wave { display: flex; gap: 3px; justify-content: center; margin: 15px 0; opacity: .3; height: 20px; align-items: center; }
+        .wave span { width: 4px; height: 10px; background: var(--gold); animation: wave 1s infinite ease-in-out; }
+        .wave span:nth-child(2) { animation-delay: .2s; }
+        .wave span:nth-child(3) { animation-delay: .4s; }
+        .wave span:nth-child(4) { animation-delay: .6s; }
+
+        @keyframes wave { 0%,100% { height: 8px; } 50% { height: 20px; } }
+        #progressBar { width: 100%; margin: 10px 0; cursor: pointer; accent-color: var(--secondary); }
+
+        .voice-controls { display: flex; gap: 8px; margin-top: 15px; }
+        .voice-btn { flex: 1; padding: 10px; border: none; border-radius: 10px; cursor: pointer; background: #eee; transition: .3s; }
+        .voice-btn.stop { color: var(--danger); }
+
+        /* ASISTENTE (Derecha) */
+        .virtual-assistant-container {
+            position: fixed; bottom: 20px; right: 20px; z-index: 10000;
+            background: #fff; padding: 10px; border-radius: 25px 25px 0 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .dog-illustration { width: 130px; border-radius: 18px; display: block; }
+        .dog-speaking { outline: 4px solid var(--accent); animation: avatarFloat 2s ease-in-out infinite; }
+
+        @keyframes avatarFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+        .section-speak-btn {
+            margin-left: 15px; border: none; padding: 6px 12px;
+            border-radius: 20px; background: var(--accent);
+            color: white; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+/* ================= PANEL PREMIUM ================= */
+.music-panel{
+position:fixed;
+bottom:20px;
+left:0;
+transform:translateX(-75%);
+transition:.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+z-index:9999;
+}
+
+.music-panel:hover{
+transform:translateX(0);
+}
+
+.music-box{
+width:280px;
+padding:20px;
+border-radius:0 20px 20px 0;
+background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(240,244,248,.9));
+backdrop-filter:blur(12px);
+box-shadow:10px 0 30px rgba(0,0,0,.15);
+border:1px solid rgba(255,255,255,.4);
+}
+
+.music-header{
+display:flex;
+align-items:center;
+gap:10px;
+color:#0f4c75;
+font-weight:700;
+margin-bottom:15px;
+}
+.music-header i{color:#c9a96e}
+
+.music-btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+background:linear-gradient(135deg,#0f4c75,#1b6ca8);
+color:#fff;
+cursor:pointer;
+font-weight:600;
+transition:.3s;
+margin-bottom:10px;
+}
+
+.wave{
+display:flex;
+gap:4px;
+justify-content:center;
+margin:15px 0;
+height:20px;
+align-items:center;
+opacity:0.3;
+}
+.wave span{
+width:4px;
+height:10px;
+background:#c9a96e;
+animation:wave 1s infinite ease-in-out;
+}
+.wave span:nth-child(2){animation-delay:.2s}
+.wave span:nth-child(3){animation-delay:.4s}
+
+@keyframes wave{
+0%,100%{height:8px}
+50%{height:20px}
+}
+
+.volume-box{display:flex;gap:10px;align-items:center;margin:10px 0}
+.volume-box input{flex:1;accent-color:#1b6ca8;cursor:pointer}
+
+.voice-controls{display:flex;gap:8px;margin-top:15px}
+.voice-btn{
+flex:1;
+padding:10px;
+border:none;
+border-radius:10px;
+background:rgba(15,76,117,.1);
+cursor:pointer;
+transition:.3s;
+font-size:1.1rem;
+}
+.voice-btn:hover{background:rgba(15,76,117,.2)}
+.voice-btn.stop{color:#e74c3c}
+
+/* AVATAR */
+.virtual-assistant-container{position:fixed;bottom:20px;right:20px;z-index:10000}
+.dog-illustration{width:130px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.1);background:#fff}
+.dog-speaking{outline:4px solid #3282b8;animation:float 2s infinite ease-in-out}
+
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+        
+    </style>
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="Menuprivado.mp3" type="audio/mpeg">
+</audio>
+
+<header>
+    <div class="reveal active">
+        <h1>Aspectos Negativos</h1>
+        <p>Realidad y Derechos en la Adolescencia</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="glass-panel reveal active">
+        <div class="main-title">¡¡¡ LA ADOLESCENCIA ES LA ÚLTIMA ETAPA DE LA INFANCIA Y EL COMIENZO DE LA AVENTURA DE SER UNO MISMO!!!</div>
+        <p>Lamentablemente existen muchos adolescentes que no pueden expresar felizmente esta frase significativa. Tanto en un contexto mundial como nacional, los derechos humanos de los adolescentes son un tema importante y delicado. A continuación, se mencionan algunos de los derechos que no se han respetado y estadísticas relevantes:</p>
+    </div>
+
+    <h2 class="seccion-titulo reveal"><i class="fas fa-hand-paper"></i> Derechos no respetados</h2>
+    <div class="glass-panel reveal">
+        <p><strong>- Derecho a una vida libre de violencia:</strong> Muchos adolescentes son víctimas de violencia física, psicológica y sexual.</p>
+        <p><strong>- Derecho a la educación:</strong> Algunos adolescentes enfrentan barreras para acceder a la educación, especialmente en zonas rurales o marginadas.</p>
+        <p><strong>- Derecho a la salud:</strong> La falta de acceso a servicios de salud y la discriminación en la atención médica son problemas comunes.</p>
+        <p><strong>- Derecho a la participación:</strong> Los adolescentes a menudo no tienen voz ni voto en decisiones que afectan su vida.</p>
+    </div>
+
+    <h2 class="seccion-titulo reveal"><i class="fas fa-chart-pie"></i> Estadísticas según la UNESCO - UNICEF</h2>
+    <div class="stats-visual-grid reveal">
+        <div class="stat-circle-box">
+            <div class="circle-graph" style="--p: 33.3%;"><span>1 de 3</span></div>
+            <div class="stat-label">Violencia física, psicológica o sexual</div>
+        </div>
+        <div class="stat-circle-box">
+            <div class="circle-graph" style="--p: 20%;"><span>1 de 5</span></div>
+            <div class="stat-label">No asiste a la escuela</div>
+        </div>
+        <div class="stat-circle-box">
+            <div class="circle-graph" style="--p: 70%; background: conic-gradient(var(--danger) 70%, #eee 0);">
+                <span style="color: var(--danger);">México</span>
+            </div>
+            <div class="stat-label">Tasas más altas de embarazo en AL</div>
+        </div>
+        <div class="stat-circle-box">
+            <div class="circle-graph" style="--p: 60%; background: conic-gradient(var(--accent) 60%, #eee 0);">
+                <span>3M+</span>
+            </div>
+            <div class="stat-label">En condiciones peligrosas o explotadoras</div>
+        </div>
+    </div>
+
+    <h2 class="seccion-titulo reveal"><i class="fas fa-globe"></i> Caso a nivel mundial: EL CASO DE JEFFREY EPSTEIN</h2>
+    <div class="glass-panel reveal">
+        <p><strong>¿Quién era Jeffrey Epstein?</strong> Era un financiero estadounidense que acumuló una enorme riqueza; era conocido por su estilo de vida extravagante y por estar rodeado de personas con mucho poder e influencia en la política, ciencia y espectáculo; estos fueron expresidentes, miembros de la realeza, empresarios de élite, entre otros.</p>
+
+        <div class="img-grid">
+            <img src="e1.jpeg" alt="Evidencia 1">
+            <img src="e2.jpeg" alt="Evidencia 2">
+            <img src="e3.jpeg" alt="Evidencia 3">
+            <img src="e4.jpeg" alt="Evidencia 4">
+        </div>
+
+        <p>Los conflictos legales de Epstein comenzaron en 2005 en Palm Beach, Florida, tras denuncias de que les pagaba a menores de edad por "masajes" que se volvían abusos sexuales. En 2008 Epstein logró un "acuerdo de procesamiento" con la Fiscalía Federal encabezado en ese entonces por Alexander Acosta; Epstein se declaró culpable de cargos estatales menores de prostitución, cumpliendo solo 13 meses en una cárcel local con permiso para salir a trabajar diariamente y fue registrado como delincuente sexual.</p>
+        <p>En julio de 2019 Epstein fue arrestado nuevamente en Nueva York por cargos federales de tráfico sexual de menores cometido entre 2002 y 2005 en sus mansiones en Manhattan y Florida. El 10 de agosto de 2019 mientras se esperaba el juicio en el Centro Correccional Metropolitano de Nueva York, Epstein fue encontrado sin vida en su celda. La autopsia determinó que se trató de un suicidio por ahorcamiento aunque las irregularidades en la prisión como cámaras sin funcionamiento o guardias dormidos alimentaron sospechas y teorías de conspiración.</p>
+
+        <div class="highlight-box">
+            <strong>Sistema de reclutamiento:</strong> Se determinó que usaba un sistema piramidal donde presionaba a las víctimas para buscar a más jóvenes a cambio de dinero, lo cual permitía que la red creciera mucho más.
+        </div>
+
+        <p>Respecto a la pareja de Jeffrey Epstein, Ghislaine Maxwell, ella no solo era su pareja afectiva sino también la principal operadora. En 2021 fue condenada a 20 años de prisión por ayudar a Epstein a capturar y preparar a las menores. Cabe mencionar que figuras públicas como el príncipe Andrés de Inglaterra perdieron sus títulos militares y roles públicos debido a la relación que tenían con Epstein.</p>
+    </div>
+
+    <h2 class="seccion-titulo reveal"><i class="fas fa-flag"></i> Caso a nivel nacional: EL CASO DE ACAPULCO KIDS</h2>
+    <div class="glass-panel reveal">
+        <h3 style="color: var(--secondary); margin-bottom: 15px;">¿QUÉ HAY DETRÁS DEL BELLO ACAPULCO?</h3>
+        <p>Este caso empieza cuando se denunció la existencia de un "ejército" de aproximadamente 2 mil niños, niñas y adolescentes en situación de calle, siendo que desde los cinco años eran explotados sexualmente en zonas como el Zócalo, la playa Caleta y el Malecón. Después surge una investigación en la cual se señaló que turistas y locales frecuentaban la zona buscando sexo pagado con menores, a menudo vinculando el consumo de drogas con la explotación.</p>
+
+        <div class="img-grid" style="grid-template-columns: 1fr 1fr;">
+            <img src="a1.jpeg" alt="Contexto Nacional 1">
+            <img src="a2.jpeg" alt="Contexto Nacional 2">
+        </div>
+
+        <p>Los menores eran enganchados o entregados debido a la pobreza extrema, buscando dinero para sobrevivir o para comprar drogas. A estas personas se le conoce como padrotes y madrotas que operaban con impunidad y explotaban a las personas que eran utilizadas como prostitución.</p>
+
+        <div class="highlight-box">
+            Este caso reportó la complicidad de taxistas, hoteleros y autoridades locales que facilitaban el acceso a cuartos y protegían el negocio.
+        </div>
+
+        <p>El caso impactó mucho que expuso una realidad oculta ("El lado B" de Acapulco), donde la marginación y la violencia convirtieron a los niños en mercancía: un tema que, de acuerdo con las crónicas, persiste de diversas formas en la zona. Este caso se sitúa en el contexto más amplio de la explotación infantil turística en México.</p>
+    </div>
+</div>
+
+<div class="music-panel">
+    <div class="music-box">
+        <div class="music-header"><i class="fas fa-music"></i> <span>Reproductor Premium</span></div>
+        <button onclick="toggleMusic()" class="music-btn" id="playBtn"><i class="fas fa-play"></i> Reproducir</button>
+        <div class="wave" id="wave"><span></span><span></span><span></span><span></span><span></span></div>
+        <input type="range" id="progressBar" value="0">
+        <div class="voice-controls">
+            <button onclick="toggleSpeech()" class="voice-btn"><i class="fas fa-comment"></i></button>
+            <button onclick="pauseSpeech()" class="voice-btn stop"><i class="fas fa-stop"></i></button>
+        </div>
+    </div>
+</div>
+
+<div class="virtual-assistant-container">
+    <video id="assistantVideo" class="dog-illustration" muted loop playsinline>
+        <source src="avatar.mp4" type="video/mp4">
+    </video>
+</div>
+
+
+<script>
 const bgMusic = document.getElementById('bgMusic');
 const btn = document.getElementById('playBtn');
 const wave = document.getElementById('wave');
@@ -49,4 +443,6 @@ function toggleSpeech() {
 
     speechSynthesis.speak(utter);
 }
-</script>
+
+</body>
+</html>
