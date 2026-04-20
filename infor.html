@@ -71,11 +71,8 @@
         }
 
         .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(15, 76, 117, 0.15); }
-
         .card img { width: 100%; height: 180px; object-fit: cover; }
-
         .card-content { padding: 20px; }
-
         .card-content h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; }
 
         /* VIDEO Y TRANSCRIPCIÓN */
@@ -105,9 +102,7 @@
         }
 
         .bloque.cierre { background: var(--primary); color: white; border-left-color: var(--gold); }
-
         .leyes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-
         .leyes span {
             background: var(--secondary);
             color: white;
@@ -117,15 +112,66 @@
             font-weight: 600;
         }
 
+        /* ================= ESTILOS PREMIUM INTEGRADOS ================= */
+
         /* REPRODUCTOR */
-        .music-panel { position: fixed; bottom: 20px; left: 0; transform: translateX(-78%); transition: .4s; z-index: 9999; }
+        .music-panel {
+            position: fixed; bottom: 20px; left: 0;
+            transform: translateX(-75%); transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 9999;
+        }
         .music-panel:hover { transform: translateX(0); }
-        .music-box { width: 280px; padding: 20px; border-radius: 0 20px 20px 0; background: var(--white); backdrop-filter: blur(12px); box-shadow: 10px 0 30px rgba(0,0,0,.15); }
-        .music-btn { width: 100%; padding: 12px; border: none; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; cursor: pointer; font-weight: 600; }
+
+        .music-box {
+            width: 280px; padding: 20px; border-radius: 0 20px 20px 0;
+            background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(240,244,248,.9));
+            backdrop-filter: blur(12px); box-shadow: 10px 0 30px rgba(0,0,0,.15);
+            border: 1px solid rgba(255,255,255,.4);
+        }
+
+        .music-header { display: flex; align-items: center; gap: 10px; color: var(--primary); font-weight: 700; margin-bottom: 15px; }
+        .music-header i { color: var(--gold); }
+
+        .music-btn {
+            width: 100%; padding: 12px; border: none; border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff; cursor: pointer; font-weight: 600; transition: .3s; margin-bottom: 10px;
+        }
+
+        .wave { display: flex; gap: 4px; justify-content: center; margin: 15px 0; opacity: .3; height: 20px; align-items: center; }
+        .wave span { width: 4px; height: 10px; background: var(--gold); animation: wave 1s infinite ease-in-out; }
+        .wave span:nth-child(2) { animation-delay: .2s; }
+        .wave span:nth-child(3) { animation-delay: .4s; }
+        @keyframes wave { 0%,100% { height: 8px; } 50% { height: 20px; } }
+
+        .volume-box { display: flex; gap: 10px; align-items: center; margin: 10px 0; }
+        .volume-box input { flex: 1; accent-color: var(--secondary); cursor: pointer; }
+
+        .voice-controls { display: flex; gap: 8px; margin-top: 15px; }
+        .voice-btn { flex: 1; padding: 10px; border: none; border-radius: 10px; cursor: pointer; background: rgba(15,76,117,.1); transition: .3s; font-size: 1.1rem;}
+        .voice-btn:hover { background: rgba(15,76,117,.2); }
+        .voice-btn.stop { color: var(--danger); }
 
         /* ASISTENTE */
-        .virtual-assistant-container { position: fixed; bottom: 20px; right: 20px; z-index: 10000; background: #fff; padding: 10px; border-radius: 25px 25px 0 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-        .dog-illustration { width: 100px; border-radius: 18px; display: block; }
+        .virtual-assistant-container {
+            position: fixed; bottom: 20px; right: 20px; z-index: 10000;
+            background: #ffffff; padding: 12px; border-radius: 24px 24px 0 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); animation: avatarEntrance 0.8s ease-out;
+        }
+        .dog-illustration { width: 140px; display: block; border-radius: 18px; animation: avatarFloat 3s ease-in-out infinite; }
+        .dog-speaking { outline: 4px solid var(--accent); filter: brightness(1.05); }
+
+        @keyframes avatarFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+        @keyframes avatarEntrance { from { opacity: 0; transform: translateY(30px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+        .section-speak-btn {
+            margin-left: auto; border: none; padding: 6px 12px;
+            border-radius: 20px; background: var(--accent);
+            color: white; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 768px) { .video-wrapper { grid-template-columns: 1fr; } }
     </style>
@@ -133,19 +179,25 @@
 
 <body>
 
+<audio id="bgMusic" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
 <header>
-    <h1>Protección Jurídica y Social</h1>
-    <p>Garantías para una juventud segura y empoderada</p>
+    <div class="reveal active">
+        <h1>Protección Jurídica y Social</h1>
+        <p>Garantías para una juventud segura y empoderada</p>
+    </div>
 </header>
 
 <div class="container">
     
-    <div class="glass-panel">
+    <div class="glass-panel reveal active">
         <h2 class="seccion-titulo"><i class="fas fa-balance-scale"></i> Derechos Fundamentales</h2>
         
         <div class="grid">
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744">
+                <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744" alt="Identidad">
                 <div class="card-content">
                     <h3>Derecho a la Identidad</h3>
                     <p>Contar con un nombre, nacionalidad y el sentido de pertenencia a una sociedad organizada.</p>
@@ -153,7 +205,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5">
+                <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5" alt="Educación">
                 <div class="card-content">
                     <h3>Derecho a la Educación</h3>
                     <p>Acceso universal a oportunidades de aprendizaje y herramientas de desarrollo personal.</p>
@@ -161,7 +213,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c">
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c" alt="Protección">
                 <div class="card-content">
                     <h3>Derecho a la Protección</h3>
                     <p>Vivir en un entorno libre de violencia, abuso y cualquier forma de explotación.</p>
@@ -170,7 +222,7 @@
         </div>
     </div>
 
-    <div class="glass-panel">
+    <div class="glass-panel reveal">
         <h2 class="seccion-titulo"><i class="fas fa-video"></i> Testimonio y Legislación</h2>
         
         <div class="video-wrapper">
@@ -213,32 +265,157 @@
 
 <div class="music-panel">
     <div class="music-box">
-        <div class="music-header" style="color: var(--primary); font-weight: 700; margin-bottom: 10px;">
-            <i class="fas fa-headphones"></i> MÚSICA AMBIENTE
+        <div class="music-header"><i class="fas fa-music"></i> <span>Reproductor Premium</span></div>
+        
+        <button onclick="toggleMusic()" class="music-btn" id="playBtn">
+            <i class="fas fa-play"></i> Reproducir
+        </button>
+
+        <div class="wave" id="wave">
+            <span></span><span></span><span></span><span></span>
         </div>
-        <button class="music-btn" onclick="togglePlay()">INICIAR AUDIO</button>
-        <audio id="bgMusic" loop>
-            <source src="musica.mp3" type="audio/mpeg">
-        </audio>
+
+        <div class="volume-box">
+            <i class="fas fa-volume-down"></i>
+            <input type="range" min="0" max="1" step="0.01" value="0.5" oninput="bgMusic.volume=this.value">
+            <i class="fas fa-volume-up"></i>
+        </div>
+
+        <div class="voice-controls">
+            <button onclick="toggleSpeech()" class="voice-btn" title="Narrar todo">
+                <i class="fas fa-comment"></i>
+            </button>
+            <button onclick="pauseSpeech()" class="voice-btn stop" title="Detener voz">
+                <i class="fas fa-stop"></i>
+            </button>
+        </div>
     </div>
 </div>
 
 <div class="virtual-assistant-container">
-    <img src="perrito.jpg" alt="Asistente" class="dog-illustration">
+    <video id="assistantVideo" class="dog-illustration" muted loop playsinline>
+        <source src="avatar.mp4" type="video/mp4">
+    </video>
     <p style="font-size: 0.7rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);">GUÍA JURÍDICA</p>
 </div>
 
 <script>
-    const music = document.getElementById('bgMusic');
-    function togglePlay() {
-        if (music.paused) {
-            music.play();
-            document.querySelector('.music-btn').innerText = "PAUSAR AUDIO";
-        } else {
-            music.pause();
-            document.querySelector('.music-btn').innerText = "INICIAR AUDIO";
+    const bgMusic = document.getElementById('bgMusic');
+    const playBtn = document.getElementById('playBtn');
+    const wave = document.getElementById('wave');
+    const dog = document.getElementById('assistantVideo');
+
+    // Inicializar volumen
+    bgMusic.volume = 0.5;
+
+    // Efecto Reveal al hacer scroll
+    function reveal() {
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+        });
+    }
+    window.addEventListener('scroll', reveal);
+    reveal();
+
+    // Lógica de Música
+    function toggleMusic() {
+        if (bgMusic.paused) { 
+            bgMusic.play().catch(e => console.log("Interacción requerida primero")); 
+            playBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar'; 
+            wave.style.opacity = 1; 
+        } else { 
+            bgMusic.pause(); 
+            playBtn.innerHTML = '<i class="fas fa-play"></i> Reproducir'; 
+            wave.style.opacity = 0.3; 
         }
     }
+
+    // Función principal de lectura
+    function readText(text) {
+        speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'es-MX';
+        utter.pitch = 0.95;
+        utter.rate = 0.97;
+
+        const voices = speechSynthesis.getVoices();
+        const preferredVoice = voices.find(v =>
+            v.lang.startsWith('es') &&
+            /jorge|hector|diego|microsoft sabina|raul/i.test(v.name)
+        ) || voices.find(v => v.lang.startsWith('es'));
+
+        if (preferredVoice) utter.voice = preferredVoice;
+
+        utter.onstart = () => { 
+            dog.classList.add('dog-speaking'); 
+            dog.play(); 
+        };
+        utter.onend = () => { 
+            dog.classList.remove('dog-speaking'); 
+            dog.pause(); 
+            dog.currentTime = 0; 
+        };
+        
+        speechSynthesis.speak(utter);
+    }
+
+    // Narrar todo el documento adaptado a la nueva estructura
+    function toggleSpeech() {
+        if (speechSynthesis.speaking) {
+            pauseSpeech();
+            return;
+        }
+
+        let content = "";
+        // Seleccionamos los textos importantes de esta página específica
+        document.querySelectorAll('header h1, header p, h2.seccion-titulo, .card-content h3, .card-content p, .bloque').forEach(el => { 
+            if(el.classList.contains('seccion-titulo')) {
+                const cleanTitle = el.cloneNode(true);
+                const btnInside = cleanTitle.querySelector('button');
+                if (btnInside) btnInside.remove();
+                content += cleanTitle.innerText + ". ";
+            } else {
+                content += el.innerText + ". "; 
+            }
+        });
+        readText(content);
+    }
+
+    function pauseSpeech() { 
+        speechSynthesis.cancel(); 
+        dog.classList.remove('dog-speaking'); 
+        dog.pause(); 
+        dog.currentTime = 0; 
+    }
+
+    // Inserción dinámica de botones "Leer" en cada sección
+    document.querySelectorAll('h2.seccion-titulo').forEach(title => {
+        const btn = document.createElement('button');
+        btn.className = 'section-speak-btn';
+        btn.textContent = 'Leer';
+        
+        btn.onclick = (e) => {
+            e.stopPropagation();
+            
+            // Clonar el título y quitarle el botón para que no lo narre
+            const cleanTitle = title.cloneNode(true);
+            const btnInside = cleanTitle.querySelector('button');
+            if (btnInside) btnInside.remove();
+
+            let sectionText = cleanTitle.innerText + ". ";
+            let next = title.nextElementSibling;
+            
+            // Recolectar todo el texto de los divs siguientes (grid o video-wrapper)
+            while (next && !next.matches('h2.seccion-titulo')) { 
+                sectionText += next.innerText + ". "; 
+                next = next.nextElementSibling; 
+            }
+            
+            readText(sectionText);
+        };
+        
+        title.appendChild(btn);
+    });
 </script>
 
 </body>
