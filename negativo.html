@@ -52,11 +52,18 @@
             transition: .3s;
             font-size: 0.95rem;
             text-transform: uppercase;
+            padding-bottom: 3px;
         }
         nav a:hover {
             color: var(--gold);
             transform: translateY(-2px);
             display: inline-block;
+        }
+        
+        /* ESTILO PARA LA PÁGINA ACTUAL (ACTIVA) */
+        nav a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
         }
 
         /* HEADER */
@@ -259,7 +266,7 @@
     <div class="logo">Juventud y Realidad</div>
     <ul>
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="aspectosnegativos.html">Aspectos Negativos</a></li>
+        <li><a href="negativo.html" class="active">Aspectos Negativos</a></li>
         <li><a href="infor.html">Información</a></li>
         <li><a href="vida.html">Vida Ideal</a></li>
     </ul>
