@@ -21,10 +21,49 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body { background: var(--bg); color: #2c3e50; line-height: 1.8; overflow-x: hidden; }
 
+        /* ================= MENÚ SUPERIOR ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        nav .logo {
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+        nav a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+            display: inline-block;
+        }
+
+        /* HEADER */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 80px 20px;
+            padding: 130px 20px 80px; /* Aumentado para que el menú no tape el texto */
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
@@ -118,7 +157,7 @@
             margin: 25px 0;
         }
 
-        /* REPRODUCTOR PREMIUM (Izquierda) - Estilo del Index */
+        /* REPRODUCTOR PREMIUM (Izquierda) */
         .music-panel {
             position: fixed;
             bottom: 20px;
@@ -165,7 +204,7 @@
         .voice-btn:hover { background: rgba(15,76,117,.2); }
         .voice-btn.stop { color: var(--danger); }
 
-        /* ASISTENTE (Derecha) - Animación del archivo antiguo */
+        /* ASISTENTE (Derecha) */
         .virtual-assistant-container {
             position: fixed;
             bottom: 20px;
@@ -205,9 +244,25 @@
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE PARA EL MENÚ */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 15px; padding: 15px 20px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            header { padding-top: 160px; }
+        }
     </style>
 </head>
 <body>
+
+<nav>
+    <div class="logo">Juventud y Realidad</div>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="aspectosnegativos.html">Aspectos Negativos</a></li>
+        <li><a href="vida.html">Vida Ideal</a></li>
+    </ul>
+</nav>
 
 <audio id="bgMusic" loop>
     <source src="Menuprivado.mp3" type="audio/mpeg">
