@@ -14,6 +14,7 @@
             --bg: #f0f4f8;
             --white: rgba(255, 255, 255, 0.95);
             --danger: #e74c3c;
+            --warning: #f39c12;
             --gold: #c9a96e;
         }
 
@@ -73,7 +74,7 @@
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
-        .container { width: 95%; max-width: 1100px; margin: -50px auto 60px; padding: 0 20px; }
+        .container { width: 95%; max-width: 1100px; margin: -50px auto 120px; padding: 0 20px; }
 
         .glass-panel {
             background: var(--white);
@@ -120,28 +121,29 @@
 
         /* SIMETRÍA DEL VIDEO Y TRANSCRIPCIÓN */
         .video-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Mitad y mitad para mejor equilibrio */
-            gap: 30px;
-            margin-top: 40px;
-            align-items: stretch; /* Estira ambos lados a la misma altura base */
+            display: flex;
+            align-items: center; 
+            gap: 40px;
+            margin-top: 20px; 
         }
 
         .video-box {
+            flex: 1; 
             display: flex;
-            align-items: center;
+            flex-direction: column; 
         }
+
         .video-box video {
             width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             background: #000;
         }
 
         .transcripcion { 
+            flex: 1; 
             display: flex;
             flex-direction: column;
-            justify-content: center;
             gap: 15px;
             font-size: 14px; 
             line-height: 1.6; 
@@ -154,6 +156,7 @@
             border-left: 5px solid var(--accent);
             border-radius: 0 10px 10px 0;
             transition: 0.5s;
+            margin-bottom: 0; 
         }
 
         .bloque.cierre { background: var(--primary); color: white; border-left-color: var(--gold); }
@@ -188,7 +191,7 @@
             background: rgba(27, 108, 168, 0.08);
             border-radius: 0 0 8px 8px;
             padding: 0 15px;
-            margin-top: -4px; /* Para que se una al botón */
+            margin-top: -4px;
             transition: max-height 0.4s ease, padding 0.4s ease;
         }
         .ley-contenido.abierta {
@@ -200,6 +203,63 @@
             font-size: 0.8rem;
             margin: 0;
             color: #333;
+        }
+
+        /* ================= FORMATO PROFESIONAL ================= */
+        .texto-profesional {
+            padding: 0 10px;
+        }
+        .texto-profesional p {
+            text-align: justify; 
+            text-indent: 40px; 
+            margin-bottom: 1.5rem; 
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #3a4b5c;
+        }
+        .texto-profesional h3 {
+            color: var(--secondary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            text-transform: uppercase;
+        }
+        
+        /* Formato especial para bloques tipo Jurisprudencia / Sabías qué */
+        .datos-jurisprudencia {
+            background: rgba(15, 76, 117, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+            margin: 30px 0;
+            font-family: 'Courier New', Courier, monospace; 
+        }
+        .datos-jurisprudencia p {
+            text-align: left;
+            text-indent: 0; 
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .datos-jurisprudencia h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            margin-top: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            text-indent: 0;
+        }
+        .datos-jurisprudencia ul {
+            margin-left: 20px;
+            margin-top: 15px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 0.95rem;
+            color: #3a4b5c;
+        }
+        .datos-jurisprudencia li {
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
 
         /* REPRODUCTOR */
@@ -238,15 +298,15 @@
         .voice-controls { display: flex; gap: 8px; margin-top: 15px; }
         .voice-btn { flex: 1; padding: 10px; border: none; border-radius: 10px; cursor: pointer; background: rgba(15,76,117,.1); transition: .3s; font-size: 1.1rem;}
         .voice-btn:hover { background: rgba(15,76,117,.2); }
-        .voice-btn.stop { color: var(--danger); }
+        .voice-btn.pause { color: var(--warning); }
 
         /* ASISTENTE */
         .virtual-assistant-container {
             position: fixed; bottom: 20px; right: 20px; z-index: 10000;
-            background: #ffffff; padding: 12px; border-radius: 24px 24px 0 24px;
+            background: #ffffff; padding: 10px; border-radius: 20px 20px 0 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15); animation: avatarEntrance 0.8s ease-out;
         }
-        .dog-illustration { width: 140px; display: block; border-radius: 18px; animation: avatarFloat 3s ease-in-out infinite; }
+        .dog-illustration { width: 105px; display: block; border-radius: 15px; animation: avatarFloat 3s ease-in-out infinite; } 
         .dog-speaking { outline: 4px solid var(--accent); filter: brightness(1.05); }
 
         @keyframes avatarFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
@@ -265,7 +325,7 @@
             nav { flex-direction: column; gap: 15px; padding: 15px 20px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
             header { padding-top: 160px; }
-            .video-wrapper { grid-template-columns: 1fr; } 
+            .video-wrapper { flex-direction: column; } 
         }
     </style>
 </head>
@@ -283,7 +343,7 @@
 </nav>
 
 <audio id="bgMusic" loop>
-    <source src="menuprivado.mp3" type="audio/mpeg">
+    <source src="Menuprivado.mp3" type="audio/mpeg">
 </audio>
 
 <header>
@@ -295,7 +355,7 @@
 
 <div class="container">
     <div class="glass-panel reveal active">
-        <h2 class="seccion-titulo"><i class="fas fa-balance-scale"></i> Derechos Fundamentales</h2>
+        <h2 class="seccion-titulo">Derechos Fundamentales</h2>
         
         <div class="grid">
             <div class="card">
@@ -325,7 +385,10 @@
     </div>
 
     <div class="glass-panel reveal">
-        <h2 class="seccion-titulo"><i class="fas fa-video"></i> Mensaje</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px;">
+            <h2 class="seccion-titulo" style="margin: 0; border: none; padding: 0;">Mensaje</h2>
+            <button class="section-speak-btn" onclick="leerSeccionMensaje(this)">Leer</button>
+        </div>
         
         <div class="video-wrapper">
             <div class="video-box">
@@ -340,8 +403,7 @@
                 </div>
 
                 <div class="bloque">
-                    Sin embargo, hoy en día gozamos de un espectro jurídico que nos reviste de poder mediante leyes fundamentales:
-                    
+                    Sin embargo, hoy en día, las personas estamos protegidas, amparadas, gozamos de un espectro jurídico que nos reviste de verdadero poder; con Leyes como la Ley Valeria que castiga a los stalkers, la Ley Olimpia que sanciona los comportamientos inapropiados en redes sociales, la Ley General de Acceso de las Mujeres a una vida libre de violencia y otras normas, realmente estamos viviendo una de unas mejores etapas.                 
                     <div class="leyes-container">
                         <div>
                             <button class="ley-btn" onclick="toggleLey(this)">Ley Valeria <i class="fas fa-chevron-down"></i></button>
@@ -356,12 +418,16 @@
                             </div>
                         </div>
                         <div>
-                            <button class="ley-btn" onclick="toggleLey(this)">Vida libre de violencia <i class="fas fa-chevron-down"></i></button>
+                            <button class="ley-btn" onclick="toggleLey(this)">Ley General de Acceso de las Mujeres <i class="fas fa-chevron-down"></i></button>
                             <div class="ley-contenido">
                                 <p>Establece mecanismos jurídicos para prevenir, sancionar y erradicar cualquier tipo de violencia contra las mujeres, garantizando su integridad.</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="bloque">
+                    Te invito a leer, a documentarte, a ir a conocer esas legislaciones; vivimos en la era de la digitalización, pero eso también nos responsabiliza a tomar mejores decisiones, a cuidarnos más porque tenemos enemigos hasta en Roblox, Minecraft y Fortnite.
                 </div>
 
                 <div class="bloque cierre">
@@ -371,40 +437,110 @@
         </div>
     </div>
 
- <div class="glass-panel reveal">
-        <h2 class="seccion-titulo"><i class="fas fa-gavel"></i> Mtra. Nidia</h2>
+    <div class="glass-panel reveal">
+        <h2 class="seccion-titulo">Mtra. Nidia Guadalupe Celis Fuentes</h2>
         
-        <p>Estimados jóvenes, es un gusto poder compartirles algunas de las experiencias que tuve como juez en materia penal respecto de diversos delitos, entre ellos algunos de índole sexual como lo son violación y abuso sexual y que en algunas ocasiones son cometidos respecto de niñas, niños y adolescentes, delitos que en algunos casos son llevados a cabo por personas cercanas al entorno personal de la victima como lo pueden ser sus familiares, amigos, maestros, entre otros y muchas veces valiéndose de la confianza de la víctima y otras veces por medios violentos como pueden ser las amenazas o agresiones físicas es decir, por la fuerza.</p>
+        <div class="texto-profesional">
+            <p>Estimados jóvenes, es un gusto poder compartirles algunas de las experiencias que tuve como juez en materia penal respecto de diversos delitos, entre ellos algunos de índole sexual como lo son <strong>violación y abuso sexual</strong> y que en algunas ocasiones son cometidos respecto de niñas, niños y adolescentes. Delitos que en algunos casos son llevados a cabo por personas cercanas al entorno personal de la victima como lo pueden ser sus familiares, amigos, maestros, entre otros, y muchas veces valiéndose de la confianza de la víctima y otras veces por medios violentos como pueden ser las amenazas o agresiones físicas es decir, por la fuerza.</p>
 
-        <p>Respecto de lo anterior, es importante que ustedes sepan que los derechos de las niñas, niños y adolescentes está protegido primeramente por el artículo 4 Constitucional, la Ley General de los Derechos de las niñas, niños y adolecentes y por los tratados internacionales de los que México forma parte, especialmente la Convención sobre los Derechos del Niño, los Códigos Penales de los Estados, así como la Ley de Amparo.</p>
+            <p>Respecto de lo anterior, es importante que ustedes sepan que los derechos de las niñas, niños y adolescentes está protegido primeramente por el <strong>artículo 4 Constitucional</strong>, la <strong>Ley General de los Derechos de las niñas, niños y adolescentes</strong> y por los tratados internacionales de los que México forma parte, especialmente la Convención sobre los Derechos del Niño, los Códigos Penales de los Estados, así como la Ley de Amparo.</p>
 
-        <p>Todas esas leyes obligan a todas la autoridades que deben aplicarlas a escuchar diligentemente a las niñas, niños y adolescentes ante el menor indicio o sospecha de que son o puedan ser victimas de alguno de los mencionados delitos, así la fiscalía tiene la ineludible obligación de investigar cualquier caso de estos por mínima que sea la sospecha de que algún niño, niña o adolescente está siendo o puede ser víctima de alguno de esos delitos, y el juez está en la obligación de tutelar, cuidar y vigilar la estricta observancia de esos derechos de los niños y adolescentes, aplicando los protocolos específicos correspondientes, vigilando siempre lo que se conoce como el interés superior del niño o adolescente, aclarando que esos derechos no solo son aplicables en materia penal sino en cualquier procedimiento ya sea civil o familiar, etc.</p>
+            <p>Todas esas leyes obligan a todas las autoridades que deben aplicarlas a <strong>escuchar diligentemente a las niñas, niños y adolescentes ante el menor indicio o sospecha</strong> de que son o puedan ser victimas de alguno de los mencionados delitos. Así, la fiscalía tiene la ineludible obligación de investigar cualquier caso de estos por mínima que sea la sospecha de que algún niño, niña o adolescente está siendo o puede ser víctima de alguno de esos delitos, y el juez está en la obligación de tutelar, cuidar y vigilar la estricta observancia de esos derechos de los niños y adolescentes, aplicando los protocolos específicos correspondientes, vigilando siempre lo que se conoce como el <strong>interés superior del niño o adolescente</strong>, aclarando que esos derechos no solo son aplicables en materia penal sino en cualquier procedimiento ya sea civil o familiar, etc.</p>
 
-        <p>En ese sentido, basta que la niña, niño o adolescente comparezca ya sea personalmente o con su representante legal como puede serlo alguno de los padres o tutor, a denunciar que esta siendo objeto de alguna conducta delictiva, para que la autoridad de inmediato dicte el inicio de la investigación de los hechos así como las medidas necesarias para la protección de la víctima, a fin de salvaguardar su integridad tanto física como emocional, interrumpiendo el ciclo de violencia, determinar a la persona que es responsable de esa violencia y sancionarlo como corresponda, además de proporcionar ayuda especializada a la víctima para superar ese tipo de situaciones y evitarle mayores secuelas.</p>
+            <p>En ese sentido, basta que la niña, niño o adolescente comparezca ya sea personalmente o con su representante legal como puede serlo alguno de los padres o tutor, a denunciar que esta siendo objeto de alguna conducta delictiva, para que <strong>la autoridad de inmediato dicte el inicio de la investigación</strong> de los hechos así como las medidas necesarias para la protección de la víctima, a fin de salvaguardar su integridad tanto física como emocional, interrumpiendo el ciclo de violencia, determinar a la persona que es responsable de esa violencia y sancionarlo como corresponda, además de proporcionar ayuda especializada a la víctima para superar ese tipo de situaciones y evitarle mayores secuelas.</p>
 
-        <p>Ya para finalizar quiero decirles que, conforme a la Ley General de los Derechos de Niñas, Niños y Adolescentes, en su artículo 106 establece que cualquier procedimiento jurisdiccional que involucre a una niña, niño o adolescente es imprescriptible.</p>
+            <p>Ya para finalizar quiero decirles que, conforme a la Ley General de los Derechos de Niñas, Niños y Adolescentes, en su artículo 106 establece que cualquier procedimiento jurisdiccional que involucre a una niña, niño o adolescente <strong>es imprescriptible.</strong></p>
 
-        <p>Y quiero compartirles un criterio emitido por la Primera Sala de la Suprema Corte de la Nación en la que se advierte la serie de acciones que el Ministerio Público debe de llevar a cabo para el caso de delitos cometidos en contra de niñas, niños y adolescentes, para que ustedes tengan una simple idea de como deben ser cuidados, respetados y vigilados en estos casos, esto de manera ejemplificativas pues cada caso tiene sus peculiaridades.</p>
+            <p>Y quiero compartirles un criterio emitido por la Primera Sala de la Suprema Corte de la Nación en la que se advierte la serie de acciones que el Ministerio Público debe de llevar a cabo para el caso de delitos cometidos en contra de niñas, niños y adolescentes, para que ustedes tengan una simple idea de como deben ser cuidados, respetados y vigilados en estos casos, esto de manera ejemplificativa pues cada caso tiene sus peculiaridades.</p>
 
-        <h3>Registro digital: 2030572</h3>
-        <p><strong>Instancia:</strong> Primera Sala</p>
-        <p><strong>Época:</strong> Undécima Época</p>
-        <p><strong>Materia(s):</strong> Penal, Constitucional</p>
-        <p><strong>Tesis:</strong> 1a./J. 98/2025 (11a.)</p>
-        <p><strong>Fuente:</strong> Gaceta del Semanario Judicial de la Federación. Libro 50, Junio de 2025, Tomo III, Volumen 1, página 562</p>
-        <p><strong>Tipo:</strong> Jurisprudencia</p>
+            <div class="datos-jurisprudencia">
+                <h3>“DELITOS SEXUALES COMETIDOS EN CONTRA DE NIÑAS, NIÑOS Y ADOLESCENTES. OBLIGACIONES DEL MINISTERIO PÚBLICO PARA INVESTIGAR CON PERSPECTIVA DE INFANCIA.”</h3>
+                <p><strong>Registro digital:</strong> 2030572</p>
+                <p><strong>Instancia:</strong> Primera Sala</p>
+                <p><strong>Época:</strong> Undécima Época</p>
+                <p><strong>Materia(s):</strong> Penal, Constitucional</p>
+                <p><strong>Tesis:</strong> 1a./J. 98/2025 (11a.)</p>
+                <p><strong>Fuente:</strong> Gaceta del Semanario Judicial de la Federación. Libro 50, Junio de 2025, Tomo III, Volumen 1, página 562</p>
+                <p><strong>Tipo:</strong> Jurisprudencia</p>
+            
 
-        <h3 style="color:var(--primary); margin-top:20px;">“DELITOS SEXUALES COMETIDOS EN CONTRA DE NIÑAS, NIÑOS Y ADOLESCENTES. OBLIGACIONES DEL MINISTERIO PÚBLICO PARA INVESTIGAR CON PERSPECTIVA DE INFANCIA.”</h3>
+                <p style="margin-top: 20px;"><strong>Hechos:</strong> Una pareja, durante el matrimonio, procreó a dos hijos. Años después se divorciaron, la madre se mudó con sus hijos a la Ciudad de México y acordaron que el padre visitaría a los niños los fines de semana y que podría llevarlos a su domicilio en Guanajuato. Posteriormente, por conducto de una psicóloga, la madre se enteró de que sus hijos posiblemente sufrieron violencia sexual por parte de su padre en Guanajuato.</p>
 
-        <p><strong>Hechos:</strong> Una pareja, durante el matrimonio, procreó a dos hijos. Años después se divorciaron, la madre se mudó con sus hijos a la Ciudad de México y acordaron que el padre visitaría a los niños los fines de semana y que podría llevarlos a su domicilio en Guanajuato. Posteriormente, por conducto de una psicóloga, la madre se enteró de que sus hijos posiblemente sufrieron violencia sexual por parte de su padre en Guanajuato.</p>
-        <p>En virtud de lo anterior, la madre denunció los hechos en una fiscalía de la Ciudad de México, en donde residía con los niños. Una agente del ministerio público de dicha entidad inició una carpeta de investigación, en la cual recabó distintos datos de prueba. Después, la agente ministerial declinó competencia a favor de la fiscalía de Guanajuato, por ser la entidad federativa en donde ocurrieron los hechos.</p>
-        <p>Más tarde, la madre ofreció nuevos datos de prueba, relacionados con los mismos hechos en la fiscalía de la Ciudad de México, por lo que la agente del ministerio público ordenó su recepción. Luego, remitió la totalidad de la carpeta de investigación a la fiscalía de Guanajuato para continuar con la indagatoria.</p>
+                <p>En virtud de lo anterior, la madre denunció los hechos en una fiscalía de la Ciudad de México, en donde residía con los niños. Una agente del ministerio público de dicha entidad inició una carpeta de investigación, en la cual recabó distintos datos de prueba. Después, la agente ministerial declinó competencia a favor de la fiscalía de Guanajuato, por ser la entidad federativa en donde ocurrieron los hechos.</p>
 
-        <p><strong>Criterio jurídico:</strong> Ante una denuncia por posibles delitos sexuales cometidos en contra de niñas, niños y adolescentes, el ministerio público debe investigar con perspectiva de infancia, a pesar de su incompetencia por razón de territorio, lo que implica iniciar una carpeta de investigación, sin demora, en la que se tome en cuenta la edad, la madurez y el desarrollo de la posible víctima para llevar a cabo las siguientes acciones inmediatas: a) recabar la declaración de la niña o del niño; b) ordenar que se brinde atención médica y psicológica a la víctima; y c) recolectar los dictámenes médicos indispensables.</p>
+                <p>Más tarde, la madre ofreció nuevos datos de prueba, relacionados con los mismos hechos en la fiscalía de la Ciudad de México, por lo que la agente del ministerio público ordenó su recepción. Luego, remitió la totalidad de la carpeta de investigación a la fiscalía de Guanajuato para continuar con la indagatoria.</p>
 
-        <p><strong>Justificación:</strong> Cuando una niña, un niño o un adolescente es víctima de violencia sexual, las autoridades ministeriales tienen la obligación reforzada de practicar las diligencias básicas para evitar la pérdida de las huellas o de los indicios relevantes para la investigación, así como para no provocar una revictimización, en atención al interés superior de la niñez.</p>
-        <p>Les mando un cordial saludo.</p>
-</div>
+                <p>En la audiencia inicial, un juez de control declaró nulos todos los datos de prueba recabados por la agente del ministerio público de la Ciudad de México, incluidas las denuncias de la madre y las de sus menores hijos, los cuales se recabaron previamente a conocer el lugar en donde ocurrieron los hechos, así como los primeros dictámenes médicos y psicológicos, todo ello bajo el argumento de que el ministerio público de Ciudad de México carecía de competencia para recibirlos. En consecuencia, ante la nulidad de la totalidad de los datos de prueba, determinó no vincular a proceso al progenitor, lo cual fue confirmado en apelación.</p>
+
+                <p>En contra de la resolución de segunda instancia, la madre promovió un juicio de amparo indirecto, en el que alegó que no se debió declarar la nulidad de todos los datos de prueba y, por tanto, que era inconstitucional el auto de no vinculación a proceso. El Juzgado de Distrito concedió el amparo a la madre de los niños bajo el argumento de que si bien la totalidad de los datos de prueba eran nulos por haberse recabado por una autoridad incompetente, deberían valorarse nuevamente a la luz de la doctrina de descubrimiento inevitable.</p>
+
+                <p>Inconforme, la madre presentó un recurso de revisión en el que señaló que no se tomó en cuenta el interés superior de los infantes y que el Juzgado de Distrito convalidó la nulidad de los datos de prueba por falta de competencia, lo cual vulnera los derechos humanos de sus hijos. Por su parte, el padre interpuso un diverso recurso de revisión en el cual alegó que la agente del ministerio público de la Ciudad de México actuó de forma parcial y que no debían analizarse nuevamente los datos de prueba declarados nulos. Finalmente, ambos recursos fueron atraídos por la Primera Sala de la Suprema Corte de Justicia de la Nación para su resolución.</p>
+
+                <p><strong>Criterio jurídico:</strong> Ante una denuncia por posibles delitos sexuales cometidos en contra de niñas, niños y adolescentes, <strong>el ministerio público debe investigar con perspectiva de infancia, a pesar de su incompetencia por razón de territorio</strong>, lo que implica iniciar una carpeta de investigación, sin demora, en la que se tome en cuenta la edad, la madurez y el desarrollo de la posible víctima para llevar a cabo las siguientes acciones inmediatas: a) recabar la declaración de la niña o del niño, sin priorizar aspectos procesales relacionados con la competencia ministerial por razón de territorio; b) ordenar que se brinde atención médica y psicológica a la víctima, a efecto de preservar su bienestar integral; y c) recolectar los dictámenes médicos y psicológicos indispensables por parte de profesionales especializados en niñez. Realizado lo anterior, el ministerio público deberá remitir, en su caso, la carpeta de investigación a la autoridad ministerial competente para que continúe con su integración.</p>
+
+                <p><strong>Justificación:</strong> Por regla general, el ministerio público determina su incompetencia desde el momento en el que tiene conocimiento de que los posibles hechos delictivos ocurrieron en un lugar distinto de aquel en el que se presentó la denuncia, por lo cual debe remitir inmediatamente la carpeta de investigación a la autoridad ministerial competente para la continuación de la indagatoria. <strong>Sin embargo, cuando una niña, un niño o un adolescente es víctima de violencia sexual, las autoridades ministeriales tienen la obligación reforzada de practicar las diligencias básicas para evitar la pérdida de las huellas o de los indicios relevantes para la investigación, así como para no provocar una revictimización, en atención al interés superior de la niñez.</strong></p>
+
+                <p>Siendo así, resulta imperativo que la autoridad ministerial no priorice diligencias dilatorias relacionadas con su competencia ante la evidente necesidad de atención diligente de casos relacionados con violencia sexual cometida en contra de la niñez. <strong>Por el contrario, todas las autoridades ministeriales que intervienen en las investigaciones relacionadas con violencia sexual en contra de niñas, niños o adolescentes deben estar especialmente atentas para evitar que las posibles víctimas sufran, durante el desarrollo del proceso penal, aún más daños que los ocasionados por la probable comisión del hecho delictivo</strong>; particularmente, cuando se señala la participación de algún familiar, dado el vínculo de confianza y de autoridad que existe entre éste y la víctima.</p>
+
+                <p>Para ello es necesario que, cuando tenga conocimiento de delitos de esta gravedad, inicie de inmediato una carpeta de investigación en la que tome en consideración la edad, la madurez y el desarrollo de la posible víctima de la conducta delictiva, para recabar de manera inmediata su declaración en un ambiente cómodo y seguro que le brinde privacidad y confianza, de forma tal que se evite o limite la necesidad de su repetición ante la autoridad ministerial competente.</p>
+
+                <p><strong>También deberá brindar atención médica y psicológica inmediata a los infantes, a cargo de personal profesional específicamente capacitado en la atención a víctimas de este tipo de delitos y con perspectiva de niñez, con el objeto de preservar su salud física y mental.</strong> Asimismo, deberá recabar los dictámenes médicos y psicológicos por parte de personal especializado con el objeto de frenar en todo momento la posible revictimización y limitar las diligencias y actuaciones en donde su participación sea estrictamente necesaria, a efecto de evitar la presencia e interacción de aquéllas con su agresor. </p>
+
+                <p>Hecho lo anterior, la autoridad ministerial incompetente deberá remitir la indagatoria al ministerio público legalmente competente para la continuación de la indagatoria.”</p>
+
+            </div>
+            
+            <p style="text-align: center; text-indent: 0;">Les mando un cordial saludo.</p>
+        </div>
+    </div>
+
+
+    <div class="glass-panel reveal">
+        <h2 class="seccion-titulo">Violencia contra el género: Un problema social</h2>
+        
+        <div class="texto-profesional">
+            <h3>Por: Viridiana Acevedo Ceballos</h3>
+
+            <p><strong>¿Qué es la violencia contra el género?</strong> La Organización de las Naciones Unidas (ONU) refiere que la violencia de género consiste en actos dañinos dirigidos contra una persona o grupo de personas por razón de su género; tiene origen en la desigualdad, el abuso de poder y la existencia de normas que dañan. La violencia por razón de género afecta principalmente a mujeres, niñas y personas de la diversidad sexual, y se relaciona con probar la masculinidad o la dominación de un hombre.</p>
+
+            <p>Es fundamental entender que <strong>la violencia por razón de género NO es sinónimo exclusivo de violencia contra las mujeres</strong>: ésta también se puede representar con actos contra minorías sexuales o contra niños y adolescentes.</p>
+
+            <h3>¿Cómo surge la preocupación por erradicar la violencia de género en México?</h3>
+            <p>Los estudios de género sitúan el conflicto en factores como: deficiencias en la educación, la pobreza, las adicciones, la delincuencia, y la falta de cultura de la paz y respeto. Existe carencia en la inteligencia emocional de las personas, propiciando que la violencia surja en la pareja, se extienda a la familia y afecte a personas en vulnerabilidad.</p>
+
+            <p>En México, una reforma constitucional sobre los derechos humanos (10 de junio de 2011) dio la pauta para aumentar el esfuerzo para eliminarla, debido al alto índice de asuntos donde se han visto afectadas muchísimas mujeres en su derecho a la libertad y seguridad sexual, así como niñas, niños y adolescentes víctimas de tortura sexual, trata de personas y daño a su intimidad.</p>
+
+            <p>A partir de la condena contra México de la <strong>Corte Interamericana de Derechos Humanos</strong> (Caso Campo Algodonero del año 2009), se estableció la necesidad de crear en las legislaciones penales del país el delito de <strong>feminicidio</strong>, así como alertas tempranas ante la desaparición de mujeres y niñas-niños (Alertas AMBER).</p>
+
+            <h3>Mecanismos de Protección y Tipos de Violencia</h3>
+            <p>Con base en la <strong>Ley de Acceso de las Mujeres a una Vida Libre de Violencia</strong>, existen medidas u órdenes de protección de naturaleza administrativa y jurisdiccional. Las órdenes administrativas (otorgadas por el Ministerio Público), incluyen el traslado de las víctimas a espacios seguros y alojamiento temporal en refugios. Las jurisdiccionales (otorgadas por los jueces), contemplan el uso de dispositivos electrónicos para impedir el contacto, y la prohibición de acceso al agresor al domicilio o lugar de trabajo.</p>
+
+            <p>Esta Ley clasifica diversos tipos de violencia: en la familia, laboral y docente, en la comunidad, institucional, política, digital y mediática, y feminicida. Por su parte, el <strong>Código Penal del Estado de Yucatán</strong> sanciona delitos como: violación a la intimidad sexual, violencia obstétrica, violencia por parentesco, feminicidio y abuso sexual.</p>
+
+            <h3>Instituciones y Protocolos en Yucatán</h3>
+            <p><strong>Centro de Justicia para las Mujeres:</strong> Tiene como objetivo prevenir, atender, sancionar y erradicar la violencia contra las mujeres. Brinda atención gratuita e integral con perspectiva de género, trabajando en conjunto con la Fiscalía General del Estado y la Procuraduría de la Defensa del Menor y la Familia (PRODENNAY).</p>
+
+            <p><strong>Alerta AMBER Yucatán:</strong> Es un programa para la pronta localización y recuperación de niñas, niños y adolescentes en riesgo inminente. El procedimiento inicia comunicándose de inmediato para emitir el reporte y acudiendo al Ministerio Público para formalizar la denuncia con una fotografía reciente.</p>
+
+            <p><strong>Protocolo ALBA Yucatán:</strong> Destinado a mujeres, niñas y personas vulnerables de cualquier género. Se activa de forma inmediata tras el reporte, procediendo a la difusión a través de medios masivos de comunicación.</p>
+
+            <div class="datos-jurisprudencia">
+                <h3>¿Sabías que...? Leyes con nombre de mujer</h3>
+                <p>En México, muchas leyes contra la violencia de género llevan el nombre de mujeres. Detrás de cada una hay una historia de violencia que generó indignación social y presión para hacer cambios en la ley:</p>
+                <ul>
+                    <li><strong>Ley Olimpia:</strong> Prohíbe la divulgación de contenido sexual sin consentimiento de la persona.</li>
+                    <li><strong>Ley Ingrid:</strong> Sanciona la filtración de imágenes o datos de víctimas de delitos, sobre todo si proviene de funcionarios.</li>
+                    <li><strong>Ley Malena:</strong> Reconoce los ataques con ácido como una forma grave de violencia y constitutiva de tentativa de feminicidio.</li>
+                    <li><strong>Ley Monse:</strong> Promueve el castigo de familiares o personas que encubran a feminicidas.</li>
+                    <li><strong>Ley Sabina:</strong> Ordena la creación de un registro de deudores alimentarios.</li>
+                    <li><strong>Ley Valeria:</strong> Considera el acecho o "stalking" como delito penal.</li>
+                    <li><strong>Ley Monzón:</strong> Dicta que quien cometa feminicidio pierde automáticamente la patria potestad de sus hijos.</li>
+                </ul>
+            </div>
+
+            <p><strong>Conclusión:</strong> Existen programas e instituciones en México, pero el avance es lento y se ha dado principalmente por la incansable lucha de organizaciones civiles y defensores de derechos humanos. Depende de cada persona no generar violencia, pero si sucede un delito: <strong>hay que alzar la voz, hay que denunciar, hay que pedir ayuda</strong>. No se debe permitir bajo ninguna justificación la violencia contra ninguna persona, menos si está indefensa.</p>
+        </div>
+    </div>
 
 </div>
 
@@ -426,8 +562,8 @@
             <button onclick="toggleSpeech()" class="voice-btn" title="Narrar todo">
                 <i class="fas fa-comment"></i>
             </button>
-            <button onclick="pauseSpeech()" class="voice-btn stop" title="Detener voz">
-                <i class="fas fa-stop"></i>
+            <button onclick="pauseResumeSpeech()" class="voice-btn pause" id="pauseVoiceBtn" title="Pausar / Reanudar voz">
+                <i class="fas fa-pause"></i>
             </button>
         </div>
     </div>
@@ -437,7 +573,7 @@
     <video id="assistantVideo" class="dog-illustration" muted loop playsinline>
         <source src="avatar.mp4" type="video/mp4">
     </video>
-    <p style="font-size: 0.7rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);">GUÍA JURÍDICA</p>
+    <p style="font-size: 0.6rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);">GUÍA JURÍDICA</p>
 </div>
 
 <script>
@@ -445,10 +581,10 @@
     const playBtn = document.getElementById('playBtn');
     const wave = document.getElementById('wave');
     const dog = document.getElementById('assistantVideo');
+    const pauseVoiceBtn = document.getElementById('pauseVoiceBtn');
 
     bgMusic.volume = 0.5;
 
-    // Animación al scrollear
     function reveal() {
         document.querySelectorAll('.reveal').forEach(el => {
             if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
@@ -462,7 +598,6 @@
         const contenido = btn.nextElementSibling;
         const icono = btn.querySelector('i');
         
-        // Cierra los otros botones abiertos
         document.querySelectorAll('.ley-contenido').forEach(el => {
             if(el !== contenido) {
                 el.classList.remove('abierta');
@@ -470,7 +605,6 @@
             }
         });
 
-        // Abre o cierra el clickeado
         if (contenido.classList.contains('abierta')) {
             contenido.classList.remove('abierta');
             icono.className = 'fas fa-chevron-down';
@@ -480,7 +614,6 @@
         }
     }
 
-    // Lógica del audio
     function toggleMusic() {
         if (bgMusic.paused) { 
             bgMusic.play().catch(e => console.log("Interacción requerida")); 
@@ -495,7 +628,9 @@
 
     // Lógica de Voz
     function readText(text) {
-        speechSynthesis.cancel();
+        speechSynthesis.cancel(); // Detiene cualquier lectura anterior
+        pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>'; // Reinicia el ícono de pausa
+        
         const utter = new SpeechSynthesisUtterance(text);
         utter.lang = 'es-MX';
         utter.pitch = 0.95;
@@ -509,18 +644,24 @@
             dog.classList.remove('dog-speaking'); 
             dog.pause(); 
             dog.currentTime = 0; 
+            pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
         };
         
         speechSynthesis.speak(utter);
     }
 
+    // Narrar todo el documento
     function toggleSpeech() {
         if (speechSynthesis.speaking) {
-            pauseSpeech();
+            speechSynthesis.cancel(); // Si ya está leyendo y se aprieta "Narrar todo", lo cancela (función Stop)
+            dog.classList.remove('dog-speaking'); 
+            dog.pause(); 
+            dog.currentTime = 0;
+            pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
             return;
         }
         let content = "";
-        document.querySelectorAll('header h1, header p, h2.seccion-titulo, .card-content h3, .card-content p, .bloque, .ley-contenido p, .glass-panel p, h3').forEach(el => { 
+        document.querySelectorAll('header h1, header p, h2.seccion-titulo, .card-content h3, .card-content p, .bloque, .ley-contenido p, .texto-profesional p, .datos-jurisprudencia p, .datos-jurisprudencia h3, .datos-jurisprudencia li').forEach(el => { 
             if(el.classList.contains('seccion-titulo')) {
                 const cleanTitle = el.cloneNode(true);
                 const btnInside = cleanTitle.querySelector('button');
@@ -533,36 +674,61 @@
         readText(content);
     }
 
-    function pauseSpeech() { 
-        speechSynthesis.cancel(); 
-        dog.classList.remove('dog-speaking'); 
-        dog.pause(); 
-        dog.currentTime = 0; 
+    // NUEVA FUNCIÓN: Pausar y Reanudar la voz
+    function pauseResumeSpeech() {
+        if (speechSynthesis.speaking) {
+            if (speechSynthesis.paused) {
+                // Si estaba pausado, reanudar
+                speechSynthesis.resume();
+                dog.play();
+                dog.classList.add('dog-speaking');
+                pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                // Si estaba hablando, pausar
+                speechSynthesis.pause();
+                dog.pause();
+                dog.classList.remove('dog-speaking');
+                pauseVoiceBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
     }
 
-    // Botones individuales de leer
-    document.querySelectorAll('h2.seccion-titulo').forEach(title => {
-        const btn = document.createElement('button');
-        btn.className = 'section-speak-btn';
-        btn.textContent = 'Leer';
-        
-        btn.onclick = (e) => {
-            e.stopPropagation();
-            const cleanTitle = title.cloneNode(true);
-            const btnInside = cleanTitle.querySelector('button');
-            if (btnInside) btnInside.remove();
+    // Función para la sección Mensaje
+    function leerSeccionMensaje(btn) {
+        let sectionText = "Mensaje. ";
+        const container = btn.closest('.glass-panel').querySelector('.transcripcion');
+        container.querySelectorAll('.bloque, .ley-btn, .ley-contenido p').forEach(el => {
+             sectionText += el.innerText + ". ";
+        });
+        readText(sectionText);
+    }
 
-            let sectionText = cleanTitle.innerText + ". ";
-            let next = title.nextElementSibling;
-            while (next && !next.matches('h2.seccion-titulo')) { 
-                if(next.tagName.toLowerCase() === 'p' || next.tagName.toLowerCase() === 'h3' || next.classList.contains('grid') || next.classList.contains('video-wrapper')) {
-                    sectionText += next.innerText + ". "; 
+    // Botones individuales
+    document.querySelectorAll('h2.seccion-titulo').forEach(title => {
+        if (!title.parentElement.querySelector('.section-speak-btn')) {
+            const btn = document.createElement('button');
+            btn.className = 'section-speak-btn';
+            btn.textContent = 'Leer';
+            
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                const cleanTitle = title.cloneNode(true);
+                const btnInside = cleanTitle.querySelector('button');
+                if (btnInside) btnInside.remove();
+
+                let sectionText = cleanTitle.innerText + ". ";
+                let next = title.nextElementSibling;
+                // Modificado para que también lea las listas (ul/li) en el nuevo formato
+                while (next && !next.matches('h2.seccion-titulo')) { 
+                    if(next.tagName.toLowerCase() === 'p' || next.tagName.toLowerCase() === 'h3' || next.tagName.toLowerCase() === 'ul' || next.classList.contains('grid') || next.classList.contains('video-wrapper') || next.classList.contains('texto-profesional')) {
+                        sectionText += next.innerText + ". "; 
+                    }
+                    next = next.nextElementSibling; 
                 }
-                next = next.nextElementSibling; 
-            }
-            readText(sectionText);
-        };
-        title.appendChild(btn);
+                readText(sectionText);
+            };
+            title.appendChild(btn);
+        }
     });
 </script>
 
