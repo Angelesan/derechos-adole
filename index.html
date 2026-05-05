@@ -1,192 +1,234 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juventud y Realidad</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juventud y Realidad - Inicio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f4c75;
+            --secondary: #1b6ca8;
+            --accent: #3282b8;
+            --light: #bbe1fa;
+            --bg: #f0f4f8;
+            --white: rgba(255, 255, 255, 0.95);
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --gold: #c9a96e;
+        }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background: var(--bg); color: #2c3e50; line-height: 1.6; overflow-x: hidden; }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#ecf0f1,#fff);color:#2c3e50;line-height:1.6}
+        /* ================= MENÚ SUPERIOR UNIFICADO ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        nav .logo {
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            padding-bottom: 3px;
+        }
+        nav a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+            display: inline-block;
+        }
+        nav a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+        }
 
-/* NAV */
-nav{position:fixed;top:0;width:100%;background:linear-gradient(135deg,#0f4c75,#1b6ca8);padding:15px 40px;display:flex;justify-content:space-between;z-index:1000}
-nav .logo{color:#fff;font-weight:700;font-size:1.2rem}
-nav ul{display:flex;gap:30px;list-style:none}
-nav a{color:#fff;text-decoration:none;transition:.3s}
-nav a:hover{opacity:0.8}
+        /* ================= HERO SECTION ================= */
+        .hero {
+            margin-top: 50px;
+            padding: 160px 20px;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(rgba(15,76,117,.8), rgba(27,108,168,.8)), url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .hero h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; font-weight: 300; }
 
-/* HERO */
-.hero{margin-top:70px;padding:120px 20px;text-align:center;color:#fff;background:linear-gradient(rgba(15,76,117,.8),rgba(27,108,168,.8)),url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b');background-size:cover;background-position:center}
-.hero h1{font-size:3.5rem;margin-bottom:10px}
-.hero p{font-size:1.2rem;opacity:0.9}
+        /* ================= TARJETAS / SECCIONES ================= */
+        .seccion { padding: 60px 20px 160px; /* 160px de margen inferior para que el avatar no tape las tarjetas */ }
+        .cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .card-link { text-decoration: none; color: inherit; display: block; }
+        
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            text-align: center;
+            transition: .3s;
+            height: 100%;
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(15, 76, 117, 0.15); }
+        .card img { width: 100%; height: 200px; border-radius: 15px; object-fit: cover; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .card h3 { color: var(--primary); font-size: 1.5rem; text-transform: uppercase; margin-bottom: 10px; }
+        .card p { color: #555; font-size: 1rem; line-height: 1.5; }
 
-/* CARDS */
-.seccion{padding:80px 20px}
-.cards-wrapper{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:auto}
-.card-link{text-decoration:none;color:inherit;display:block}
-.card{background:#fff;border-radius:20px;padding:25px;box-shadow:0 10px 30px rgba(0,0,0,.05);text-align:center;transition:.3s;height:100%}
-.card:hover{transform:translateY(-10px);box-shadow:0 15px 35px rgba(0,0,0,.1)}
-.card img{width:100%;height:200px;border-radius:15px;object-fit:cover;margin-bottom:15px}
-.card h3{color:#0f4c75;font-size:1.5rem}
+        /* ================= REPRODUCTOR PREMIUM ================= */
+        .music-panel {
+            position: fixed; bottom: 20px; left: 0;
+            transform: translateX(-75%); transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 9999;
+        }
+        .music-panel:hover { transform: translateX(0); }
 
-/* ================= PANEL PREMIUM ================= */
-.music-panel{
-position:fixed;
-bottom:20px;
-left:0;
-transform:translateX(-75%);
-transition:.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-z-index:9999;
-}
+        .music-box {
+            width: 280px; padding: 20px; border-radius: 0 20px 20px 0;
+            background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(240,244,248,.9));
+            backdrop-filter: blur(12px); box-shadow: 10px 0 30px rgba(0,0,0,.15);
+            border: 1px solid rgba(255,255,255,.4);
+        }
 
-.music-panel:hover{
-transform:translateX(0);
-}
+        .music-header { display: flex; align-items: center; gap: 10px; color: var(--primary); font-weight: 700; margin-bottom: 15px; }
+        .music-header i { color: var(--gold); }
 
-.music-box{
-width:280px;
-padding:20px;
-border-radius:0 20px 20px 0;
-background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(240,244,248,.9));
-backdrop-filter:blur(12px);
-box-shadow:10px 0 30px rgba(0,0,0,.15);
-border:1px solid rgba(255,255,255,.4);
-}
+        .music-btn {
+            width: 100%; padding: 12px; border: none; border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff; cursor: pointer; font-weight: 600; transition: .3s; margin-bottom: 10px;
+        }
 
-.music-header{
-display:flex;
-align-items:center;
-gap:10px;
-color:#0f4c75;
-font-weight:700;
-margin-bottom:15px;
-}
-.music-header i{color:#c9a96e}
+        .wave { display: flex; gap: 4px; justify-content: center; margin: 15px 0; opacity: .3; height: 20px; align-items: center; }
+        .wave span { width: 4px; height: 10px; background: var(--gold); animation: wave 1s infinite ease-in-out; }
+        .wave span:nth-child(2) { animation-delay: .2s; }
+        .wave span:nth-child(3) { animation-delay: .4s; }
+        @keyframes wave { 0%,100% { height: 8px; } 50% { height: 20px; } }
 
-.music-btn{
-width:100%;
-padding:12px;
-border:none;
-border-radius:12px;
-background:linear-gradient(135deg,#0f4c75,#1b6ca8);
-color:#fff;
-cursor:pointer;
-font-weight:600;
-transition:.3s;
-margin-bottom:10px;
-}
+        .volume-box { display: flex; gap: 10px; align-items: center; margin: 10px 0; }
+        .volume-box input { flex: 1; accent-color: var(--secondary); cursor: pointer; }
 
-.wave{
-display:flex;
-gap:4px;
-justify-content:center;
-margin:15px 0;
-height:20px;
-align-items:center;
-opacity:0.3;
-}
-.wave span{
-width:4px;
-height:10px;
-background:#c9a96e;
-animation:wave 1s infinite ease-in-out;
-}
-.wave span:nth-child(2){animation-delay:.2s}
-.wave span:nth-child(3){animation-delay:.4s}
+        .voice-controls { display: flex; gap: 8px; margin-top: 15px; }
+        .voice-btn { flex: 1; padding: 10px; border: none; border-radius: 10px; cursor: pointer; background: rgba(15,76,117,.1); transition: .3s; font-size: 1.1rem;}
+        .voice-btn:hover { background: rgba(15,76,117,.2); }
+        .voice-btn.pause { color: var(--warning); }
 
-@keyframes wave{
-0%,100%{height:8px}
-50%{height:20px}
-}
+        /* ================= ASISTENTE VIRTUAL ================= */
+        .virtual-assistant-container {
+            position: fixed; bottom: 20px; right: 20px; z-index: 10000;
+            background: #ffffff; padding: 10px; border-radius: 20px 20px 0 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); animation: avatarEntrance 0.8s ease-out;
+        }
+        .dog-illustration { width: 105px; display: block; border-radius: 15px; animation: avatarFloat 3s ease-in-out infinite; } 
+        .dog-speaking { outline: 4px solid var(--accent); filter: brightness(1.05); }
 
-.volume-box{display:flex;gap:10px;align-items:center;margin:10px 0}
-.volume-box input{flex:1;accent-color:#1b6ca8;cursor:pointer}
+        @keyframes avatarFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+        @keyframes avatarEntrance { from { opacity: 0; transform: translateY(30px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-.voice-controls{display:flex;gap:8px;margin-top:15px}
-.voice-btn{
-flex:1;
-padding:10px;
-border:none;
-border-radius:10px;
-background:rgba(15,76,117,.1);
-cursor:pointer;
-transition:.3s;
-font-size:1.1rem;
-}
-.voice-btn:hover{background:rgba(15,76,117,.2)}
-.voice-btn.stop{color:#e74c3c}
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* AVATAR */
-.virtual-assistant-container{position:fixed;bottom:20px;right:20px;z-index:10000}
-.dog-illustration{width:130px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.1);background:#fff}
-.dog-speaking{outline:4px solid #3282b8;animation:float 2s infinite ease-in-out}
-
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-}
-
-</style>
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 15px; padding: 15px 20px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .hero { padding: 180px 20px 80px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<audio id="bgMusic" loop>
-<source src="Menuprivado.mp3" type="audio/mpeg">
-</audio>
-
+<!-- MENÚ SUPERIOR -->
 <nav>
-<div class="logo">Juventud y Realidad</div>
-<ul>
-<li><a href="#">Inicio</a></li>
-<li><a href="#">Secciones</a></li>
-</ul>
+    <div class="logo">Juventud y Realidad</div>
+    <ul>
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="negativo.html">Aspectos Negativos</a></li>
+        <li><a href="infor.html">Información</a></li>
+        <li><a href="vida.html">Vida Ideal</a></li>
+    </ul>
 </nav>
 
-<section class="hero">
-<h1>Juventud y Realidad</h1>
-<p>Información, apoyo y orientación para los retos de hoy</p>
+<audio id="bgMusic" loop>
+    <source src="Menuprivado.mp3" type="audio/mpeg">
+</audio>
+
+<section class="hero reveal active">
+    <h1>Juventud y Realidad</h1>
+    <p>Información, apoyo y orientación para los retos de hoy</p>
 </section>
 
-<section class="seccion">
-<div class="cards-wrapper">
-    <a href="negativo.html" class="card-link">
-        <div class="card">
-            <img src="i1.jpg" alt="Aspectos Negativos">
-            <h3>Aspectos Negativos</h3>
-            <p style="margin-top:10px; color:#666; font-size:0.9rem;">Derechos no respetados y realidades sociales críticas.</p>
-        </div>
-    </a>
+<!-- SECCIÓN DE TARJETAS (MENÚ VISUAL) -->
+<section id="secciones" class="seccion">
+    <div class="cards-wrapper">
+        
+        <!-- Tarjeta 1: Aspectos Negativos -->
+        <a href="negativo.html" class="card-link reveal">
+            <div class="card">
+                <img src="i1.jpg" alt="Aspectos Negativos">
+                <h3>Aspectos Negativos</h3>
+                <p>Derechos no respetados y realidades sociales críticas.</p>
+            </div>
+        </a>
 
-    <a href="infor.html" class="card-link">
-        <div class="card">
-            <img src="i2.jpg" alt="Aspectos Negativos">
-            <h3>Información</h3>
-            <p style="margin-top:10px; color:#666; font-size:0.9rem;">Derechos no respetados y realidades sociales críticas.</p>
-        </div>
-    </a>
+        <!-- Tarjeta 2: Información -->
+        <a href="infor.html" class="card-link reveal">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" alt="Información">
+                <h3>Información</h3>
+                <p>Recursos educativos y guías de apoyo para adolescentes.</p>
+            </div>
+        </a>
 
-    <a href="vida.html" class="card-link">
-    <div class="card">
-        <img src="i3.jpg" alt="Vida Ideal">
-        <h3>Vida Ideal</h3>
-        <p style="margin-top:10px; color:#666; font-size:0.9rem;">Construyendo un futuro saludable y con bienestar integral.</p>
+        <!-- Tarjeta 3: Vida Ideal -->
+        <a href="vida.html" class="card-link reveal">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Vida Ideal">
+                <h3>Vida Ideal</h3>
+                <p>Construyendo un futuro saludable y con bienestar integral.</p>
+            </div>
+        </a>
+
     </div>
-    </a>
-    
-</div>
 </section>
 
+<!-- REPRODUCTOR PREMIUM -->
 <div class="music-panel">
     <div class="music-box">
-        <div class="music-header">
-            <i class="fas fa-music"></i>
-            <span>Reproductor Premium</span>
-        </div>
-
+        <div class="music-header"><i class="fas fa-music"></i> <span>Reproductor Premium</span></div>
+        
         <button onclick="toggleMusic()" class="music-btn" id="playBtn">
             <i class="fas fa-play"></i> Reproducir
         </button>
@@ -202,74 +244,126 @@ font-size:1.1rem;
         </div>
 
         <div class="voice-controls">
-            <button onclick="toggleSpeech()" class="voice-btn" title="Escuchar introducción">
+            <button onclick="toggleSpeech()" class="voice-btn" title="Narrar todo">
                 <i class="fas fa-comment"></i>
             </button>
-            <button onclick="pauseSpeech()" class="voice-btn stop" title="Detener voz">
-                <i class="fas fa-stop"></i>
+            <button onclick="pauseResumeSpeech()" class="voice-btn pause" id="pauseVoiceBtn" title="Pausar / Reanudar voz">
+                <i class="fas fa-pause"></i>
             </button>
         </div>
     </div>
 </div>
 
+<!-- ASISTENTE VIRTUAL -->
 <div class="virtual-assistant-container">
     <video id="assistantVideo" class="dog-illustration" muted loop playsinline>
         <source src="avatar.mp4" type="video/mp4">
     </video>
+    <p style="font-size: 0.6rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);">ASISTENTE VIRTUAL</p>
 </div>
 
 <script>
-const bgMusic = document.getElementById('bgMusic');
-const btn = document.getElementById('playBtn');
-const wave = document.getElementById('wave');
-const dog = document.getElementById('assistantVideo');
+    const bgMusic = document.getElementById('bgMusic');
+    const playBtn = document.getElementById('playBtn');
+    const wave = document.getElementById('wave');
+    const dog = document.getElementById('assistantVideo');
+    const pauseVoiceBtn = document.getElementById('pauseVoiceBtn');
 
-bgMusic.volume = 0.5;
+    bgMusic.volume = 0.5;
 
-function toggleMusic() {
-    if (bgMusic.paused) {
-        bgMusic.play().catch(e => console.log("Error al reproducir: El usuario debe interactuar primero."));
-        btn.innerHTML = '<i class="fas fa-pause"></i> Pausar';
-        wave.style.opacity = 1;
-    } else {
-        bgMusic.pause();
-        btn.innerHTML = '<i class="fas fa-play"></i> Reproducir';
-        wave.style.opacity = 0.3;
+    // Efecto Reveal al hacer scroll
+    function reveal() {
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+        });
     }
-}
+    window.addEventListener('scroll', reveal);
+    reveal();
 
-function pauseSpeech() {
-    speechSynthesis.cancel();
-    dog.pause();
-    dog.classList.remove('dog-speaking');
-    dog.currentTime = 0;
-}
-
-function toggleSpeech() {
-    // Contenido extraído de tu documento para la bienvenida
-    const text = "Bienvenido a Juventud y Realidad. La adolescencia es la última etapa de la infancia y el comienzo de la aventura de ser uno mismo. Sin embargo, muchos enfrentan realidades difíciles. Aquí encontrarás información sobre derechos, salud y bienestar.";
-    
-    if (speechSynthesis.speaking) {
-        speechSynthesis.cancel();
+    // Lógica de Música
+    function toggleMusic() {
+        if (bgMusic.paused) { 
+            bgMusic.play().catch(e => console.log("Interacción requerida primero")); 
+            playBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar'; 
+            wave.style.opacity = 1; 
+        } else { 
+            bgMusic.pause(); 
+            playBtn.innerHTML = '<i class="fas fa-play"></i> Reproducir'; 
+            wave.style.opacity = 0.3; 
+        }
     }
 
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = 'es-MX';
-    utter.rate = 0.95;
+    // Lógica de Voz Base
+    function readText(text) {
+        speechSynthesis.cancel(); 
+        pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>'; 
+        
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'es-MX';
+        utter.pitch = 0.95;
+        utter.rate = 0.97;
 
-    utter.onstart = () => {
-        dog.play();
-        dog.classList.add('dog-speaking');
-    };
-    
-    utter.onend = () => {
-        dog.pause();
-        dog.classList.remove('dog-speaking');
-        dog.currentTime = 0;
-    };
+        const voices = speechSynthesis.getVoices();
+        const preferredVoice = voices.find(v =>
+            v.lang.startsWith('es') &&
+            /jorge|hector|diego|microsoft sabina|raul/i.test(v.name)
+        ) || voices.find(v => v.lang.startsWith('es'));
 
-    speechSynthesis.speak(utter);
-}
+        if (preferredVoice) utter.voice = preferredVoice;
+
+        utter.onstart = () => { 
+            dog.classList.add('dog-speaking'); 
+            dog.play(); 
+        };
+        utter.onend = () => { 
+            dog.classList.remove('dog-speaking'); 
+            dog.pause(); 
+            dog.currentTime = 0; 
+            pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        };
+        
+        speechSynthesis.speak(utter);
+    }
+
+    // Narrar Todo (Adaptado para leer las tarjetas del inicio)
+    function toggleSpeech() {
+        if (speechSynthesis.speaking) {
+            speechSynthesis.cancel(); 
+            dog.classList.remove('dog-speaking'); 
+            dog.pause(); 
+            dog.currentTime = 0;
+            pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            return;
+        }
+
+        let content = "Bienvenido a Juventud y Realidad. Información, apoyo y orientación para los retos de hoy. Nuestro menú de navegación es el siguiente. ";
+        
+        // Lee el contenido de cada tarjeta
+        document.querySelectorAll('.card').forEach(card => {
+            let titulo = card.querySelector('h3').innerText;
+            let descripcion = card.querySelector('p').innerText;
+            content += "Sección: " + titulo + ". " + descripcion + ". ";
+        });
+        
+        readText(content);
+    }
+
+    // Pausar y Reanudar la voz
+    function pauseResumeSpeech() {
+        if (speechSynthesis.speaking) {
+            if (speechSynthesis.paused) {
+                speechSynthesis.resume();
+                dog.play();
+                dog.classList.add('dog-speaking');
+                pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                speechSynthesis.pause();
+                dog.pause();
+                dog.classList.remove('dog-speaking');
+                pauseVoiceBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+    }
 </script>
 
 </body>
