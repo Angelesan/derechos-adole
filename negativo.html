@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aspectos Negativos</title>
+    <title>Aspectos Negativos - Juventud y Realidad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -15,6 +15,7 @@
             --bg: #f0f4f8;
             --white: rgba(255, 255, 255, 0.95);
             --danger: #e74c3c;
+            --warning: #f39c12;
             --gold: #c9a96e;
         }
 
@@ -59,8 +60,6 @@
             transform: translateY(-2px);
             display: inline-block;
         }
-        
-        /* ESTILO PARA LA PÁGINA ACTUAL (ACTIVA) */
         nav a.active {
             color: var(--gold);
             border-bottom: 2px solid var(--gold);
@@ -70,13 +69,16 @@
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 130px 20px 80px; /* Aumentado para que el menú no tape el texto */
+            padding: 130px 20px 80px; 
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
-        .container { max-width: 1100px; margin: -50px auto 60px; padding: 0 20px; }
+        header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Contenedor central con margen inferior ajustado para el avatar */
+        .container { width: 95%; max-width: 1100px; margin: -50px auto 120px; padding: 0 20px; } 
 
         .glass-panel {
             background: var(--white);
@@ -89,7 +91,7 @@
         }
 
         .main-title {
-            font-size: 1.8rem;
+            font-size: 1.4rem; /* Tamaño reducido para mejor jerarquía */
             color: var(--primary);
             font-weight: 800;
             text-align: center;
@@ -106,6 +108,51 @@
             align-items: center;
             gap: 15px;
             text-transform: uppercase;
+        }
+
+        /* ================= FORMATO PROFESIONAL ================= */
+        .texto-profesional {
+            padding: 0 10px;
+        }
+        .texto-profesional p {
+            text-align: justify; 
+            text-indent: 40px; 
+            margin-bottom: 1.5rem; 
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #3a4b5c;
+        }
+        .texto-profesional h3 {
+            color: var(--secondary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            text-transform: uppercase;
+            text-indent: 0;
+        }
+        .texto-profesional ul, .texto-profesional ol {
+            margin-left: 40px;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: #3a4b5c;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .texto-profesional li {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: rgba(15, 76, 117, 0.05);
+            border-left: 6px solid var(--primary);
+            padding: 25px;
+            border-radius: 0 15px 15px 0;
+            margin: 25px 0;
+            font-style: italic;
+            text-indent: 0 !important;
+            font-size: 1.1rem !important;
+            color: var(--primary);
         }
 
         /* GRÁFICAS DE CÍRCULO */
@@ -144,6 +191,7 @@
         .circle-graph span { position: relative; font-size: 1.5rem; font-weight: 900; color: var(--primary); }
         .stat-label { font-weight: 700; color: #555; font-size: 0.9rem; text-transform: uppercase; }
 
+        /* IMÁGENES */
         .img-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -155,14 +203,7 @@
             object-fit: cover; border-radius: 15px;
             transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-
-        .highlight-box {
-            background: rgba(15, 76, 117, 0.05);
-            border-left: 6px solid var(--primary);
-            padding: 25px;
-            border-radius: 0 15px 15px 0;
-            margin: 25px 0;
-        }
+        .img-grid img:hover { transform: scale(1.05); z-index: 2; }
 
         /* REPRODUCTOR PREMIUM (Izquierda) */
         .music-panel {
@@ -209,42 +250,22 @@
         .voice-controls { display: flex; gap: 8px; margin-top: 15px; }
         .voice-btn { flex: 1; padding: 10px; border: none; border-radius: 10px; cursor: pointer; background: rgba(15,76,117,.1); transition: .3s; font-size: 1.1rem;}
         .voice-btn:hover { background: rgba(15,76,117,.2); }
-        .voice-btn.stop { color: var(--danger); }
+        .voice-btn.pause { color: var(--warning); }
 
         /* ASISTENTE (Derecha) */
         .virtual-assistant-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 10000;
-            background: #ffffff;
-            padding: 12px;
-            border-radius: 24px 24px 0 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            animation: avatarEntrance 0.8s ease-out;
+            position: fixed; bottom: 20px; right: 20px; z-index: 10000;
+            background: #ffffff; padding: 10px; border-radius: 20px 20px 0 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); animation: avatarEntrance 0.8s ease-out;
         }
-
-        .dog-illustration {
-            width: 140px;
-            display: block;
-            border-radius: 18px;
-            animation: avatarFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes avatarFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @keyframes avatarEntrance {
-            from { opacity: 0; transform: translateY(30px) scale(0.9); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
+        .dog-illustration { width: 105px; display: block; border-radius: 15px; animation: avatarFloat 3s ease-in-out infinite; } 
         .dog-speaking { outline: 4px solid var(--accent); filter: brightness(1.05); }
 
+        @keyframes avatarFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+        @keyframes avatarEntrance { from { opacity: 0; transform: translateY(30px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
         .section-speak-btn {
-            margin-left: 15px; border: none; padding: 6px 12px;
+            margin-left: auto; border: none; padding: 6px 12px;
             border-radius: 20px; background: var(--accent);
             color: white; cursor: pointer; font-size: 0.8rem; font-weight: 600;
         }
@@ -252,16 +273,17 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* RESPONSIVE PARA EL MENÚ */
         @media (max-width: 768px) {
             nav { flex-direction: column; gap: 15px; padding: 15px 20px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
             header { padding-top: 160px; }
+            .stats-visual-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+<!-- MENÚ DE NAVEGACIÓN -->
 <nav>
     <div class="logo">Juventud y Realidad</div>
     <ul>
@@ -284,20 +306,38 @@
 </header>
 
 <div class="container">
+    
+    <!-- SECCIÓN INTRODUCCIÓN (Contenedores separados para mantener el margen) -->
     <div class="glass-panel reveal active">
-        <div class="main-title">¡¡¡ LA ADOLESCENCIA ES LA ÚLTIMA ETAPA DE LA INFANCIA Y EL COMIENZO DE LA AVENTURA DE SER UNO MISMO!!!</div>
-        <p>Lamentablemente existen muchos adolescentes que no pueden expresar felizmente esta frase significativa. Tanto en un contexto mundial como nacional, los derechos humanos de los adolescentes son un tema importante y delicado. A continuación, se mencionan algunos de los derechos que no se han respetado y estadísticas relevantes:</p>
+        <div class="texto-profesional">
+            <div class="main-title">¡¡¡ LA ADOLESCENCIA ES LA ÚLTIMA ETAPA DE LA INFANCIA Y EL COMIENZO DE LA AVENTURA DE SER UNO MISMO!!!</div>
+            <p>Lamentablemente existen muchos adolescentes que no pueden expresar felizmente esta frase significativa. Tanto en un contexto mundial como nacional, los derechos humanos de los adolescentes son un tema importante y delicado. A continuación, se mencionan algunos de los derechos que no se han respetado y estadísticas relevantes:</p>
+        </div>
     </div>
 
-    <h2 class="seccion-titulo reveal"><i class="fas fa-hand-paper"></i> Derechos no respetados</h2>
+    <!-- SECCIÓN DERECHOS -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; margin-top: 50px;" class="reveal">
+        <h2 class="seccion-titulo" style="margin: 0; border: none; padding: 0;">Derechos no respetados</h2>
+        <button class="section-speak-btn">Leer</button>
+    </div>
+    
     <div class="glass-panel reveal">
-        <p><strong>- Derecho a una vida libre de violencia:</strong> Muchos adolescentes son víctimas de violencia física, psicológica y sexual.</p>
-        <p><strong>- Derecho a la educación:</strong> Algunos adolescentes enfrentan barreras para acceder a la educación, especialmente en zonas rurales o marginadas.</p>
-        <p><strong>- Derecho a la salud:</strong> La falta de acceso a servicios de salud y la discriminación en la atención médica son problemas comunes.</p>
-        <p><strong>- Derecho a la participación:</strong> Los adolescentes a menudo no tienen voz ni voto en decisiones que afectan su vida.</p>
+        <div class="texto-profesional">
+            <ul>
+                <li><strong>Derecho a una vida libre de violencia:</strong> Muchos adolescentes son víctimas de violencia física, psicológica y sexual.</li>
+                <li><strong>Derecho a la educación:</strong> Algunos adolescentes enfrentan barreras para acceder a la educación, especialmente en zonas rurales o marginadas.</li>
+                <li><strong>Derecho a la salud:</strong> La falta de acceso a servicios de salud y la discriminación en la atención médica son problemas comunes.</li>
+                <li><strong>Derecho a la participación:</strong> Los adolescentes a menudo no tienen voz ni voto en decisiones que afectan su vida.</li>
+            </ul>
+        </div>
     </div>
 
-    <h2 class="seccion-titulo reveal"><i class="fas fa-chart-pie"></i> Estadísticas según la UNESCO - UNICEF</h2>
+    <!-- SECCIÓN ESTADÍSTICAS -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; margin-top: 50px;" class="reveal">
+        <h2 class="seccion-titulo" style="margin: 0; border: none; padding: 0;">Estadísticas según la UNESCO - UNICEF</h2>
+        <button class="section-speak-btn">Leer</button>
+    </div>
+    
     <div class="stats-visual-grid reveal">
         <div class="stat-circle-box">
             <div class="circle-graph" style="--p: 33.3%;"><span>1 de 3</span></div>
@@ -321,47 +361,58 @@
         </div>
     </div>
 
-    <h2 class="seccion-titulo reveal"><i class="fas fa-globe"></i> Caso a nivel mundial: EL CASO DE JEFFREY EPSTEIN</h2>
+    <!-- CASO MUNDIAL -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; margin-top: 50px;" class="reveal">
+        <h2 class="seccion-titulo" style="margin: 0; border: none; padding: 0;">Caso a nivel mundial: EL CASO DE JEFFREY EPSTEIN</h2>
+        <button class="section-speak-btn">Leer</button>
+    </div>
+    
     <div class="glass-panel reveal">
-        <p><strong>¿Quién era Jeffrey Epstein?</strong> Era un financiero estadounidense que acumuló una enorme riqueza; era conocido por su estilo de vida extravagante y por estar rodeado de personas con mucho poder e influencia en la política, ciencia y espectáculo; estos fueron expresidentes, miembros de la realeza, empresarios de élite, entre otros.</p>
+        <div class="texto-profesional">
+            <p><strong>¿Quién era Jeffrey Epstein?</strong> Era un financiero estadounidense que acumuló una enorme riqueza; era conocido por su estilo de vida extravagante y por estar rodeado de personas con mucho poder e influencia en la política, ciencia y espectáculo; estos fueron expresidentes, miembros de la realeza, empresarios de élite, entre otros.</p>
 
-        <div class="img-grid">
-            <img src="e1.jpeg" alt="Evidencia 1">
-            <img src="e2.jpeg" alt="Evidencia 2">
-            <img src="e3.jpeg" alt="Evidencia 3">
-            <img src="e4.jpeg" alt="Evidencia 4">
+            <div class="img-grid">
+                <img src="e1.jpeg" alt="Evidencia 1">
+                <img src="e2.jpeg" alt="Evidencia 2">
+                <img src="e3.jpeg" alt="Evidencia 3">
+                <img src="e4.jpeg" alt="Evidencia 4">
+            </div>
+
+            <p>Los conflictos legales de Epstein comenzaron en 2005 en Palm Beach, Florida, tras denuncias de que les pagaba a menores de edad por "masajes" que se volvían abusos sexuales. En 2008 Epstein logró un "acuerdo de procesamiento" con la Fiscalía Federal encabezado en ese entonces por Alexander Acosta; Epstein se declaró culpable de cargos estatales menores de prostitución, cumpliendo solo 13 meses en una cárcel local con permiso para salir a trabajar diariamente y fue registrado como delincuente sexual.</p>
+            <p>En julio de 2019 Epstein fue arrestado nuevamente en Nueva York por cargos federales de tráfico sexual de menores cometido entre 2002 y 2005 en sus mansiones en Manhattan y Florida. El 10 de agosto de 2019 mientras se esperaba el juicio en el Centro Correccional Metropolitano de Nueva York, Epstein fue encontrado sin vida en su celda. La autopsia determinó que se trató de un suicidio por ahorcamiento aunque las irregularidades en la prisión como cámaras sin funcionamiento o guardias dormidos alimentaron sospechas y teorías de conspiración.</p>
+
+            <p class="highlight-box"><strong>Sistema de reclutamiento:</strong> Se determinó que usaba un sistema piramidal donde presionaba a las víctimas para buscar a más jóvenes a cambio de dinero, lo cual permitía que la red creciera mucho más.</p>
+
+            <p>Respecto a la pareja de Jeffrey Epstein, Ghislaine Maxwell, ella no solo era su pareja afectiva sino también la principal operadora. En 2021 fue condenada a 20 años de prisión por ayudar a Epstein a capturar y preparar a las menores. Cabe mencionar que figuras públicas como el príncipe Andrés de Inglaterra perdieron sus títulos militares y roles públicos debido a la relación que tenían con Epstein.</p>
         </div>
-
-        <p>Los conflictos legales de Epstein comenzaron en 2005 en Palm Beach, Florida, tras denuncias de que les pagaba a menores de edad por "masajes" que se volvían abusos sexuales. En 2008 Epstein logró un "acuerdo de procesamiento" con la Fiscalía Federal encabezado en ese entonces por Alexander Acosta; Epstein se declaró culpable de cargos estatales menores de prostitución, cumpliendo solo 13 meses en una cárcel local con permiso para salir a trabajar diariamente y fue registrado como delincuente sexual.</p>
-        <p>En julio de 2019 Epstein fue arrestado nuevamente en Nueva York por cargos federales de tráfico sexual de menores cometido entre 2002 y 2005 en sus mansiones en Manhattan y Florida. El 10 de agosto de 2019 mientras se esperaba el juicio en el Centro Correccional Metropolitano de Nueva York, Epstein fue encontrado sin vida en su celda. La autopsia determinó que se trató de un suicidio por ahorcamiento aunque las irregularidades en la prisión como cámaras sin funcionamiento o guardias dormidos alimentaron sospechas y teorías de conspiración.</p>
-
-        <div class="highlight-box">
-            <strong>Sistema de reclutamiento:</strong> Se determinó que usaba un sistema piramidal donde presionaba a las víctimas para buscar a más jóvenes a cambio de dinero, lo cual permitía que la red creciera mucho más.
-        </div>
-
-        <p>Respecto a la pareja de Jeffrey Epstein, Ghislaine Maxwell, ella no solo era su pareja afectiva sino también la principal operadora. En 2021 fue condenada a 20 años de prisión por ayudar a Epstein a capturar y preparar a las menores. Cabe mencionar que figuras públicas como el príncipe Andrés de Inglaterra perdieron sus títulos militares y roles públicos debido a la relación que tenían con Epstein.</p>
     </div>
 
-    <h2 class="seccion-titulo reveal"><i class="fas fa-flag"></i> Caso a nivel nacional: EL CASO DE ACAPULCO KIDS</h2>
+    <!-- CASO NACIONAL -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; margin-top: 50px;" class="reveal">
+        <h2 class="seccion-titulo" style="margin: 0; border: none; padding: 0;">Caso a nivel nacional: EL CASO DE ACAPULCO KIDS</h2>
+        <button class="section-speak-btn">Leer</button>
+    </div>
+    
     <div class="glass-panel reveal">
-        <h3 style="color: var(--secondary); margin-bottom: 15px;">¿QUÉ HAY DETRÁS DEL BELLO ACAPULCO?</h3>
-        <p>Este caso empieza cuando se denunció la existencia de un "ejército" de aproximadamente 2 mil niños, niñas y adolescentes en situación de calle, siendo que desde los cinco años eran explotados sexualmente en zonas como el Zócalo, la playa Caleta y el Malecón. Después surge una investigación en la cual se señaló que turistas y locales frecuentaban la zona buscando sexo pagado con menores, a menudo vinculando el consumo de drogas con la explotación.</p>
+        <div class="texto-profesional">
+            <h3>¿QUÉ HAY DETRÁS DEL BELLO ACAPULCO?</h3>
+            <p>Este caso empieza cuando se denunció la existencia de un "ejército" de aproximadamente 2 mil niños, niñas y adolescentes en situación de calle, siendo que desde los cinco años eran explotados sexualmente en zonas como el Zócalo, la playa Caleta y el Malecón. Después surge una investigación en la cual se señaló que turistas y locales frecuentaban la zona buscando sexo pagado con menores, a menudo vinculando el consumo de drogas con la explotación.</p>
 
-        <div class="img-grid" style="grid-template-columns: 1fr 1fr;">
-            <img src="a1.jpeg" alt="Contexto Nacional 1">
-            <img src="a2.jpeg" alt="Contexto Nacional 2">
+            <div class="img-grid" style="grid-template-columns: 1fr 1fr;">
+                <img src="a1.jpeg" alt="Contexto Nacional 1">
+                <img src="a2.jpeg" alt="Contexto Nacional 2">
+            </div>
+
+            <p>Los menores eran enganchados o entregados debido a la pobreza extrema, buscando dinero para sobrevivir o para comprar drogas. A estas personas se le conoce como padrotes y madrotas que operaban con impunidad y explotaban a las personas que eran utilizadas como prostitución.</p>
+
+            <p class="highlight-box">Este caso reportó la complicidad de taxistas, hoteleros y autoridades locales que facilitaban el acceso a cuartos y protegían el negocio.</p>
+
+            <p>El caso impactó mucho que expuso una realidad oculta ("El lado B" de Acapulco), donde la marginación y la violencia convirtieron a los niños en mercancía: un tema que, de acuerdo con las crónicas, persiste de diversas formas en la zona. Este caso se sitúa en el contexto más amplio de la explotación infantil turística en México.</p>
         </div>
-
-        <p>Los menores eran enganchados o entregados debido a la pobreza extrema, buscando dinero para sobrevivir o para comprar drogas. A estas personas se le conoce como padrotes y madrotas que operaban con impunidad y explotaban a las personas que eran utilizadas como prostitución.</p>
-
-        <div class="highlight-box">
-            Este caso reportó la complicidad de taxistas, hoteleros y autoridades locales que facilitaban el acceso a cuartos y protegían el negocio.
-        </div>
-
-        <p>El caso impactó mucho que expuso una realidad oculta ("El lado B" de Acapulco), donde la marginación y la violencia convirtieron a los niños en mercancía: un tema que, de acuerdo con las crónicas, persiste de diversas formas en la zona. Este caso se sitúa en el contexto más amplio de la explotación infantil turística en México.</p>
     </div>
 </div>
 
+<!-- PANEL PREMIUM -->
 <div class="music-panel">
     <div class="music-box">
         <div class="music-header"><i class="fas fa-music"></i> <span>Reproductor Premium</span></div>
@@ -384,8 +435,8 @@
             <button onclick="toggleSpeech()" class="voice-btn" title="Narrar todo">
                 <i class="fas fa-comment"></i>
             </button>
-            <button onclick="pauseSpeech()" class="voice-btn stop" title="Detener voz">
-                <i class="fas fa-stop"></i>
+            <button onclick="pauseResumeSpeech()" class="voice-btn pause" id="pauseVoiceBtn" title="Pausar / Reanudar voz">
+                <i class="fas fa-pause"></i>
             </button>
         </div>
     </div>
@@ -395,6 +446,7 @@
     <video id="assistantVideo" class="dog-illustration" muted loop playsinline>
         <source src="avatar.mp4" type="video/mp4">
     </video>
+    <p style="font-size: 0.6rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);">ASISTENTE VIRTUAL</p>
 </div>
 
 <script>
@@ -402,6 +454,7 @@
     const playBtn = document.getElementById('playBtn');
     const wave = document.getElementById('wave');
     const dog = document.getElementById('assistantVideo');
+    const pauseVoiceBtn = document.getElementById('pauseVoiceBtn');
 
     // Inicializar volumen
     bgMusic.volume = 0.5;
@@ -415,7 +468,7 @@
     window.addEventListener('scroll', reveal);
     reveal();
 
-    // Lógica de Música del Index
+    // Lógica de Música
     function toggleMusic() {
         if (bgMusic.paused) { 
             bgMusic.play().catch(e => console.log("Interacción requerida primero")); 
@@ -428,15 +481,16 @@
         }
     }
 
-    // Función principal de lectura con soporte de voces
+    // Lógica de Voz
     function readText(text) {
-        speechSynthesis.cancel();
+        speechSynthesis.cancel(); 
+        pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>'; 
+        
         const utter = new SpeechSynthesisUtterance(text);
         utter.lang = 'es-MX';
         utter.pitch = 0.95;
         utter.rate = 0.97;
 
-        // Selección de voz mejorada del archivo antiguo
         const voices = speechSynthesis.getVoices();
         const preferredVoice = voices.find(v =>
             v.lang.startsWith('es') &&
@@ -453,22 +507,26 @@
             dog.classList.remove('dog-speaking'); 
             dog.pause(); 
             dog.currentTime = 0; 
+            pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
         };
         
         speechSynthesis.speak(utter);
     }
 
-    // Narrar todo el documento (Evitando leer los botones "Leer")
+    // Narrar todo el documento (Global)
     function toggleSpeech() {
         if (speechSynthesis.speaking) {
-            pauseSpeech();
+            speechSynthesis.cancel(); 
+            dog.classList.remove('dog-speaking'); 
+            dog.pause(); 
+            dog.currentTime = 0;
+            pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
             return;
         }
 
         let content = "";
-        document.querySelectorAll('.main-title, .glass-panel p, h2.seccion-titulo, .highlight-box').forEach(el => { 
+        document.querySelectorAll('header h1, header p, .main-title, .texto-profesional p, .texto-profesional li, .texto-profesional h3, h2.seccion-titulo, .stat-label, .circle-graph span').forEach(el => { 
             if(el.classList.contains('seccion-titulo')) {
-                // Clonar para no leer el botón interno
                 const cleanTitle = el.cloneNode(true);
                 const btnInside = cleanTitle.querySelector('button');
                 if (btnInside) btnInside.remove();
@@ -480,40 +538,44 @@
         readText(content);
     }
 
-    function pauseSpeech() { 
-        speechSynthesis.cancel(); 
-        dog.classList.remove('dog-speaking'); 
-        dog.pause(); 
-        dog.currentTime = 0; 
+    // Pausar y Reanudar la voz
+    function pauseResumeSpeech() {
+        if (speechSynthesis.speaking) {
+            if (speechSynthesis.paused) {
+                speechSynthesis.resume();
+                dog.play();
+                dog.classList.add('dog-speaking');
+                pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                speechSynthesis.pause();
+                dog.pause();
+                dog.classList.remove('dog-speaking');
+                pauseVoiceBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
     }
 
-    // Inserción dinámica de botones "Leer" en cada sección (Lógica corregida)
-    document.querySelectorAll('h2.seccion-titulo').forEach(title => {
-        const btn = document.createElement('button');
-        btn.className = 'section-speak-btn';
-        btn.textContent = 'Leer';
-        
+    // Lógica para botones "Leer" de cada sección
+    document.querySelectorAll('.section-speak-btn').forEach(btn => {
         btn.onclick = (e) => {
             e.stopPropagation();
             
-            // Clonar el título y quitarle el botón para que no lo narre
-            const cleanTitle = title.cloneNode(true);
-            const btnInside = cleanTitle.querySelector('button');
-            if (btnInside) btnInside.remove();
-
-            let sectionText = cleanTitle.innerText + ". ";
-            let next = title.nextElementSibling;
+            const titleContainer = btn.parentElement;
+            const title = titleContainer.querySelector('h2.seccion-titulo');
+            let sectionText = title.innerText + ". ";
             
-            // Recolectar párrafos hasta el siguiente H2
-            while (next && !next.matches('h2.seccion-titulo')) { 
-                sectionText += next.innerText + ". "; 
+            let next = titleContainer.nextElementSibling;
+            
+            // Recolectar texto hasta el siguiente título
+            while (next && !(next.tagName.toLowerCase() === 'div' && next.querySelector('h2.seccion-titulo'))) { 
+                if(next.classList.contains('glass-panel') || next.classList.contains('stats-visual-grid')) {
+                    sectionText += next.innerText + ". "; 
+                }
                 next = next.nextElementSibling; 
             }
             
             readText(sectionText);
         };
-        
-        title.appendChild(btn);
     });
 </script>
 
