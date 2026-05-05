@@ -205,6 +205,46 @@
             color: #333;
         }
 
+        /* ================= FORMATO DE PERFILES (Aumentado de tamaño) ================= */
+        .perfil-autora {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            background: rgba(15, 76, 117, 0.03);
+            padding: 25px 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent);
+        }
+        
+        .perfil-autora img {
+            width: 140px; /* <--- TAMAÑO DE IMAGEN AUMENTADO AQUÍ */
+            height: 140px; /* <--- TAMAÑO DE IMAGEN AUMENTADO AQUÍ */
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--gold);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .perfil-autora .datos-autora p {
+            margin: 0;
+            text-indent: 0;
+            text-align: left;
+        }
+        
+        .perfil-autora .datos-autora .nombre {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.3rem; /* Tamaño de fuente ligeramente mayor */
+            margin-bottom: 8px;
+        }
+
+        .perfil-autora .datos-autora .credenciales {
+            font-size: 1rem; /* Texto más grande para mejor lectura */
+            color: #555;
+            line-height: 1.5;
+        }
+
         /* ================= FORMATO PROFESIONAL ================= */
         .texto-profesional {
             padding: 0 10px;
@@ -242,6 +282,28 @@
             margin-bottom: 10px;
         }
         
+        /* Enlaces para las notas al pie */
+        .nota-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        .nota-link:hover {
+            text-decoration: underline;
+            color: var(--primary);
+        }
+
+        .link-externo {
+            color: var(--secondary);
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .link-externo:hover {
+            text-decoration: underline;
+            color: var(--primary);
+        }
+
         /* Formato especial para bloques tipo Jurisprudencia / Sabías qué */
         .datos-jurisprudencia {
             background: rgba(15, 76, 117, 0.05);
@@ -284,6 +346,12 @@
             margin-top: 40px;
             border-top: 1px solid #ddd;
             padding-top: 20px;
+        }
+        .referencias h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
         }
         .referencias p {
             text-indent: 0;
@@ -356,6 +424,16 @@
             nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
             header { padding-top: 160px; }
             .video-wrapper { flex-direction: column; } 
+            
+            /* Ajuste del perfil en móviles */
+            .perfil-autora {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .perfil-autora .datos-autora p {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -467,15 +545,26 @@
         </div>
     </div>
 
+    <!-- Mtra. Nidia -->
     <div class="glass-panel reveal">
-        <h2 class="seccion-titulo">Mtra. Nidia Guadalupe Celis Fuentes</h2>
+        <h2 class="seccion-titulo">Análisis Jurisprudencial</h2>
         
         <div class="texto-profesional">
+            
+            <!-- PERFIL MTRA. NIDIA -->
+            <div class="perfil-autora">
+                <img src="nidia.jpeg" alt="Mtra. Nidia Guadalupe Celis Fuentes">
+                <div class="datos-autora">
+                    <p class="nombre">Mtra. Nidia Guadalupe Celis Fuentes</p>
+                    <p class="credenciales">Ex jueza en materia penal y experta en delitos de índole sexual y protección de menores.</p>
+                </div>
+            </div>
+
             <p>Estimados jóvenes, es un gusto poder compartirles algunas de las experiencias que tuve como juez en materia penal respecto de diversos delitos, entre ellos algunos de índole sexual como lo son <strong>violación y abuso sexual</strong> y que en algunas ocasiones son cometidos respecto de niñas, niños y adolescentes. Delitos que en algunos casos son llevados a cabo por personas cercanas al entorno personal de la victima como lo pueden ser sus familiares, amigos, maestros, entre otros, y muchas veces valiéndose de la confianza de la víctima y otras veces por medios violentos como pueden ser las amenazas o agresiones físicas es decir, por la fuerza.</p>
 
             <p>Respecto de lo anterior, es importante que ustedes sepan que los derechos de las niñas, niños y adolescentes está protegido primeramente por el <strong>artículo 4 Constitucional</strong>, la <strong>Ley General de los Derechos de las niñas, niños y adolescentes</strong> y por los tratados internacionales de los que México forma parte, especialmente la Convención sobre los Derechos del Niño, los Códigos Penales de los Estados, así como la Ley de Amparo.</p>
 
-            <p>Todas esas leyes obligan a todas las autoridades que deben aplicarlas a <strong>escuchar diligentemente a las niñas, niños y adolescentes ante el menor indicio o sospecha</strong> de que son o puedan ser victimas de alguno de los mencionados delitos. Así, la fiscalía tiene la ineludible obligación de investigar cualquier caso de estos por mínima que sea la sospecha de que algún niño, niña o adolescente está siendo o puede ser víctima de alguno de esos delitos, y el juez está en la obligación de tutelar, cuidar y vigilar la estricta observancia de esos derechos de los niños y adolescentes, aplicando los protocolos específicos correspondientes, vigilando siempre lo que se conoce como el <strong>interés superior del niño o adolescente</strong>, aclarando que esos derechos no solo son aplicables en materia penal sino en cualquier procedimiento ya sea civil o familiar, etc.</p>
+            <p>Todas esas leyes obligan a todas las autoridades que deben aplicarlas a <strong>escuchar diligentemente a las niñas, niños y adolescentes ante el menor indicio o sospecha</strong> de que son o puedan ser victimas de alguno de los mencionados delitos. Así, la fiscalía tiene la ineludible obligación de investigar cualquier caso de estos por mínima que sea la sospecha de que algún niño, niña o adolescente está siendo o puede ser víctima de alguno de esos delitos, y el juez está en la obligación de tutelar, cuidar y vigilara la estricta observancia de esos derechos de los niños y adolescentes, aplicando los protocolos específicos correspondientes, vigilando siempre lo que se conoce como el <strong>interés superior del niño o adolescente</strong>, aclarando que esos derechos no solo son aplicables en materia penal sino en cualquier procedimiento ya sea civil o familiar, etc.</p>
 
             <p>En ese sentido, basta que la niña, niño o adolescente comparezca ya sea personalmente o con su representante legal como puede serlo alguno de los padres o tutor, a denunciar que esta siendo objeto de alguna conducta delictiva, para que <strong>la autoridad de inmediato dicte el inicio de la investigación</strong> de los hechos así como las medidas necesarias para la protección de la víctima, a fin de salvaguardar su integridad tanto física como emocional, interrumpiendo el ciclo de violencia, determinar a la persona que es responsable de esa violencia y sancionarlo como corresponda, además de proporcionar ayuda especializada a la víctima para superar ese tipo de situaciones y evitarle mayores secuelas.</p>
 
@@ -523,17 +612,26 @@
     </div>
 
 
+    <!-- DOCUMENTO PDF INTEGRADO CON NOTAS AL PIE -->
     <div class="glass-panel reveal">
         <h2 class="seccion-titulo">Violencia contra el género, una problemática social en crecimiento y aun sin solución efectiva en el siglo XXI</h2>
         
         <div class="texto-profesional">
-            <p style="text-align: center; text-indent: 0; font-weight: bold; color: var(--primary);">Por: Viridiana Acevedo Ceballos (Maestra en derecho penal, doctorante en derecho penal, secretaria de acuerdos de la Primera Sala Colegiada Penal y Civil del Tribunal Superior de Justicia del Estado de Yucatán)</p>
+            
+            <!-- PERFIL MTRA. VIRIDIANA -->
+            <div class="perfil-autora">
+                <img src="viridiana.jpeg" alt="Mtra. Viridiana Acevedo Ceballos">
+                <div class="datos-autora">
+                    <p class="nombre">Mtra. Viridiana Acevedo Ceballos</p>
+                    <p class="credenciales">Maestra en derecho penal, doctorante en derecho penal y secretaria de acuerdos de la Primera Sala Colegiada Penal y Civil del Tribunal Superior de Justicia del Estado de Yucatán.</p>
+                </div>
+            </div>
 
             <h3>Introducción: ¿Qué es la violencia contra el género?</h3>
-            <p>La Organización de las Naciones Unidas (ONU)<sup>1</sup> refiere que la violencia de género consiste en actos dañinos dirigidos contra una persona o grupo de personas por razón de su género; tiene origen en la desigualdad, el abuso de poder y la existencia de normas que dañan<sup>2</sup>.</p> 
+            <p>La Organización de las Naciones Unidas (ONU)<sup id="ref1"><a href="#nota1" class="nota-link">1</a></sup> refiere que la violencia de género consiste en actos dañinos dirigidos contra una persona o grupo de personas por razón de su género; tiene origen en la desigualdad, el abuso de poder y la existencia de normas que dañan<sup id="ref2"><a href="#nota2" class="nota-link">2</a></sup>.</p> 
             <p>Aunque puedes encontrar mucha información sobre el tema con el uso de la inteligencia artificial, es importante definir ese concepto desde una fuente que ha hecho investigación sobre el tema.</p>
-            <p>En México, por ejemplo la Suprema Corte de Justicia de la Nación<sup>3</sup> ha publicado manuales didácticos donde explica con detalle qué es, tomando como punto de partida muchos asuntos (reales) que ha estudiado para entender cómo afecta y cómo debe castigarse.</p>
-            <p>La violencia es una de las maneras en la que las personas ejercen poder sobre otras. La violencia por razón de género afecta principalmente a mujeres, niñas y personas de la diversidad sexual, y se relaciona con probar la masculinidad o la dominación de un hombre sobre las personas que conforman estos grupos sociales<sup>4</sup>.</p>
+            <p>En México, por ejemplo la Suprema Corte de Justicia de la Nación<sup id="ref3"><a href="#nota3" class="nota-link">3</a></sup> ha publicado manuales didácticos donde explica con detalle qué es, tomando como punto de partida muchos asuntos (reales) que ha estudiado para entender cómo afecta y cómo debe castigarse.</p>
+            <p>La violencia es una de las maneras en la que las personas ejercen poder sobre otras. La violencia por razón de género afecta principalmente a mujeres, niñas y personas de la diversidad sexual, y se relaciona con probar la masculinidad o la dominación de un hombre sobre las personas que conforman estos grupos sociales<sup id="ref4"><a href="#nota4" class="nota-link">4</a></sup>.</p>
             <p>La violencia se experimenta de manera distinta entre las personas. La violencia por razón de género NO es sinónimo de violencia contra las mujeres: ésta también se puede representar con actos contra minorías sexuales o contra niños y adolescentes.</p>
             <p>El género, la identidad de género, la violencia contra el género, la violencia sexual, la violencia mediática son temáticas sociales que han sido estudiadas durante más de 50 años, buscando una solución compatible con la protección de los derechos humanos de las personas y aun cuando se han tenido avances en las leyes, derivados de la lucha de organizaciones sociales y personas víctimas por el reconocimiento, protección y garantía de los derechos humanos inherentes e interrelacionados, no ha sido suficiente.</p>
             <p>En este artículo académico se hablará sucintamente de la problemática y de cómo en la actualidad se ha buscado darle solución, en México.</p>
@@ -547,11 +645,11 @@
             <h3>¿Por qué?</h3>
             <p>Por el alto índice de asuntos en donde se han visto afectadas muchísimas mujeres en su derecho a la libertad sexual, a la seguridad sexual, a su integridad corporal, a la vida, e inclusive mujeres indígenas, niñas, niños y adolescentes que han sido víctimas de tortura sexual, tráfico sexual, pornografía, trata de personas y daño a su imagen con prácticas mediáticas -sin consentimiento- que afectan su intimidad.</p>
             <p>En el país, muchas personas (llamadas activistas o defensores de derechos humanos, organizaciones civiles o de protección de derechos) han luchado para que se respeten los derechos humanos y se erradique la violencia, pero, los avances legislativos han sido consecuencia de sanciones contra el Estado Mexicano por incumplir pactos internacionales.</p>
-            <p>Los pactos internacionales<sup>5</sup> (entre los países Americanos, Europeos, Africanos, por ejemplo) se firman para que se proteja al ser humano en todo el mundo y se le trate con dignidad donde quiera que viva; incluso algunos pactos abarcan al ser viviente y sintiente como los animales.</p>
-            <p>A nivel internacional existe una Autoridad que puede sancionar a los países que incumplen con los compromisos que se adoptan para promover, respetar, proteger y garantizar derechos humanos, así como, para esos países que no sancionan ni persiguen la violación de los derechos. Esa autoridad en el Continente Americano, específicamente en América Latina se llama Corte Interamericana de Derechos Humanos<sup>6</sup>.</p>
+            <p>Los pactos internacionales<sup id="ref5"><a href="#nota5" class="nota-link">5</a></sup> (entre los países Americanos, Europeos, Africanos, por ejemplo) se firman para que se proteja al ser humano en todo el mundo y se le trate con dignidad donde quiera que viva; incluso algunos pactos abarcan al ser viviente y sintiente como los animales.</p>
+            <p>A nivel internacional existe una Autoridad que puede sancionar a los países que incumplen con los compromisos que se adoptan para promover, respetar, proteger y garantizar derechos humanos, así como, para esos países que no sancionan ni persiguen la violación de los derechos. Esa autoridad en el Continente Americano, específicamente en América Latina se llama Corte Interamericana de Derechos Humanos<sup id="ref6"><a href="#nota6" class="nota-link">6</a></sup>.</p>
             <p>México y sus autoridades varias veces han incurrido en incumplimiento de los pactos internacionales que fueron creados para que los Estados del Mundo no cayeran en abusos contra las personas.</p>
             <p>Existe una condena muy famosa a nivel internacional contra México por la matanza de mujeres en Ciudad Juárez Chihuahua.</p>
-            <p>A partir de la condena contra México de la Corte Interamericana de Derechos Humanos, Caso González y otras (Campo Algodonero)<sup>7</sup>, del año 2009, se abordó por primera vez el fenómeno social de homicidios contra mujeres a nivel internacional y se estableció la necesidad de crear en las legislaciones penales del país el delito de feminicidio, así como, se impulsaron diversas políticas públicas para impulsar programas sociales a fin de erradicar la violencia contra la mujer, creando incluso alertas ante la desaparición de mujeres y niñas-niños (Alertas Ámbar y Ámber<sup>8</sup>).</p>
+            <p>A partir de la condena contra México de la Corte Interamericana de Derechos Humanos, Caso González y otras (Campo Algodonero)<sup id="ref7"><a href="#nota7" class="nota-link">7</a></sup>, del año 2009, se abordó por primera vez el fenómeno social de homicidios contra mujeres a nivel internacional y se estableció la necesidad de crear en las legislaciones penales del país el delito de feminicidio, así como, se impulsaron diversas políticas públicas para impulsar programas sociales a fin de erradicar la violencia contra la mujer, creando incluso alertas ante la desaparición de mujeres y niñas-niños (Alertas Ámbar y Ámber<sup id="ref8"><a href="#nota8" class="nota-link">8</a></sup>).</p>
             <p>Se dio impulso también a la ya existente Ley de Acceso de las Mujeres a una vida libre de violencia, publicada en febrero de 2007, cuya última reforma fue el 15 de enero de 2026.</p>
             <p>Con base en esa Ley, existen medidas u órdenes de protección de naturaleza administrativa y de naturaleza jurisdiccional a favor de las mujeres; las primeras, son otorgadas por el Ministerio Público y las segundas, por los jueces.</p>
             <p>Las órdenes o medidas de protección tienen una duración de hasta 60 días, prorrogables por 30 días más o por el tiempo que dure la investigación del Ministerio Público por posibles hechos delictivos contra las mujeres; también puede prolongarse hasta que cese la situación de riesgo para la persona víctima.</p>
@@ -581,10 +679,10 @@
             <div class="datos-jurisprudencia">
                 <h3>Los casos son:</h3>
                 <ol>
-                    <li><strong>Caso Rosendo Cantú y otra Vs. México (2010):</strong> México fue responsable por la violación y tortura de Valentina Rosendo Cantú, mujer indígena Me'phaa en Guerrero, por parte de militares en Guerrero en 2002. El caso destacó la impunidad y prohibió el uso del fuero militar en estos contextos<sup>9</sup>.</li>
-                    <li><strong>Caso Fernández Ortega y otros Vs. México (2010):</strong> Relacionado con la violación sexual y tortura de Inés Fernández Ortega, también mujer indígena Me'phaa en Guerrero, por militares en 2002. La sentencia condenó la falta de debida diligencia y la discriminación<sup>10</sup>.</li>
-                    <li><strong>Caso Mujeres Víctimas de Tortura Sexual en Atenco Vs. México (2018):</strong> Se condenó al Estado por la tortura sexual, física y psicológica sufrida por 11 mujeres durante operativos policiales en 2006. La sentencia subrayó el uso de violencia sexual por agentes estatales y ordenó investigar a los responsables, incluyendo altos mandos<sup>11</sup>.</li>
-                    <li><strong>Caso Ernestina Ascencio Rosario (2023):</strong> Violación y muerte de una mujer indígena por presuntos militares en 2007, buscando justicia ante la impunidad<sup>12</sup>.</li>
+                    <li><strong>Caso Rosendo Cantú y otra Vs. México (2010):</strong> México fue responsable por la violación y tortura de Valentina Rosendo Cantú, mujer indígena Me'phaa en Guerrero, por parte de militares en Guerrero en 2002. El caso destacó la impunidad y prohibió el uso del fuero militar en estos contextos<sup id="ref9"><a href="#nota9" class="nota-link">9</a></sup>.</li>
+                    <li><strong>Caso Fernández Ortega y otros Vs. México (2010):</strong> Relacionado con la violación sexual y tortura de Inés Fernández Ortega, también mujer indígena Me'phaa en Guerrero, por militares en 2002. La sentencia condenó la falta de debida diligencia y la discriminación<sup id="ref10"><a href="#nota10" class="nota-link">10</a></sup>.</li>
+                    <li><strong>Caso Mujeres Víctimas de Tortura Sexual en Atenco Vs. México (2018):</strong> Se condenó al Estado por la tortura sexual, física y psicológica sufrida por 11 mujeres durante operativos policiales en 2006. La sentencia subrayó el uso de violencia sexual por agentes estatales y ordenó investigar a los responsables, incluyendo altos mandos<sup id="ref11"><a href="#nota11" class="nota-link">11</a></sup>.</li>
+                    <li><strong>Caso Ernestina Ascencio Rosario (2023):</strong> Violación y muerte de una mujer indígena por presuntos militares en 2007, buscando justicia ante la impunidad<sup id="ref12"><a href="#nota12" class="nota-link">12</a></sup>.</li>
                 </ol>
             </div>
             
@@ -592,7 +690,7 @@
             <p>En Yucatán, cuando una mujer es víctima de violencia por razón de género o de un delito diverso debe acudir a la Fiscalía General del Estado, pero, más específicamente al Centro de Justicia para las Mujeres.</p>
 
             <h3>Centro de Justicia para las Mujeres</h3>
-            <p>Según la página oficial<sup>13</sup>, el Centro de Justicia para las Mujeres tiene como objetivo prevenir, atender, sancionar y erradicar la violencia contra las mujeres, así como garantizar el acceso a la justicia de aquellas que han sido víctimas de violencia y brindarles atención gratuita e integral con perspectiva de género con la participación de organismos institucionales y organizaciones de la sociedad civil.</p>
+            <p>Según la página oficial<sup id="ref13"><a href="#nota13" class="nota-link">13</a></sup>, el Centro de Justicia para las Mujeres tiene como objetivo prevenir, atender, sancionar y erradicar la violencia contra las mujeres, así como garantizar el acceso a la justicia de aquellas que han sido víctimas de violencia y brindarles atención gratuita e integral con perspectiva de género con la participación de organismos institucionales y organizaciones de la sociedad civil.</p>
             <p>Se puede acceder al Centro de varias formas:</p>
             <ul>
                 <li>Acudiendo para solicitar el servicio.</li>
@@ -601,12 +699,12 @@
             </ul>
 
             <p>El Centro de Justicia para las Mujeres trabaja en conjunto con la Fiscalía General del Estado y es donde se encuentra el Ministerio Público, que es la autoridad que investiga los delitos que se comenten contra las personas.</p>
-            <p>El Centro, también trabaja en conjunto con la Procuraduría de la Defensa del Menor y la Familia, que es una Procuraduría de Protección que da seguimiento a los asuntos donde están involucrados como víctimas niños, niñas y adolescentes, así como personas con discapacidad<sup>14</sup>.</p>
-            <p>Además, el Centro trabaja en coordinación con la Secretaría de las Mujeres, que puede apoyar a las mujeres con asesoría jurídica y además tiene a cargo el Centro de Reeducación para Hombres que generan violencia, donde se les da terapia<sup>15</sup>; y, con la Secretaría de la Salud y el Centro Estatal de Prevención Social del Delito y Participación Ciudadana de Yucatán, quienes a través de programas preventivos en la sociedad buscan fomentar la cultura de la paz<sup>17</sup>.</p>
+            <p>El Centro, también trabaja en conjunto con la Procuraduría de la Defensa del Menor y la Familia, que es una Procuraduría de Protección que da seguimiento a los asuntos donde están involucrados como víctimas niños, niñas y adolescentes, así como personas con discapacidad<sup id="ref14"><a href="#nota14" class="nota-link">14</a></sup>.</p>
+            <p>Además, el Centro trabaja en coordinación con la Secretaría de las Mujeres, que puede apoyar a las mujeres con asesoría jurídica y además tiene a cargo el Centro de Reeducación para Hombres que generan violencia, donde se les da terapia<sup id="ref15"><a href="#nota15" class="nota-link">15</a></sup>; y, con la Secretaría de la Salud y el Centro Estatal de Prevención Social del Delito y Participación Ciudadana de Yucatán, quienes a través de programas preventivos en la sociedad buscan fomentar la cultura de la paz<sup id="ref16"><a href="#nota16" class="nota-link">16</a></sup>.</p>
             <p>El Centro de Justicia para las Mujeres tiene facultades junto con el Ministerio Público para emitir órdenes de protección de carácter administrativo y temporal ante una situación de riesgo en que se encuentra la mujer y sus hijos.</p>
 
              <h3>Alerta AMBER Yucatán</h3>
-            <p>Según la página oficial<sup>17</sup>, es un programa que establece una herramienta eficaz de difusión, que ayuda a la pronta localización y recuperación de niñas, niños y adolescentes que se encuentren en riesgo inminente de sufrir daño grave por motivo de desaparición o cualquier circunstancia donde se presuma la comisión de un delito en el país. Es independiente de la denuncia o proceso penal que se inicia ante las autoridades competentes.</p>
+            <p>Según la página oficial<sup id="ref17"><a href="#nota17" class="nota-link">17</a></sup>, es un programa que establece una herramienta eficaz de difusión, que ayuda a la pronta localización y recuperación de niñas, niños y adolescentes que se encuentren en riesgo inminente de sufrir daño grave por motivo de desaparición o cualquier circunstancia donde se presuma la comisión de un delito en el país. Es independiente de la denuncia o proceso penal que se inicia ante las autoridades competentes.</p>
 
             <div class="datos-jurisprudencia">
                 <h3>Procedimiento</h3>
@@ -622,7 +720,7 @@
 
             <h3>Protocolo ALBA Yucatán</h3>
             <p>El protocolo es para mujeres, niñas y personas vulnerables de cualquier género.</p>
-            <p>Conforme a la página oficial<sup>18</sup>, el servidor público que reciba el aviso, reporte o noticia sobre la ausencia o extravío de una mujer o una niña, deberá canalizar de inmediato a la víctima indirecta (familiar o pareja) a la agencia del Ministerio Público que corresponda al último lugar donde fue vista la persona reportada, o en su caso ponerse en contacto con el enlace del Protocolo ALBA responsable de la ventanilla única de atención que está ubicada en la Coordinación Estatal del Programa Alerta AMBER Yucatán, en el edificio central de la Fiscalía General del Estado de Yucatán.</p>
+            <p>Conforme a la página oficial<sup id="ref18"><a href="#nota18" class="nota-link">18</a></sup>, el servidor público que reciba el aviso, reporte o noticia sobre la ausencia o extravío de una mujer o una niña, deberá canalizar de inmediato a la víctima indirecta (familiar o pareja) a la agencia del Ministerio Público que corresponda al último lugar donde fue vista la persona reportada, o en su caso ponerse en contacto con el enlace del Protocolo ALBA responsable de la ventanilla única de atención que está ubicada en la Coordinación Estatal del Programa Alerta AMBER Yucatán, en el edificio central de la Fiscalía General del Estado de Yucatán.</p>
             <p>El fiscal investigador a cargo, remitirá copia simple de la denuncia a la Ventanilla Única, a fin de que el entrevistador recabe todos los datos para la elaboración del boletín de búsqueda; para que en caso que, proceda la activación del Protocolo ALBA, se encargue de la difusión, seguimiento, desactivación y/o alcance por localización, a través de los medios de comunicación masiva y de los enlaces del programa Protocolo ALBA.</p>
 
             <div class="datos-jurisprudencia">
@@ -646,7 +744,7 @@
 
             <p>De igual modo, ante la desaparición de personas existe un protocolo de búsqueda y localización que también se sigue ante la Fiscalía General del Estado, quien emite fichas públicas con datos de las personas para facilitar su localización.</p>
 
-            <h3>¿Sabías que?</h3>
+            <h3>¿Sabías qué?</h3>
             <p>En México, muchas leyes contra la violencia de género llevan el nombre de mujeres. Ley Olimpia, Ingrid, Malena, Monse, Sabina, Monzón o Valeria no surgieron por casualidad: detrás de cada una hay una historia de violencia que generó indignación social, movilización y presión para que las autoridades hicieran cambios en la ley.</p>
             <p>Esas reformas hasta ahora han sido plasmadas en la Ley de Acceso de las Mujeres a una vida libre de violencia, en los Códigos Penales de los Estados y en programas gubernamentales para erradicar la violencia contra la mujer o para fortalecer los derechos de niños, niñas y adolescentes, inclusive para sancionar a personas que incumplen con sus obligaciones de dar alimentos, como la creación del Registro de Deudores Alimenticios.</p>
 
@@ -658,9 +756,9 @@
                     <li><strong>Ley Monse:</strong> La llamada “Ley Monse” consiste en promover el castigo de familiares o personas que encubran o ayuden a escapar a homicidas o feminicidas.</li>
                     <li><strong>Ley Sabina:</strong> La llamada “Ley Sabina” consiste en que se cree un registro de deudores alimentarios.</li>
                     <li><strong>Ley Valeria:</strong> La llamada “Ley Valeria” consiste en considerar delito el acecho o stalking como delito.</li>
-                    <li><strong>Ley Monzón:</strong> La llamada “Ley Monzón” consiste en que, quien cometa feminicidio, pierde la patria potestad de sus hijos.</li>
+                    <li><strong>Ley Monzón:</strong> La llamada “Ley Monzón” consiste en que, quien cometa feminicidio, pierde automáticamente la patria potestad de sus hijos.</li>
                 </ul>
-                <p style="margin-top:15px;"><em>Nota: Consulta más sobre ellas en redes sociales de la Suprema Corte de Justicia de la Nación a través del link: https://www.facebook.com/share/p/14RBjAbF8hu/?mibextid=wwXIfr</em></p>
+                <p style="margin-top:15px;"><em>Nota: Consulta más sobre ellas en redes sociales de la Suprema Corte de Justicia de la Nación a través del link: <a href="https://www.facebook.com/share/p/14RBjAbF8hu/?mibextid=wwXIfr" target="_blank" class="link-externo">https://www.facebook.com/share/p/14RBjAbF8hu/?mibextid=wwXIfr</a></em></p>
             </div>
                 
             <p>La Suprema Corte de Justicia de la Nación es Parte del Poder Judicial de la Federación como máximo órgano de justicia en el país. No crea las leyes ni las reformas a las leyes existentes, pero sí las analiza y aplica para resolver asuntos en particular que generan alguna violación a derechos humanos de las personas.</p>
@@ -668,14 +766,52 @@
             <h3>Conclusión</h3>
             <p>Existen programas e instituciones en México para atender los casos de violencia de género pero no es suficiente pues el problema sigue en la sociedad e inicia con la falta de cultura de la paz y del respeto hacia la diversidad de personas así como hacia los más vulnerables. Se han hecho esfuerzos y se tienen herramientas, pero el avance es lento y se ha dado por la lucha de organizaciones civiles, así como de personas defensoras de derechos humanos, que desean que exista más igualdad en el país y menos violación de esos derechos. Depende de cada persona no generar violencia pero si sucede un delito, hay que alzar la voz, hay que denunciar, hay que pedir ayuda. No se debe permitir bajo ninguna justificación la violencia contra la mujer, ni contra ninguna persona, menos si está indefensa.</p>
 
-            <div class="referencias">
-                <p><strong>Referencias:</strong></p>
-                <p>1. Protocolo para juzgar con perspectiva de género, Suprema Corte de Justicia de la Nación, México 2020.</p>
-                <p>2. Caso González y otras vs. México (Campo Algodonero), Sentencia del 16 de noviembre de 2009, Corte Interamericana de Derechos Humanos.</p>
-                <p>3. Caso Rosendo Cantú y otras vs. México, Sentencia del 31 de agosto de 2010.</p>
-                <p>4. Caso Fernández Ortega y otras vs. México, Sentencia del 30 de agosto de 2010.</p>
-                <p>5. Caso Mujeres Víctimas de Tortura Sexual en Atenco vs. México, Sentencia del 28 de noviembre de 2018.</p>
-                <p>6. Caso Ernestina Ascencio Rosario vs México, Sentencia 30 de septiembre de 2025.</p>
+            <!-- SECCIÓN DE NOTAS AL PIE Y REFERENCIAS -->
+            <div class="referencias" id="seccion-referencias">
+                <h4>Notas al pie</h4>
+                <p id="nota1"><a href="#ref1" class="nota-link">1.</a> La ONU es una organización internacional que busca que los países del mundo respeten los derechos humanos de las personas, a través de programas y compromisos para mantener la cultura de la paz y evitar la guerra. Conoce más sobre ella en el siguiente link <a href="https://www.un.org/es/our-work" target="_blank" class="link-externo">https://www.un.org/es/our-work</a></p>
+                
+                <p id="nota2"><a href="#ref2" class="nota-link">2.</a> Te invito a que leas más sobre esto en: <a href="https://unric.org/es/la-violencia-de-genero-segun-la-onu/" target="_blank" class="link-externo">https://unric.org/es/la-violencia-de-genero-segun-la-onu/</a></p>
+                
+                <p id="nota3"><a href="#ref3" class="nota-link">3.</a> Te invito a que conozcas qué es y qué hace la Suprema Corte de Justicia de la Nación, del Poder Judicial de la Federación en la siguiente página de internet <a href="https://www.scjn.gob.mx/conoce-la-corte" target="_blank" class="link-externo">https://www.scjn.gob.mx/conoce-la-corte</a></p>
+                
+                <p id="nota4"><a href="#ref4" class="nota-link">4.</a> Descarga el Protocolo de la Suprema Corte de Justicia de la Nación para juzgar con perspectiva de género, donde se explica cómo deben analizarse y resolverse los asuntos relacionados con personas (muchas veces mujeres) víctimas de violencia de género. Consulta y descarga en el siguiente link <a href="https://www.scjn.gob.mx/derechos-humanos/sites/default/files/protocolos/archivos/2022-01/Protocolo%20para%20juzgar%20con%20perspectiva%20de%20genero_2022.pdf" target="_blank" class="link-externo">Protocolo SCJN</a></p>
+                
+                <p id="nota5"><a href="#ref5" class="nota-link">5.</a> Son conocidos como tratados internacionales y pueden ser universales (válidos en todo el mundo por los países que los reconocen) o bien interamericanos (en América) o solo Europeos o Africanos. Investiga más sobre el tema en el siguiente link: <a href="https://www.estudiaderechoshumanos.com/post/que-son-los-tratados-internacionales-de-derechos-humanos" target="_blank" class="link-externo">Estudia Derechos Humanos</a></p>
+                
+                <p id="nota6"><a href="#ref6" class="nota-link">6.</a> Lee sobre la Corte en el siguiente link: <a href="https://www.corteidh.or.cr/que_es_la_corte.cfm" target="_blank" class="link-externo">https://www.corteidh.or.cr/que_es_la_corte.cfm</a></p>
+                
+                <p id="nota7"><a href="#ref7" class="nota-link">7.</a> Sentencia de fecha 16 de noviembre de 2009. Se puede consultar una síntesis en el siguiente link: <a href="https://www.cndh.org.mx/noticia/la-corte-interamericana-de-derechos-humanos-sentencia-en-el-caso-gonzalez-y-otras-campo" target="_blank" class="link-externo">Síntesis CNDH</a></p>
+                
+                <p id="nota8"><a href="#ref8" class="nota-link">8.</a> Respecto a los hombres, por igualdad de género, se emiten boletines de búsqueda en caso de desaparición, a cargo de las Fiscalías Estatales.</p>
+                
+                <p id="nota9"><a href="#ref9" class="nota-link">9.</a> Lee sobre el caso en el siguiente link: <a href="https://www.cndh.org.mx/noticia/11-anos-de-la-sentencia-del-caso-rosendo-cantu-y-otra-vs-mexico-cidh" target="_blank" class="link-externo">Caso Rosendo Cantú</a></p>
+                
+                <p id="nota10"><a href="#ref10" class="nota-link">10.</a> Lee sobre el caso en el siguiente link: <a href="https://www.cndh.org.mx/noticia/11-anos-de-sentencia-del-caso-fernandez-ortega-y-otros-vs-mexico-cidh" target="_blank" class="link-externo">Caso Fernández Ortega</a></p>
+                
+                <p id="nota11"><a href="#ref11" class="nota-link">11.</a> Lee sobre el caso en el siguiente link: <a href="https://centroprodh.org.mx/casos-3/mujeres-de-atenco/" target="_blank" class="link-externo">Caso Mujeres de Atenco</a></p>
+                
+                <p id="nota12"><a href="#ref12" class="nota-link">12.</a> Lee sobre el caso en el siguiente link: <a href="https://www.cndh.org.mx/sites/default/files/documentos/2025-01/FRN_FEB_25-1.pdf" target="_blank" class="link-externo">Caso Ernestina Ascencio</a></p>
+                
+                <p id="nota13"><a href="#ref13" class="nota-link">13.</a> <a href="https://fge.yucatan.gob.mx/micrositios/centro-de-justicia-para-las-mujeres" target="_blank" class="link-externo">https://fge.yucatan.gob.mx/micrositios/centro-de-justicia-para-las-mujeres</a></p>
+                
+                <p id="nota14"><a href="#ref14" class="nota-link">14.</a> La PRODENNAY es parte del sistema integral de protección de niños, niñas y adolescentes de Yucatán (SIPINNAY) del DIF Yucatán: <a href="http://www.dif.yucatan.gob.mx/" target="_blank" class="link-externo">http://www.dif.yucatan.gob.mx/</a></p>
+                
+                <p id="nota15"><a href="#ref15" class="nota-link">15.</a> Conoce más sobre SEMUJERES en <a href="https://mujeres.yucatan.gob.mx/" target="_blank" class="link-externo">https://mujeres.yucatan.gob.mx/</a></p>
+                
+                <p id="nota16"><a href="#ref16" class="nota-link">16.</a> Conoce más sobre CEPREDEY en <a href="https://www.yucatan.gob.mx/prevenciondelito/" target="_blank" class="link-externo">https://www.yucatan.gob.mx/prevenciondelito/</a></p>
+                
+                <p id="nota17"><a href="#ref17" class="nota-link">17.</a> <a href="https://fge.yucatan.gob.mx/" target="_blank" class="link-externo">https://fge.yucatan.gob.mx/</a></p>
+                
+                <p id="nota18"><a href="#ref18" class="nota-link">18.</a> <a href="https://fge.yucatan.gob.mx/" target="_blank" class="link-externo">https://fge.yucatan.gob.mx/</a></p>
+
+                <h4 style="margin-top: 30px;">Referencias Bibliográficas</h4>
+                <p>1. Protocolo para juzgar con perspectiva de género, Suprema Corte de Justicia de la Nación, Poder Judicial la Federación, México 2020. <a href="https://www.scjn.gob.mx/derechos-humanos/sites/default/files/protocolos/archivos/2022-01/Protocolo%20para%20juzgar%20con%20perspectiva%20de%20genero_2022.pdf" target="_blank" class="link-externo">https://www.scjn.gob.mx/derechos-humanos/sites/default/files/protocolos/archivos/2022-01/Protocolo%20para%20juzgar%20con%20perspectiva%20de%20genero_2022.pdf</a></p>
+                <p>2. Caso González y otras vs. México (Campo Algodonero), Sentencia de fecha 16 de noviembre de 2009, Corte Interamericana de Derechos Humanos. <a href="https://jurisprudencia.corteidh.or.cr/es/vid/883976790" target="_blank" class="link-externo">https://jurisprudencia.corteidh.or.cr/es/vid/883976790</a></p>
+                <p>3. Caso Rosendo Cantú y otras vs. México, Sentencia de fecha 31 de agosto de 2010, Corte Interamericana de Derechos Humanos. <a href="https://jurisprudencia.corteidh.or.cr/es/vid/883974255" target="_blank" class="link-externo">https://jurisprudencia.corteidh.or.cr/es/vid/883974255</a></p>
+                <p>4. Caso Fernández Ortega y otras vs. México, Sentencia de fecha 30 de agosto de 2010, Corte Interamericana de Derechos Humanos. <a href="https://jurisprudencia.corteidh.or.cr/es/vid/883974283" target="_blank" class="link-externo">https://jurisprudencia.corteidh.or.cr/es/vid/883974283</a></p>
+                <p>5. Caso Mujeres Víctimas de Tortura Sexual en Atenco vs. México, Sentencia de fecha 28 de noviembre de 2018, Corte Interamericana de Derechos Humanos. <a href="https://jurisprudencia.corteidh.or.cr/es/vid/883974749" target="_blank" class="link-externo">https://jurisprudencia.corteidh.or.cr/es/vid/883974749</a></p>
+                <p>6. Caso Ernestina Ascencio Rosario vs México, Sentencia 30 de septiembre de 2025, Corte Interamericana de Derechos Humanos. <a href="https://jurisprudencia.corteidh.or.cr/es/vid/1098746473" target="_blank" class="link-externo">https://jurisprudencia.corteidh.or.cr/es/vid/1098746473</a></p>
             </div>
         </div>
     </div>
@@ -711,7 +847,7 @@
     <video id="assistantVideo" class="dog-illustration" muted loop playsinline>
         <source src="avatar.mp4" type="video/mp4">
     </video>
-    <p style="font-size: 0.6rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);">GUÍA JURÍDICA</p>
+    <p style="font-size: 0.6rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);"></p>
 </div>
 
 <script>
@@ -799,7 +935,7 @@
             return;
         }
         let content = "";
-        document.querySelectorAll('header h1, header p, h2.seccion-titulo, .card-content h3, .card-content p, .bloque, .ley-contenido p, .texto-profesional p, .texto-profesional li, .datos-jurisprudencia p, .datos-jurisprudencia h3, .datos-jurisprudencia li, .referencias p').forEach(el => { 
+        document.querySelectorAll('header h1, header p, h2.seccion-titulo, .card-content h3, .card-content p, .bloque, .ley-contenido p, .texto-profesional p, .texto-profesional li, .datos-jurisprudencia p, .datos-jurisprudencia h3, .datos-jurisprudencia li, .referencias p, .referencias h4').forEach(el => { 
             if(el.classList.contains('seccion-titulo')) {
                 const cleanTitle = el.cloneNode(true);
                 const btnInside = cleanTitle.querySelector('button');
