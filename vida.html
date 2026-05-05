@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe Integral: Contextos Adolescentes</title>
+    <title>Vida Ideal - Desarrollo del Adolescente</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -14,16 +14,61 @@
             --bg: #f0f4f8;
             --white: rgba(255, 255, 255, 0.95);
             --danger: #e74c3c;
+            --warning: #f39c12;
             --gold: #c9a96e;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body { background: var(--bg); color: #2c3e50; line-height: 1.8; overflow-x: hidden; }
 
+        /* ================= MENÚ SUPERIOR ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        nav .logo {
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            padding-bottom: 3px;
+        }
+        nav a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+            display: inline-block;
+        }
+        nav a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        /* HEADER */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 100px 20px;
+            padding: 130px 20px 80px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
@@ -31,7 +76,7 @@
 
         header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
 
-        .container { width: 95%; max-width: 1200px; margin: -50px auto 60px; padding: 0 20px; }
+        .container { width: 95%; max-width: 1200px; margin: -50px auto 120px; padding: 0 20px; }
 
         .glass-panel {
             background: var(--white);
@@ -66,7 +111,40 @@
             padding-left: 15px;
         }
 
-        /* CUADRÍCULA DE 4 IMÁGENES POR SECCIÓN */
+        /* ================= FORMATO PROFESIONAL ================= */
+        .texto-profesional {
+            padding: 0 10px;
+        }
+        .texto-profesional p {
+            text-align: justify; 
+            text-indent: 40px; 
+            margin-bottom: 1.5rem; 
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #3a4b5c;
+        }
+        .texto-profesional h3 {
+            color: var(--secondary);
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            text-transform: uppercase;
+            text-indent: 0;
+        }
+        .texto-profesional ul, .texto-profesional ol {
+            margin-left: 40px;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: #3a4b5c;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .texto-profesional li {
+            margin-bottom: 12px;
+        }
+
+        /* CUADRÍCULA DE IMÁGENES */
         .img-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -87,9 +165,10 @@
             border-radius: 0 15px 15px 0;
             margin: 25px 0;
             font-style: italic;
+            text-indent: 0 !important;
+            font-size: 1.1rem !important;
+            color: var(--primary);
         }
-
-        .sub-titulo { color: var(--secondary); font-weight: 700; margin-top: 20px; font-size: 1.2rem; }
 
         /* VIDEOS FINAL */
         .video-container {
@@ -102,9 +181,7 @@
         video { width: 100%; display: block; }
         .video-label { background: white; padding: 15px; text-align: center; font-weight: 800; color: var(--primary); }
 
-        /* ================= ESTILOS PREMIUM INTEGRADOS ================= */
-
-        /* REPRODUCTOR */
+        /* ================= REPRODUCTOR PREMIUM ================= */
         .music-panel {
             position: fixed; bottom: 20px; left: 0;
             transform: translateX(-75%); transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -140,15 +217,15 @@
         .voice-controls { display: flex; gap: 8px; margin-top: 15px; }
         .voice-btn { flex: 1; padding: 10px; border: none; border-radius: 10px; cursor: pointer; background: rgba(15,76,117,.1); transition: .3s; font-size: 1.1rem;}
         .voice-btn:hover { background: rgba(15,76,117,.2); }
-        .voice-btn.stop { color: var(--danger); }
+        .voice-btn.pause { color: var(--warning); } 
 
-        /* ASISTENTE */
+        /* ASISTENTE VIRTUAL */
         .virtual-assistant-container {
             position: fixed; bottom: 20px; right: 20px; z-index: 10000;
-            background: #ffffff; padding: 12px; border-radius: 24px 24px 0 24px;
+            background: #ffffff; padding: 10px; border-radius: 20px 20px 0 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15); animation: avatarEntrance 0.8s ease-out;
         }
-        .dog-illustration { width: 140px; display: block; border-radius: 18px; animation: avatarFloat 3s ease-in-out infinite; }
+        .dog-illustration { width: 105px; display: block; border-radius: 15px; animation: avatarFloat 3s ease-in-out infinite; }
         .dog-speaking { outline: 4px solid var(--accent); filter: brightness(1.05); }
 
         @keyframes avatarFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
@@ -164,6 +241,9 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 900px) {
+            nav { flex-direction: column; gap: 15px; padding: 15px 20px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            header { padding-top: 160px; }
             .img-grid { grid-template-columns: 1fr 1fr; }
             .video-container { grid-template-columns: 1fr; }
             .main-title { font-size: 1.5rem; }
@@ -171,6 +251,16 @@
     </style>
 </head>
 <body>
+
+<nav>
+    <div class="logo">Juventud y Realidad</div>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="negativo.html">Aspectos Negativos</a></li>
+        <li><a href="infor.html">Información</a></li>
+        <li><a href="vida.html" class="active">Vida Ideal</a></li>
+    </ul>
+</nav>
 
 <audio id="bgMusic" loop>
     <source src="Menuprivado.mp3" type="audio/mpeg">
@@ -186,80 +276,106 @@
 <div class="container">
     <div class="glass-panel reveal active">
         
-        <h2 class="seccion-titulo reveal"><i class="fas fa-home"></i> I. El Contexto Familiar</h2>
+        <!-- SECCIÓN 1: FAMILIA -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px;" class="reveal">
+            <h2 class="seccion-titulo" style="margin: 0; border: none; padding: 0;">I. El Contexto Familiar</h2>
+            <button class="section-speak-btn">Leer</button>
+        </div>
         
         <div class="img-grid reveal">
-            <img src="cf.jpg" alt="F1">
-            <img src="cf2.jpg" alt="F2">
-            <img src="cf3.jpg" alt="F3">
-            <img src="cf4.jpg" alt="F4">
+            <img src="cf.jpg" alt="Familia 1">
+            <img src="cf2.jpg" alt="Familia 2">
+            <img src="cf3.jpg" alt="Familia 3">
+            <img src="cf4.jpg" alt="Familia 4">
         </div>
 
-        <p class="highlight-box">"La adolescencia es esa etapa de 'metamorfosis' donde el apoyo del entorno define mucho del adulto en el que se convertirán."</p>
+        <div class="texto-profesional">
+            <p class="highlight-box">"La adolescencia es esa etapa de 'metamorfosis' donde el apoyo del entorno define mucho del adulto en el que se convertirán."</p>
 
-        <p class="sub-titulo">Tipos de Familia</p>
-        <p>En ambos contextos, el adolescente busca identidad, pero la estructura cambia el cómo se recibe el apoyo:</p>
-        <p><strong>• Familia Nuclear:</strong> Compuesta por los padres y los hijos. Al ser un núcleo más pequeño, la relación suele ser más directa e intensa. Aquí, la clave es que los padres funcionen como un equipo sólido para ofrecer seguridad.</p>
-        <p><strong>• Familia Extensa:</strong> Incluye a los abuelos, tíos, primos y otros parientes. En este tipo de familia, el adolescente tiene una red de apoyo más amplia; si siente que no puede hablar con sus padres, puede encontrar refugio o consejo en un tío o un abuelo.</p>
+            <h3>Tipos de Familia</h3>
+            <p>En ambos contextos, el adolescente busca identidad, pero la estructura cambia el cómo se recibe el apoyo:</p>
+            <ul>
+                <li><strong>Familia Nuclear:</strong> Compuesta por los padres y los hijos. Al ser un núcleo más pequeño, la relación suele ser más directa e intensa. Aquí, la clave es que los padres funcionen como un equipo sólido para ofrecer seguridad.</li>
+                <li><strong>Familia Extensa:</strong> Incluye a los abuelos, tíos, primos y otros parientes. En este tipo de familia, el adolescente tiene una red de apoyo más amplia; si siente que no puede hablar con sus padres, puede encontrar refugio o consejo en un tío o un abuelo.</li>
+            </ul>
 
-        <p class="sub-titulo">Espacios de Comunicación Incondicional</p>
-        <p>Para que un adolescente se sienta seguro, necesita saber que puede ser él mismo sin ser juzgado de inmediato. Aquí dos espacios vitales:</p>
-        <p><strong>• La Mesa Familiar (Sin Pantallas):</strong> No se trata solo de comer, sino de crear un ritual diario de escucha activa. Es un espacio donde se comparten anécdotas y emociones. En la familia nuclear, permite una conexión profunda; en la familia extensa, fomenta el sentido de pertenencia a una historia más grande.</p>
-        <p><strong>• Actividades de Ocio Compartido:</strong> Ya sea salir a caminar, jugar un videojuego o cocinar juntos. Al no estar "cara a cara" bajo presión (como en una interrogación), los adolescentes tienden a soltarse más y expresar sus inquietudes de forma natural.</p>
+            <h3>Espacios de Comunicación Incondicional</h3>
+            <p>Para que un adolescente se sienta seguro, necesita saber que puede ser él mismo sin ser juzgado de inmediato. Aquí dos espacios vitales:</p>
+            <ul>
+                <li><strong>La Mesa Familiar (Sin Pantallas):</strong> No se trata solo de comer, sino de crear un ritual diario de escucha activa. Es un espacio donde se comparten anécdotas y emociones. En la familia nuclear, permite una conexión profunda; en la familia extensa, fomenta el sentido de pertenencia a una historia más grande.</li>
+                <li><strong>Actividades de Ocio Compartido:</strong> Ya sea salir a caminar, jugar un videojuego o cocinar juntos. Al no estar "cara a cara" bajo presión (como en una interrogación), los adolescentes tienden a soltarse más y expresar sus inquietudes de forma natural.</li>
+            </ul>
 
-        <p class="sub-titulo">Espacios de Límites</p>
-        <p>Los adolescentes suelen quejarse de las reglas, pero en el fondo, los límites les dan seguridad porque les dicen hasta dónde es seguro llegar.</p>
-        <p><strong>• El Consenso de Consecuencias:</strong> No es solo imponer, sino dialogar sobre las reglas de la casa (horarios de llegada, uso de tecnología). En la familia extensa, es crucial que todos los adultos respeten estos límites para no confundir al joven. Un límite claro es un acto de amor, no de control.</p>
-        <p><strong>• El Respeto a la Privacidad y la Responsabilidad:</strong> Un espacio de límite importante es su habitación y su tiempo personal. Los padres deben poner límites sobre el cumplimiento de sus deberes (estudios, limpieza), pero a cambio, el adolescente gana el derecho a su espacio privado.</p>
+            <h3>Espacios de Límites</h3>
+            <p>Los adolescentes suelen quejarse de las reglas, pero en el fondo, los límites les dan seguridad porque les dicen hasta dónde es seguro llegar.</p>
+            <ul>
+                <li><strong>El Consenso de Consecuencias:</strong> No es solo imponer, sino dialogar sobre las reglas de la casa (horarios de llegada, uso de tecnología). En la familia extensa, es crucial que todos los adultos respeten estos límites para no confundir al joven. Un límite claro es un acto de amor, no de control.</li>
+                <li><strong>El Respeto a la Privacidad y la Responsabilidad:</strong> Un espacio de límite importante es su habitación y su tiempo personal. Los padres deben poner límites sobre el cumplimiento de sus deberes (estudios, limpieza), pero a cambio, el adolescente gana el derecho a su espacio privado.</li>
+            </ul>
+        </div>
 
-        <h2 class="seccion-titulo reveal"><i class="fas fa-users"></i> II. El Contexto Social</h2>
+        <!-- SECCIÓN 2: SOCIEDAD -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; margin-top: 60px;" class="reveal">
+            <h2 class="seccion-titulo" style="margin: 0; border: none; padding: 0;">II. El Contexto Social</h2>
+            <button class="section-speak-btn">Leer</button>
+        </div>
 
         <div class="img-grid reveal">
-            <img src="cs1.jpg" alt="S1">
-            <img src="cs2.jpg" alt="S2">
-            <img src="cs3.jpg" alt="S3">
-            <img src="cs4.jpg" alt="S4">
+            <img src="cs1.jpg" alt="Social 1">
+            <img src="cs2.jpg" alt="Social 2">
+            <img src="cs3.jpg" alt="Social 3">
+            <img src="cs4.jpg" alt="Social 4">
         </div>
 
-        <p>El contexto social en el que viven los jóvenes es fundamental para su desarrollo personal. Fuera del ámbito escolar, los adolescentes necesitan espacios que les permitan crecer, conocerse y relacionarse con los demás de manera sana.</p>
-        
-        <p>• Su entorno social debe ser un espacio donde el adolescente pueda desarrollar su identidad. Es importante que tenga la oportunidad de conocerse a sí mismo, descubrir sus gustos, intereses y valores, ya que esto le ayudará a formar una personalidad segura y auténtica.</p>
-        
-        <p>• En segundo lugar, debe fomentar la responsabilidad. A través de sus acciones y decisiones en la vida cotidiana, el joven aprende a asumir las consecuencias de lo que hace, lo cual es clave para su madurez.</p>
-        
-        <p>• Igual debe promover la amistad y el respeto hacia los demás. Las relaciones sociales sanas ayudan al adolescente a desarrollar empatía, comunicación y valores importantes para la convivencia y ayudan a los jóvenes a sentirse acompañados, comprendidos y apoyados emocionalmente. Sin embargo, también es importante que aprendan a elegir amistades positivas que contribuyan a su bienestar.</p>
-        
-        <p>• En la actualidad, los adolescentes tienen la influencia de las redes sociales. Estas pueden ser una herramienta positiva para la comunicación y el aprendizaje, pero también pueden generar presión social, comparación constante y problemas de autoestima. Por ello, es importante que los jóvenes desarrollen un pensamiento crítico y un uso responsable de la tecnología.</p>
-        
-        <p>• Finalmente, el entorno social también debe ofrecer espacios seguros y de apoyo, donde los jóvenes puedan desarrollarse sin violencia, discriminación o riesgos. La familia y la comunidad tienen un papel fundamental en brindar orientación y acompañamiento durante esta etapa.</p>
-        
-        <p class="highlight-box">En conclusión, la vida de los jóvenes en el contexto social debe desarrollarse en un ambiente que promueva el autoconocimiento, la responsabilidad, los valores, las relaciones sanas y el uso adecuado de la tecnología.</p>
+        <div class="texto-profesional">
+            <p>El contexto social en el que viven los jóvenes es fundamental para su desarrollo personal. Fuera del ámbito escolar, los adolescentes necesitan espacios que les permitan crecer, conocerse y relacionarse con los demás de manera sana.</p>
+            
+            <ul>
+                <li>Su entorno social debe ser un espacio donde el adolescente pueda <strong>desarrollar su identidad</strong>. Es importante que tenga la oportunidad de conocerse a sí mismo, descubrir sus gustos, intereses y valores, ya que esto le ayudará a formar una personalidad segura y auténtica.</li>
+                <li>En segundo lugar, debe <strong>fomentar la responsabilidad</strong>. A través de sus acciones y decisiones en la vida cotidiana, el joven aprende a asumir las consecuencias de lo que hace, lo cual es clave para su madurez.</li>
+                <li>Igualmente debe promover la <strong>amistad y el respeto</strong> hacia los demás. Las relaciones sociales sanas ayudan al adolescente a desarrollar empatía, comunicación y valores importantes para la convivencia; ayudan a los jóvenes a sentirse acompañados, comprendidos y apoyados emocionalmente. Sin embargo, también es importante que aprendan a elegir amistades positivas que contribuyan a su bienestar.</li>
+                <li>En la actualidad, los adolescentes tienen la gran <strong>influencia de las redes sociales</strong>. Estas pueden ser una herramienta positiva para la comunicación y el aprendizaje, pero también pueden generar presión social, comparación constante y problemas de autoestima. Por ello, es importante que los jóvenes desarrollen un pensamiento crítico y un uso responsable de la tecnología.</li>
+                <li>Finalmente, el entorno social también debe ofrecer <strong>espacios seguros y de apoyo</strong>, donde los jóvenes puedan desarrollarse sin violencia, discriminación o riesgos. La familia y la comunidad tienen un papel fundamental en brindar orientación y acompañamiento durante esta etapa.</li>
+            </ul>
+            
+            <p class="highlight-box">En conclusión, la vida de los jóvenes en el contexto social debe desarrollarse en un ambiente que promueva el autoconocimiento, la responsabilidad, los valores, las relaciones sanas y el uso adecuado de la tecnología.</p>
+        </div>
 
-        <h2 class="seccion-titulo reveal"><i class="fas fa-school"></i> III. El Contexto Escolar</h2>
+        <!-- SECCIÓN 3: ESCUELA -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; margin-top: 60px;" class="reveal">
+            <h2 class="seccion-titulo" style="margin: 0; border: none; padding: 0;">III. El Contexto Escolar</h2>
+            <button class="section-speak-btn">Leer</button>
+        </div>
 
         <div class="img-grid reveal">
-            <img src="ce1.jpg" alt="E1">
-            <img src="ce2.jpg" alt="E2">
-            <img src="ce3.jpg" alt="E3">
-            <img src="ce4.jpg" alt="E4">
+            <img src="ce1.jpg" alt="Escuela 1">
+            <img src="ce2.jpg" alt="Escuela 2">
+            <img src="ce3.jpg" alt="Escuela 3">
+            <img src="ce4.jpg" alt="Escuela 4">
         </div>
 
-        <p class="main-title">“Vida escolar para los adolescentes”</p>
+        <div class="texto-profesional">
+            <p class="main-title" style="font-size: 1.6rem; border: none; margin-top: 30px; margin-bottom: 20px;">“Vida escolar para los adolescentes”</p>
+            
+            <p>La adolescencia es una etapa de transición crítica donde el entorno educativo no solo debe funcionar como un centro de aprendizaje académico, sino como un ecosistema de protección y desarrollo humano. Para lograr un impacto positivo en la vida de los estudiantes, es imperativo rediseñar la cultura escolar bajo tres pilares fundamentales:</p>
+
+            <h3>1. El Entorno escolar como espacio seguro</h3>
+            <p>Un ambiente de aprendizaje óptimo comienza con la garantía de la integridad física. Esto implica establecer políticas de "cero tolerancia" ante la presencia de armas de cualquier tipo, eliminando riesgos externos que puedan comprometer la vida de los jóvenes. Sin embargo, la seguridad no es solo la ausencia de peligro, sino la presencia de un orden basado en el respeto mutuo y la resolución pacífica de conflictos.</p>
+
+            <h3>2. El Entorno escolar como espacio inclusivo y equitativo</h3>
+            <p>Para que la vida escolar sea verdaderamente enriquecedora, debe ser un espacio inclusivo. Esto significa reconocer y valorar la diversidad en todas sus formas (social, cultural, física y cognitiva). La inclusión garantiza que ningún estudiante sea segregado o discriminado, fomentando un sentido de pertenencia que es vital para la salud mental en esta etapa.</p>
+
+            <h3>3. El Entorno escolar como espacio de desarrollo integral</h3>
+            <p>Finalmente, el contexto escolar debe trascender las aulas y ofrecer una visión integral. Esto incluye la vinculación con sistemas de seguridad social y apoyo emocional que garanticen que las necesidades básicas del estudiante estén cubiertas. Una educación integral es aquella que no solo nutre el intelecto, sino que también cuida la salud física y emocional del joven.</p>
+
+            <p class="highlight-box">Conclusión: Transformar la vida de los adolescentes requiere un compromiso firme con la creación de entornos donde la seguridad no sea un privilegio, sino una norma indispensable.</p>
+        </div>
+
+        <!-- VIDEOS -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 25px; margin-top: 60px;" class="reveal">
+            <h2 class="seccion-titulo" style="margin: 0; border: none; padding: 0;">Recursos Multimedia</h2>
+        </div>
         
-        <p>La adolescencia es una etapa de transición crítica donde el entorno educativo no solo debe funcionar como un centro de aprendizaje académico, sino como un ecosistema de protección y desarrollo humano. Para lograr un impacto positivo en la vida de los estudiantes, es imperativo rediseñar la cultura escolar bajo tres pilares fundamentales:</p>
-
-        <p class="sub-titulo">1. El Entorno escolar como espacio seguro</p>
-        <p>Un ambiente de aprendizaje óptimo comienza con la garantía de la integridad física. Esto implica establecer políticas de "cero tolerancia" ante la presencia de armas de cualquier tipo, eliminando riesgos externos que puedan comprometer la vida de los jóvenes. Sin embargo, la seguridad no es solo la ausencia de peligro, sino la presencia de un orden basado en el respeto mutuo y la resolución pacífica de conflictos.</p>
-
-        <p class="sub-titulo">2. El Entorno escolar como espacio inclusivo y equitativo</p>
-        <p>Para que la vida escolar sea verdaderamente enriquecedora, debe ser un espacio inclusivo. Esto significa reconocer y valorar la diversidad en todas sus formas (social, cultural, física y cognitiva). La inclusión garantiza que ningún estudiante sea segregado o discriminado, fomentando un sentido de pertenencia que es vital para la salud mental en esta etapa.</p>
-
-        <p class="sub-titulo">3. El Entorno escolar como espacio de desarrollo integral</p>
-        <p>Finalmente, el contexto escolar debe trascender las aulas y ofrecer una visión integral. Esto incluye la vinculación con sistemas de seguridad social y apoyo emocional que garanticen que las necesidades básicas del estudiante estén cubiertas. Una educación integral es aquella que no solo nutre el intelecto, sino que también cuida la salud física y emocional del joven.</p>
-
-        <p class="highlight-box">Conclusión: Transformar la vida de los adolescentes requiere un compromiso firme con la creación de entornos donde la seguridad no sea un privilegio, sino una norma.</p>
-
-        <h2 class="seccion-titulo reveal"><i class="fas fa-film"></i> Recursos Multimedia</h2>
         <div class="video-container reveal">
             <div class="video-box">
                 <video controls><source src="c1.mp4" type="video/mp4"></video>
@@ -273,6 +389,7 @@
     </div>
 </div>
 
+<!-- REPRODUCTOR PREMIUM -->
 <div class="music-panel">
     <div class="music-box">
         <div class="music-header"><i class="fas fa-compact-disc"></i> <span>AUDIO GUÍA</span></div>
@@ -295,18 +412,19 @@
             <button onclick="toggleSpeech()" class="voice-btn" title="Narrar todo">
                 <i class="fas fa-comment"></i>
             </button>
-            <button onclick="pauseSpeech()" class="voice-btn stop" title="Detener voz">
-                <i class="fas fa-stop"></i>
+            <button onclick="pauseResumeSpeech()" class="voice-btn pause" id="pauseVoiceBtn" title="Pausar / Reanudar voz">
+                <i class="fas fa-pause"></i>
             </button>
         </div>
     </div>
 </div>
 
+<!-- ASISTENTE VIRTUAL -->
 <div class="virtual-assistant-container">
     <video id="assistantVideo" class="dog-illustration" muted loop playsinline>
         <source src="avatar.mp4" type="video/mp4">
     </video>
-    <p style="font-size: 0.7rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);">ASISTENTE VIRTUAL</p>
+    <p style="font-size: 0.6rem; text-align: center; margin-top: 5px; font-weight: bold; color: var(--primary);">ASISTENTE VIRTUAL</p>
 </div>
 
 <script>
@@ -314,11 +432,10 @@
     const playBtn = document.getElementById('playBtn');
     const wave = document.getElementById('wave');
     const dog = document.getElementById('assistantVideo');
+    const pauseVoiceBtn = document.getElementById('pauseVoiceBtn');
 
-    // Inicializar volumen
     bgMusic.volume = 0.5;
 
-    // Efecto Reveal al hacer scroll (Añadido a subtítulos e imágenes también)
     function reveal() {
         document.querySelectorAll('.reveal').forEach(el => {
             if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
@@ -327,7 +444,6 @@
     window.addEventListener('scroll', reveal);
     reveal();
 
-    // Lógica de Música
     function toggleMusic() {
         if (bgMusic.paused) { 
             bgMusic.play().catch(e => console.log("Interacción requerida primero")); 
@@ -340,9 +456,10 @@
         }
     }
 
-    // Función principal de lectura
     function readText(text) {
         speechSynthesis.cancel();
+        pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        
         const utter = new SpeechSynthesisUtterance(text);
         utter.lang = 'es-MX';
         utter.pitch = 0.95;
@@ -364,20 +481,24 @@
             dog.classList.remove('dog-speaking'); 
             dog.pause(); 
             dog.currentTime = 0; 
+            pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
         };
         
         speechSynthesis.speak(utter);
     }
 
-    // Narrar todo el documento leyendo los textos adecuados
     function toggleSpeech() {
         if (speechSynthesis.speaking) {
-            pauseSpeech();
+            speechSynthesis.cancel(); 
+            dog.classList.remove('dog-speaking'); 
+            dog.pause(); 
+            dog.currentTime = 0;
+            pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
             return;
         }
 
         let content = "";
-        document.querySelectorAll('header h1, header p, h2.seccion-titulo, .main-title, p').forEach(el => { 
+        document.querySelectorAll('header h1, header p, h2.seccion-titulo, .main-title, .texto-profesional p, .texto-profesional li, .texto-profesional h3').forEach(el => { 
             if(el.classList.contains('seccion-titulo')) {
                 const cleanTitle = el.cloneNode(true);
                 const btnInside = cleanTitle.querySelector('button');
@@ -390,34 +511,35 @@
         readText(content);
     }
 
-    function pauseSpeech() { 
-        speechSynthesis.cancel(); 
-        dog.classList.remove('dog-speaking'); 
-        dog.pause(); 
-        dog.currentTime = 0; 
+    function pauseResumeSpeech() {
+        if (speechSynthesis.speaking) {
+            if (speechSynthesis.paused) {
+                speechSynthesis.resume();
+                dog.play();
+                dog.classList.add('dog-speaking');
+                pauseVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                speechSynthesis.pause();
+                dog.pause();
+                dog.classList.remove('dog-speaking');
+                pauseVoiceBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
     }
 
-    // Inserción dinámica de botones "Leer" en cada sección
-    document.querySelectorAll('h2.seccion-titulo').forEach(title => {
-        const btn = document.createElement('button');
-        btn.className = 'section-speak-btn';
-        btn.textContent = 'Leer';
-        
+    document.querySelectorAll('.section-speak-btn').forEach(btn => {
         btn.onclick = (e) => {
             e.stopPropagation();
             
-            // Clonar el título y quitarle el botón para que no lo narre
-            const cleanTitle = title.cloneNode(true);
-            const btnInside = cleanTitle.querySelector('button');
-            if (btnInside) btnInside.remove();
-
-            let sectionText = cleanTitle.innerText + ". ";
-            let next = title.nextElementSibling;
+            const titleContainer = btn.parentElement;
+            const title = titleContainer.querySelector('h2.seccion-titulo');
+            let sectionText = title.innerText + ". ";
             
-            // Recolectar todo el texto de los divs/párrafos siguientes hasta el próximo H2
-            while (next && !next.matches('h2.seccion-titulo')) { 
-                // Solo leemos el texto si es un párrafo (para no leer basura de las imágenes)
-                if(next.tagName.toLowerCase() === 'p' || next.classList.contains('main-title')) {
+            let next = titleContainer.nextElementSibling;
+            
+            // Recolectar todo el texto de los elementos de texto profesional
+            while (next && !(next.tagName.toLowerCase() === 'div' && next.querySelector('h2.seccion-titulo'))) { 
+                if (next.classList.contains('texto-profesional') || next.classList.contains('video-container')) {
                     sectionText += next.innerText + ". "; 
                 }
                 next = next.nextElementSibling; 
@@ -425,8 +547,6 @@
             
             readText(sectionText);
         };
-        
-        title.appendChild(btn);
     });
 </script>
 
